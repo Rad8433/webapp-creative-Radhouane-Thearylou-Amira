@@ -392,10 +392,9 @@ Listez vos composants Vue principaux:
 
 | Membre | Rôle principal | Responsabilités |
 |--------|----------------|-----------------|
-| [Nom] | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure des composants |
-| [Nom] | Design + Animations | CSS, design visuel, animations GSAP, transitions |
-| [Nom] | Données + Validation | LocalStorage/Firebase, validation formulaires, gestion erreurs |
-| [Nom] | UX + Accessibilité | Tests utilisateurs, accessibilité, responsive, contenus |
+| Radhouane | Chef de projet + Architecture Vue | Coordination, Vue Router, stores Pinia, structure des composants |
+| Thearylou | Design + Animations | CSS, design visuel, animations GSAP, transitions |
+| Amira | Données + Validation | LocalStorage/Firebase, validation formulaires, gestion erreurs |
 
 *Note:* Tous participent au développement, mais chacun a sa spécialité.
 
