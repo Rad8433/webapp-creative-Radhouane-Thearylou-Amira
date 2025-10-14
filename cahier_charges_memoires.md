@@ -2,18 +2,17 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* [Nom de votre musée]  
-*Nom de l'équipe:* [Nom de votre équipe]  
+*Nom du projet:* Les 6 visions du monde
+*Nom de l'équipe:* Les voyageurs
 *Membres:*
 
-- [Nom] - Chef de projet / [Rôle principal]
-- [Nom] - [Rôle principal]
-- [Nom] - [Rôle principal]
-- [Nom] - [Rôle principal] (si équipe de 4)
+- Radhouane - Chef de projet / Architecture
+- Amira - Responsable du Design + Animations
+- Thearylou - Données + Systèmes
 
-*Date de début:* [Date]  
-*Date de livraison finale:* [Date]  
-*Version du document:* 1.0
+*Date de début:* 8 octobre 2025<br>
+*Date de livraison finale:* 10 décembre 2025<br>
+*Version du document:* 1.0<br>
 
 
 ## 🎯 1. Présentation du Projet
@@ -39,9 +38,9 @@ Décrivez en 2-3 paragraphes le concept de votre musée interactif:
 
 ### 1.2 Public cible
 
-- *Âge:* [ex: 18-45 ans]
-- *Profil:* [ex: Personnes nostalgiques, amateurs d'histoire personnelle]
-- *Niveau technique:* [ex: Utilisateurs grand public, aucune connaissance technique requise]
+- *Âge:* 16-60 ans
+- *Profil:* Passionnés du voyage
+- *Niveau technique:* Utilisateurs grand public avec peu de connaissances techniques
 
 ### 1.3 Objectifs du projet
 
