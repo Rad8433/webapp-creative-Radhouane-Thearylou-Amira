@@ -408,11 +408,11 @@ Listez vos composants Vue principaux:
 
 ### 7.3 Outils de collaboration
 
-- *Git/GitHub:* [Lien du repo]
-- *Gestion de projet:* [Trello / Word / GitHub Projects]
+- *Git/GitHub:* https://github.com/Rad8433/projet-integrateur-web
+- *Gestion de projet:* [Trello]
 - *Communication:* [Teams]
 - *Design:* [Figma]
-- *Documentation:* [Word / Google Docs / README.md]
+- *Documentation:* [README.md]
 
 
 
