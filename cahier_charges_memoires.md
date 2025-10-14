@@ -24,15 +24,10 @@
 <img src="./media/brainstorm-1.jpg" style="width:40%">
 <img src="./media/brainstorm-1.jpg" style="width:40%">
 
-Décrivez en 2-3 paragraphes le concept de votre musée interactif:
+Ce musée interactif est dédié au voyage, exploré sous toutes ses formes : détente, aventure, culture ou imprévus. À travers des récits authentiques et sensoriels, les visiteurs découvrent différentes manières de vivre un voyage, et les émotions qui y sont liées, avec comme fil conducteur l’émerveillement.
 
-- Quelle est la thématique principale: Le voyage
-- Quel est l'objectif émotionnel/narratif: L'objectif est de faire decouvrire les differentes manieurs de vivre un voyage a travers l'experience de d'autre voyageurs et de faire vivre une varriter demotion mais la principale est l'émerveillement.
-- Quelle expérience voulez-vous créer pour l'utilisateur: La decouverte de sois a travers les experiences marquante que tu peux vivre en voyagant et c'est différant aspects.
+Au-delà de la découverte, l’expérience vise à susciter une réflexion personnelle. En s’immergeant dans les souvenirs des autres, chaque visiteur est invité à se reconnecter à ses propres expériences ou envies de voyage, transformant ainsi la visite en un voyage intérieur.
 
-*Exemple (interdit de prendre l'exemple comme histoire pour votre projet)* 
-
-> "Mémoires d'Antan" est un musée interactif qui explore les souvenirs d'enfance à travers différentes décennies. Chaque salle représente une époque (années 60, 70, 80, 90) avec des objets, des sons et des histoires qui évoquent la nostalgie. L'utilisateur peut ajouter ses propres souvenirs et créer des connexions entre les générations.
 
 
 ### 1.2 Public cible
@@ -57,14 +52,15 @@ Décrivez en 2-3 paragraphes le concept de votre musée interactif:
 
 Listez toutes les salles de votre musée (minimum 4, idéal 6-8):
 
-| # | Nom de la salle | Thème/Concept | Couleur dominante | Ambiance sonore |
-|---|----------------|---------------|-------------------|-----------------|
-| 1 | [Ex: Salle de l'enfance] | [Jouets, école, famille] | #FFB6C1 (rose) | Sons d'école, rires d'enfants |
-| 2 | [Ex: Salle des voyages] | [Destinations, aventures] | #87CEEB (bleu) | Vagues, ambiance aéroport |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
-| 6 | | | | |
+| # | Nom de la salle                        | Thème/Concept                                           | Couleur dominante         | Ambiance sonore                        |
+|---|----------------------------------------|---------------------------------------------------------|---------------------------|----------------------------------------|
+| 1 | Salle des Vacances & Évasions         | Voyages relaxants et amusants                           | Bleu turquoise (#40E0D0) | Bruits de vagues, chants d’oiseaux |
+| 2 | Salle des Aventures                   | Expériences excitantes et inoubliables                  | Rouge orangé (#FF4500) | Musique rythmée, sons de nature sauvage |
+| 3 | Salle des Explorations Urbaines       | Découverte des grandes villes et de leur culture        | Gris urbain (#A9A9A9) | Bruits de rue, conversations lointaines |
+| 4 | Salle des Galères et Moments Drôles   | Les imprévus qui sont devenus des souvenirs mémorables  | Vert fluo (#39FF14) | Rires, effets sonores comiques |
+| 5 | Salle de la Culture et de la Gastronomie | Expériences culinaires et culturelles marquantes     | Or (#FFD700) | Musique traditionnelle, sons de cuisine |
+| 6 | Salle des Endroits Préférés           | Lieux que tu as adorés visiter ou où tu aimerais retourner | Bleu doux (#4682B4) | Sons de la nature ou ambiance locale |
+
 
 ### 2.2 Types de mémoires
 
@@ -72,24 +68,26 @@ Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
 - *Mémoire texte:* Titre + description + date + tags
 - *Mémoire photo:* Image + légende + date + tags
-- *Mémoire audio:* [Optionnel] Enregistrement vocal + titre + date
-- *Mémoire mixte:* Combinaison texte + photo + audio
 
 ### 2.3 Système de tags/catégories
 
 Listez les tags prédéfinis et permettez les tags personnalisés:
 
-*Tags prédéfinis:*
 
-- Famille
-- Amis
-- Voyage
-- Enfance
-- Adolescence
-- Premier...
-- [Ajoutez vos tags]
+**Tags prédéfinis :**
 
-*Tags personnalisés:* Oui ☐ / Non ☐
+- Aventure  
+- Détente  
+- Culture  
+- Famille  
+- Amis  
+- Rencontre  
+- Premier voyage  
+- Galère  
+- Coup de cœur  
+- Émerveillement  
+
+**Tags personnalisés :** Oui ☑ / Non ☐
 
 
 
