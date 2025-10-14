@@ -27,27 +27,27 @@
 
 Décrivez en 2-3 paragraphes le concept de votre musée interactif:
 
-- Quelle est la thématique principale?
-- Quel est l'objectif émotionnel/narratif?
-- Quelle expérience voulez-vous créer pour l'utilisateur?
+- Quelle est la thématique principale? Le voyage
+- Quel est l'objectif émotionnel/narratif?L'objectif est de faire decouvrire les differentes manieurs de vivre un voyage a travers l'experience de d'autre voyageurs et de faire vivre une varriter demotion mais la principale est l'émerveillement.
+- Quelle expérience voulez-vous créer pour l'utilisateur?  La decouverte de sois a travers les experiences marquante que tu peux vivre en voyagant et c'est différant aspects.
 
-*Exemple (interdit de prendre l'exemple comme histoire pour votre projet)*
+*Exemple (interdit de prendre l'exemple comme histoire pour votre projet)* 
 
 > "Mémoires d'Antan" est un musée interactif qui explore les souvenirs d'enfance à travers différentes décennies. Chaque salle représente une époque (années 60, 70, 80, 90) avec des objets, des sons et des histoires qui évoquent la nostalgie. L'utilisateur peut ajouter ses propres souvenirs et créer des connexions entre les générations.
 
 
 ### 1.2 Public cible
 
-- *Âge:* 16-60 ans
+- *Âge:* 18-60 ans
 - *Profil:* Passionnés du voyage
 - *Niveau technique:* Utilisateurs grand public avec peu de connaissances techniques
 
 ### 1.3 Objectifs du projet
 
-- [ ] Créer une expérience émotionnelle immersive
-- [ ] Permettre aux utilisateurs de sauvegarder et partager leurs mémoires
-- [ ] Démontrer la maîtrise de Vue.js, GSAP et Pinia
-- [ ] Créer une interface accessible et responsive
+- [x] Créer une expérience émotionnelle immersive
+- [x] Permettre aux utilisateurs de sauvegarder et partager leurs mémoires
+- [x] Démontrer la maîtrise de Vue.js, GSAP et Pinia
+- [x] Créer une interface accessible et responsive
 - [ ] [Autre objectif spécifique]
 
 
