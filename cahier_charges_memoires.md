@@ -133,11 +133,11 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 ### 3.4 Style visuel
 
 Choisissez un ou plusieurs styles:
-- [ ] Minimaliste
+- [x] Minimaliste
 - [ ] Vintage/Rétro
 - [ ] Moderne/Futuriste
 - [ ] Organique/Naturel
-- [ ] Ludique/Coloré
+- [x] Ludique/Coloré
 - [ ] Élégant/Sobre
 
 
@@ -148,7 +148,7 @@ Choisissez un ou plusieurs styles:
 
 *Frontend obligatoire:*
 
-- ✅ Vue.js 3 (Composition API ☐ / Options API ☐)
+- ✅ Vue.js 3 (Composition API ☐ / Options API ☑)
 - ✅ Vite
 - ✅ Vue Router
 - ✅ Pinia (state management)
@@ -158,9 +158,8 @@ Choisissez un ou plusieurs styles:
 *Librairies additionnelles envisagées:*
 
 - [ ] VueUse (composables utilitaires)
-- [ ] Vuelidate (validation de formulaires)
-- [ ] Day.js (manipulation de dates)
-- [ ] [Autre:]
+- [x] Vuelidate (validation de formulaires)
+- [x] Day.js (manipulation de dates)
 
 ### 4.2 Architecture des composants
 
@@ -185,7 +184,7 @@ Listez vos composants Vue principaux:
 - `Modal.vue` - Fenêtre modale
 - `LoadingSpinner.vue` - Indicateur de chargement
 - `TagBadge.vue` - Badge de tag
-- [Ajoutez vos composants]
+
 
 ### 4.3 Routes (Vue Router)
 
