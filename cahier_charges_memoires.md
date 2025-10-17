@@ -68,7 +68,6 @@ Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
 - *Mémoire texte:* Titre + description + date + tags
 - *Mémoire photo:* Image + légende + date + tags
-- *Mémoire mixte:* Image + légende + description + date + tags
 
 ### 2.3 Système de tags/catégories
 
