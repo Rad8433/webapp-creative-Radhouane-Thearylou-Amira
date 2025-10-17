@@ -95,9 +95,11 @@ Listez les tags prédéfinis et permettez les tags personnalisés:
 
 ### 3.1 Moodboard
 
-Insérez ici 3-5 images d'inspiration (ou liens):
-
-- [Image 1: Style visuel général]
+Insérez ici 3-5 images d'inspiration (ou liens):<br>
+<img src="./media/inspiration.jpg" style="width:40%"><br>
+<img src="./media/inspiration2.jpg" style="width:40%"><br>
+<img src="./media/palette de couleurs.png" style="width:40%"><br>
+- [Image 1: Style visuel général]<br>
 - [Image 2: Palette de couleurs]
 - [Image 3: Typographie inspirante]
 - [Image 4: Animations de référence]
@@ -106,16 +108,18 @@ Insérez ici 3-5 images d'inspiration (ou liens):
 
 *Couleurs principales:*
 
-- Primaire: [#XXXXXX] - Utilisée pour: [navigation, boutons principaux]
-- Secondaire: [#XXXXXX] - Utilisée pour: [accents, hover states]
-- Tertiaire: [#XXXXXX] - Utilisée pour: [backgrounds, cartes]
+- Primaire: [#0F4C81] - Utilisée pour: [navigation, boutons principaux]
+- Secondaire: [#F5C26B] - Utilisée pour: [accents, hover states]
+- Tertiaire: [#F3E9DC] - Utilisée pour: [backgrounds, cartes]
 
 *Couleurs par salle:*
 
-- Salle 1: [#XXXXXX]
-- Salle 2: [#XXXXXX]
-- [etc.]
-
+- Salle 1: Bleu turquoise (#40E0D0)
+- Salle 2: Rouge orangé (#FF4500)
+- Salle 3: Gris urbain (#A9A9A9)
+- Salle 4: Vert fluo (#39FF14)
+- Salle 5: Or (#FFD700)
+- Salle 6: Bleu doux (#4682B4)<br>
 *Couleurs système:*
 
 - Succès: [#10B981]
