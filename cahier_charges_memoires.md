@@ -68,7 +68,7 @@ Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
 - *Mémoire texte:* Titre + description + date + tags
 - *Mémoire photo:* Image + légende + date + tags
-- - *Mémoire mixte:* Image + légende + description + date + tags
+- *Mémoire mixte:* Image + légende + description + date + tags
 
 ### 2.3 Système de tags/catégories
 
@@ -454,6 +454,7 @@ Listez vos composants Vue principaux:
 
 ### 9.1 *PHASE 1: PLANIFICATION ET DESIGN*
 <!--Semaine 1-2 (la 2 étant la semaine de rattrapage)-->
+
 
 **Du 8 au 22 octobre**
 
