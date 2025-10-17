@@ -99,10 +99,6 @@ Insérez ici 3-5 images d'inspiration (ou liens):<br>
 <img src="./media/inspiration.jpg" style="width:40%"><br>
 <img src="./media/inspiration2.jpg" style="width:40%"><br>
 <img src="./media/palette de couleurs.png" style="width:40%"><br>
-- [Image 1: Style visuel général]<br>
-- [Image 2: Palette de couleurs]
-- [Image 3: Typographie inspirante]
-- [Image 4: Animations de référence]
 
 ### 3.2 Palette de couleurs
 
