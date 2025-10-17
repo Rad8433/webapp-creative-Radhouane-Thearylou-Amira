@@ -68,6 +68,7 @@ Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
 - *Mémoire texte:* Titre + description + date + tags
 - *Mémoire photo:* Image + légende + date + tags
+- - *Mémoire mixte:* Image + légende + description + date + tags
 
 ### 2.3 Système de tags/catégories
 
@@ -260,49 +261,49 @@ Listez vos composants Vue principaux:
 
 *Obligatoires pour la livraison:*
 
-- [ ] *F1 - Navigation entre salles*
+- [x] *F1 - Navigation entre salles*
   - L'utilisateur peut naviguer entre 4-6 salles différentes
   - Transitions animées avec GSAP
   - Menu de navigation visible
 
-- [ ] *F2 - Affichage des mémoires*
+- [x] *F2 - Affichage des mémoires*
   - Les mémoires s'affichent sous forme de cartes
   - Grille responsive (mobile + desktop)
   - Animation au scroll (ScrollTrigger)
 
-- [ ] *F3 - Ajout de mémoire*
+- [x] *F3 - Ajout de mémoire*
   - Formulaire avec titre, description, date, tags
   - Upload d'image (base64 ou URL)
   - Validation des champs obligatoires
 
-- [ ] *F4 - Édition de mémoire*
+- [x] *F4 - Édition de mémoire*
   - Modifier les informations d'une mémoire existante
   - Sauvegarde instantanée
 
-- [ ] *F5 - Suppression de mémoire*
+- [x] *F5 - Suppression de mémoire*
   - Confirmation avant suppression
   - Suppression permanente
 
-- [ ] *F6 - Filtres et recherche*
+- [x] *F6 - Filtres et recherche*
   - Recherche par mot-clé (titre/description)
   - Filtrage par tags
   - Filtrage par salle
 
-- [ ] *F7 - Sauvegarde locale*
+- [x] *F7 - Sauvegarde locale*
   - Auto-save dans LocalStorage après chaque action
   - Chargement automatique au démarrage
   - Export en fichier JSON
 
-- [ ] *F8 - Import de données*
+- [x] *F8 - Import de données*
   - Importer un fichier JSON de musée
   - Validation du format
 
-- [ ] *F9 - Responsive*
+- [x] *F9 - Responsive*
   - Mobile (320px+)
   - Tablette (768px+)
   - Desktop (1024px+)
 
-- [ ] *F10 - Accessibilité*
+- [x] *F10 - Accessibilité*
   - Navigation au clavier
   - ARIA labels
   - Contraste WCAG AA
@@ -355,7 +356,6 @@ Listez vos composants Vue principaux:
 
 8. *US-08:* En tant qu'utilisateur mobile, je veux accéder à mon musée sur mon téléphone afin de consulter mes souvenirs partout.
 
-9. [Ajoutez vos user stories]
 
 
 
@@ -363,18 +363,18 @@ Listez vos composants Vue principaux:
 
 ### 6.1 Lien vers les maquettes Figma
 
-*Lien:* [Insérez votre lien Figma]
+*Lien:* https://www.figma.com/design/Rh88WsbMc4QIQthWICHuUe/Maquette-webapp?node-id=0-1&t=EeqnThJx7ZCh7Vna-1
 
 ### 6.2 Écrans principaux à maquetter
 
-- [ ] Page d'accueil / Landing
-- [ ] Vue d'ensemble du musée (toutes les salles)
-- [ ] Vue détaillée d'une salle (grille de mémoires)
-- [ ] Détail d'une mémoire (modal ou page dédiée)
-- [ ] Formulaire d'ajout/édition de mémoire
-- [ ] Page de recherche/filtres
+- [x] Page d'accueil / Landing
+- [x] Vue d'ensemble du musée (toutes les salles)
+- [x] Vue détaillée d'une salle (grille de mémoires)
+- [x] Détail d'une mémoire (modal ou page dédiée)
+- [x] Formulaire d'ajout/édition de mémoire
+- [x] Page de recherche/filtres
 - [ ] Page profil utilisateur (optionnel)
-- [ ] Version mobile de 2-3 écrans clés
+- [x] Version mobile de 2-3 écrans clés
 
 ### 6.3 Interactions clés à maquetter
 
