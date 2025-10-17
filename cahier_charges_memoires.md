@@ -125,17 +125,17 @@ Insérez ici 3-5 images d'inspiration (ou liens):<br>
 
 ### 3.3 Typographie
 
-- *Titres (H1-H2):* [Nom de la police] - [Lien Google Fonts]
-- *Sous-titres (H3-H4):* [Nom de la police]
-- *Corps de texte:* [Nom de la police]
+- *Titres (H1-H2):*  Playfair Display  - https://fonts.google.com/specimen/Playfair+Display
+- *Sous-titres (H3-H4):* Poppins - https://fonts.google.com/specimen/Poppins
+- *Corps de texte:* Poppins - https://fonts.google.com/specimen/Poppins
 - *Poids utilisés:* Regular (400), Medium (500), Bold (700)
 
 ### 3.4 Style visuel
 
 Choisissez un ou plusieurs styles:
-- [x] Minimaliste
+- [ ] Minimaliste
 - [ ] Vintage/Rétro
-- [ ] Moderne/Futuriste
+- [x] Moderne/Futuriste
 - [ ] Organique/Naturel
 - [x] Ludique/Coloré
 - [ ] Élégant/Sobre
