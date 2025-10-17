@@ -67,7 +67,7 @@ Listez toutes les salles de votre musée (minimum 4, idéal 6-8):
 Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
 - *Mémoire texte:* Titre + description + date + tags
-- *Mémoire photo:* Image + légende + date + tags
+- *Mémoire photo:* Titre + Image + légende + date + tags
 
 ### 2.3 Système de tags/catégories
 
