@@ -615,10 +615,9 @@ Listez vos composants Vue principaux:
 
 *Signatures:*
 
-- Chef de projet: _______________
-- Membre 2: _______________
-- Membre 3: _______________
-- Membre 4: _______________ (si applicable)
+- Chef de projet: Radhouane Kordan
+- Membre 2: Amira Tounekti
+- Membre 3: Thearylou Lach
 
 *Validation enseignant:* _______________  
 *Date:* _______________  
