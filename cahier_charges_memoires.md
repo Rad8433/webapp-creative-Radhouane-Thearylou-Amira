@@ -20,9 +20,9 @@
 [Autres variantes pour cette option A que le "musée" à proprement parler](./variantes_memoires.md){ md-button }
 
 ### 1.1 Concept général
-
+[FigJam/Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)
 <img src="./media/brainstorm-1.jpg" style="width:40%">
-<img src="./media/brainstorm-1.jpg" style="width:40%">
+<img src="./media/brainstorm-2.jpg" style="width:40%">
 
 Ce musée interactif est dédié au voyage, exploré sous toutes ses formes : détente, aventure, culture ou imprévus. À travers des récits authentiques et sensoriels, les visiteurs découvrent différentes manières de vivre un voyage, et les émotions qui y sont liées, avec comme fil conducteur l’émerveillement.
 
@@ -361,8 +361,7 @@ Listez vos composants Vue principaux:
 ## 🎨 6. Maquettes et Wireframes
 
 ### 6.1 Lien vers les maquettes Figma
-
-*Lien:* https://www.figma.com/design/Rh88WsbMc4QIQthWICHuUe/Maquette-webapp?node-id=0-1&t=EeqnThJx7ZCh7Vna-1
+- [Figma](https://www.figma.com/design/Rh88WsbMc4QIQthWICHuUe/Maquette-webapp?node-id=16-172&t=cZE3cz4W4AiX3Rzv-1)
 
 ### 6.2 Écrans principaux à maquetter
 
