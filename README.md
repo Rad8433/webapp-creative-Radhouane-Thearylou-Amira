@@ -5,8 +5,8 @@
 
 ### Membres de l’équipe
 - **Radhouane Kordan** — Chef de projet + Architecture Vue  
-- **Amira Tounekti** — Données + Validation  
-- **Thearylou Lach** — Design + Animations  
+- **Amira Tounekti** — Design + Animations   
+- **Thearylou Lach** — Données + Validation 
 
 ### Liens
 - [Trello](https://trello.com/b/eMP37IFg/taches-projet-web-integrateur)  
