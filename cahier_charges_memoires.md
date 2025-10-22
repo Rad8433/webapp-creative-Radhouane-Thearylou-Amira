@@ -407,9 +407,9 @@ Listez vos composants Vue principaux:
 ### 7.3 Outils de collaboration
 
 - *Git/GitHub:* https://github.com/Rad8433/projet-integrateur-web
-- *Gestion de projet:* [Trello]
+- *Gestion de projet:* [Trello](https://trello.com/b/eMP37IFg/taches-projet-web-integrateur)
 - *Communication:* [Teams]
-- *Design:* [Figma]
+- *Design:* [Figma](https://www.figma.com/design/Rh88WsbMc4QIQthWICHuUe/Maquette-webapp?node-id=16-172&p=f)
 - *Documentation:* [README.md]
 
 
