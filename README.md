@@ -1,4 +1,4 @@
-# Le Musée du Voyage
+# Les six visions du monde
 
 ### Option choisie
 **Option A : Mémoires interactives**
