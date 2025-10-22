@@ -591,13 +591,14 @@ Listez vos composants Vue principaux:
 
 *Tutoriels utiles:*
 
-- [Lien vers tuto 1]
-- [Lien vers tuto 2]
+- [Lien vers tuto 1(Pinia define a store)](https://pinia.vuejs.org/core-concepts/#defining-a-store)
+- [Lien vers tuto 2 (Vue router](https://router.vuejs.org/guide/)
+- [Lien vers tuto 3 (authentification)](https://router.vuejs.org/guide/advanced/navigation-guards.html)
 
 *Inspirations:*
 
-- [Site 1]
-- [Site 2]
+- [Site 1](https://www.sollertennisclub.com/)
+- [Site 2](https://www.mahlatini.com/)
 
 ### 11.2 Glossaire
 
