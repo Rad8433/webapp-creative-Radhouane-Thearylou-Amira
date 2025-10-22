@@ -20,7 +20,7 @@
 [Autres variantes pour cette option A que le "musée" à proprement parler](./variantes_memoires.md){ md-button }
 
 ### 1.1 Concept général
-[FigJam/Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)
+[FigJam/Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)<br>
 <img src="./media/brainstorm-1.jpg" style="width:40%">
 <img src="./media/brainstorm-2.jpg" style="width:40%">
 
