@@ -18,3 +18,6 @@
   <img src="./media/brainstorm-1.jpg" width="40%">
   <img src="./media/brainstorm-2.jpg" width="40%">
 </p>
+
+### Components
+- [FigJam/Schéma de components](https://www.figma.com/board/5f6nKcREOkbnrHDTitKkID/WebAppComponents?node-id=0-1&t=M6sLbdTenKwttKIJ-1)
