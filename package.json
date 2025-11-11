@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Rad8433/webapp-creative-Radhouane-Thearylou-Amira#readme",
   "dependencies": {
     "gsap": "^3.13.0",
-    "pinia": "^3.0.3"
+    "pinia": "^3.0.3",
+    "vue-router": "^4.6.3"
   }
 }
