@@ -1,7 +1,7 @@
 # Liste des composants
 
 ## HomeView
-- **Responsabilité** : Vue principale de la page d’accueil qui regroupe la structure générale.
+- **Responsabilité** : Vue principale de la page d’accueil qui regroupe la structure générale de l'application.
 - **Props** : Aucune.
 - **Événements émis** : Aucun.
 
@@ -15,13 +15,18 @@
 - **Props** : `museum` (Object) - données du musée.
 - **Événements émis** : `click` - lorsqu’on clique sur la carte.
 
-## ViewMuseum
-- **Responsabilité** : Vue détaillée d’un musée avec ses mémoires.
+## MuseumRoomsView
+- **Responsabilité** : Vue présentant les différentes salles d’un musée. Chaque salle regroupe plusieurs thèmes de mémoires liés à ce musée.
 - **Props** : `museumId` (String) - identifiant du musée à afficher.
 - **Événements émis** : Aucun.
 
+## RoomView
+- **Responsabilité** : Vue d'une salle spécifique d’un musée, affichant ses mémoires détaillées selon le thème associé.
+- **Props** : `roomId` (String) - identifiant de la salle à afficher.
+- **Événements émis** : Aucun.
+
 ## MemoryList
-- **Responsabilité** : Liste des cartes de mémoire liées à un musée.
+- **Responsabilité** : Liste des cartes de mémoire liées à un musée ou à une salle spécifique.
 - **Props** : `memories` (Array) - liste des mémoires.
 - **Événements émis** : `selectMemory` (id) - sélection d’une mémoire.
 
@@ -30,13 +35,13 @@
 - **Props** : `memory` (Object) - données de la mémoire.
 - **Événements émis** : `click` - sélection de la mémoire.
 
-## Modal
-- **Responsabilité** : Fenêtre modale pour formulaire ou détails.
+## ModalView
+- **Responsabilité** : Fenêtre modale/page pour formulaire ou détails.
 - **Props** : `isOpen` (Boolean) - état d’ouverture.
 - **Événements émis** : `close` - demande de fermeture.
 
 ## MemoryForm
-- **Responsabilité** : Formulaire d’ajout/modification d’une mémoire.
+- **Responsabilité** : Formulaire d’ajout ou de modification d’une mémoire.
 - **Props** : `memory` (Object) - mémoire à modifier (optionnel).
 - **Événements émis** : `submit` (memoryData) - soumission du formulaire, `cancel` - annulation.
 
@@ -46,12 +51,12 @@
 - **Événements émis** : Aucun.
 
 ## BaseButton
-- **Responsabilité** : Bouton générique affichant différentes options selon contexte.
+- **Responsabilité** : Bouton générique affichant différentes options selon le contexte.
 - **Props** : `context` (String) - contexte d’affichage des options.
 - **Événements émis** : `click` - interaction utilisateur.
 
 ## OptionBar
-- **Responsabilité** : Barre d’options pour filtrer et rechercher dans les musées et mémoires.
+- **Responsabilité** : Barre d’options pour filtrer et rechercher dans les musées, salles et mémoires.
 - **Props** : `filters` (Object) - filtres actifs.
 - **Événements émis** : `updateFilters` (filters) - modification des filtres.
 
