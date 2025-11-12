@@ -70,12 +70,12 @@
 - **Props** : `data` (Object) - données à sauvegarder.
 - **Événements émis** : `saved` - confirmation de sauvegarde.
 
-## Header
+## HeaderApp
 - **Responsabilité** : Barre de navigation et titre principal de l’application.
 - **Props** : `title` (String) - titre affiché dans l’en-tête.
 - **Événements émis** : `navigate` (routeName) - événement de navigation déclenché par un clic utilisateur.
 
-## Footer
+## FooterApp
 - **Responsabilité** : Pied de page de l’application.
 - **Props** : Aucune.
 - **Événements émis** : Aucun.
