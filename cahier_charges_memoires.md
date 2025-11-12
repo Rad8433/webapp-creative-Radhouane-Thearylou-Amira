@@ -484,7 +484,7 @@ Listez vos composants Vue principaux:
 
 **Environ du 2 novembre au 12 novembre**
 
-*Remise Phases 2 FONDATION et 3 INTERACTIVITÉ : vendredi 14 novembre | 15%*
+*Remise Phases 2 FONDATION et 3 INTERACTIVITÉ : mercredi 19 novembre | 15%*
 
 - Formulaires d'ajout/édition
 - CRUD des mémoires (CRUD: Create, Read, Update, Delete)
