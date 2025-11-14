@@ -54,22 +54,22 @@ export default {
 /* Fond général de la page */
 .home {
   background: #111;
-  padding: 2rem 0 3rem;
 }
 
 /* Centrer le bloc principal */
 .hero {
   display: flex;
   justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
 
 /* Cadre principal avec l’image du lac */
 .hero-frame {
   position: relative;
-  width: min(1180px, 100% - 3rem);
-  aspect-ratio: 16 / 9;
-  border-radius: 10px;
-  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
   background-image: url("@/assets/hero-bg.png");
   background-size: cover;
   background-position: center;
@@ -120,8 +120,8 @@ export default {
 .hero-content {
   position: relative;
   z-index: 2;
-  height: calc(100% - 64px);
-  padding: 1.8rem 2.2rem 1.6rem;
+  height: 80%;
+  padding: 1.8rem 6rem 1.6rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
