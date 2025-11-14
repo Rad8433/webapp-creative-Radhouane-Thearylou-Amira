@@ -1,16 +1,9 @@
 <template>
   <main class="museum-rooms">
-
-    <!-- Reusable header -->
+    <!-- Reusable header with customized title -->
     <AppHeader>
       <template #title>
-        Choisissez votre <em>destination</em>
-      </template>
-
-      <template #right>
-        <button class="settings-btn" aria-label="Paramètres">
-          <img src="@/assets/cog.svg" alt="Paramètres" />
-        </button>
+        Salles du Musée
       </template>
     </AppHeader>
 
@@ -38,6 +31,11 @@ export default {
 </script>
 
 <style scoped>
+/* Using ::v-deep to target the child component's scoped class */
+::v-deep .app-header__title {
+  color: black;  /* Change title text color */
+}
+
 .museum-rooms {
   background-color: #f0e9de;
   min-height: 100vh;
@@ -47,26 +45,6 @@ export default {
   box-sizing: border-box;
   font-family: Georgia, serif;
   color: #3a3a3a;
-}
-
-/* Settings button (custom for this page) */
-.settings-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.settings-btn img {
-  width: 32px;
-  height: 32px;
-  filter: invert(20%);
-  transition: filter 0.3s ease;
-}
-
-.settings-btn:hover img {
-  filter: invert(50%) sepia(100%) saturate(500%) hue-rotate(30deg)
-    brightness(100%) contrast(100%);
 }
 
 .cards-placeholder {
