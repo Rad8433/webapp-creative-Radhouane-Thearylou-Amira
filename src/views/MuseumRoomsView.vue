@@ -1,34 +1,45 @@
 <template>
   <main class="museum-rooms">
-    <header class="header">
-      <h1>
+
+    <!-- Reusable header -->
+    <AppHeader>
+      <template #title>
         Choisissez votre <em>destination</em>
-      </h1>
-      <button class="settings-btn" aria-label="Paramètres">
-        <img src="@/assets/cog.svg" alt="Paramètres" />
-      </button>
-    </header>
+      </template>
+
+      <template #right>
+        <button class="settings-btn" aria-label="Paramètres">
+          <img src="@/assets/cog.svg" alt="Paramètres" />
+        </button>
+      </template>
+    </AppHeader>
 
     <!-- Placeholder for cards grid -->
     <section class="cards-placeholder">
       <!-- Cards component will go here -->
     </section>
 
-    <footer class="footer">
-      <p>Fait par l'équipe voyageur® 2025</p>
-    </footer>
+    <!-- Footer -->
+    <AppFooter />
   </main>
 </template>
 
 <script>
+import AppHeader from "@/components/common/AppHeader.vue";
+import AppFooter from "@/components/common/AppFooter.vue";
+
 export default {
   name: "MuseumRoomsView",
+  components: {
+    AppHeader,
+    AppFooter,
+  },
 };
 </script>
 
 <style scoped>
 .museum-rooms {
-  background-color: #f0e9de; /* beige background */
+  background-color: #f0e9de;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,44 +49,18 @@ export default {
   color: #3a3a3a;
 }
 
-/* Header with title and settings icon */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2rem;
-}
-
-.header h1 {
-  font-size: 2.5rem;
-  font-weight: normal;
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
-  font-style: normal;
-  color: #1f1f1f;
-  user-select: none;
-}
-
-.header h1 em {
-  font-style: italic;
-  font-weight: 600;
-}
-
-/* Settings button with cog icon */
+/* Settings button (custom for this page) */
 .settings-btn {
   background: none;
   border: none;
   cursor: pointer;
   padding: 0;
-  display: flex;
-  align-items: center;
 }
 
 .settings-btn img {
   width: 32px;
   height: 32px;
-  filter: invert(20%) sepia(0%) saturate(0%) hue-rotate(0deg)
-    brightness(90%) contrast(85%);
+  filter: invert(20%);
   transition: filter 0.3s ease;
 }
 
@@ -84,19 +69,7 @@ export default {
     brightness(100%) contrast(100%);
 }
 
-/* Placeholder section for the cards grid */
 .cards-placeholder {
   flex-grow: 1;
-  /* This is where you'll place the grid of cards later */
-}
-
-/* Footer style */
-.footer {
-  border-top: 1px solid #ccc;
-  text-align: center;
-  padding: 1rem 0;
-  font-size: 0.9rem;
-  color: #7a7a7a;
-  user-select: none;
 }
 </style>

@@ -3,16 +3,10 @@
     <section class="hero">
       <div class="hero-frame">
 
-        <!-- Ligne du haut : titre + engrenage -->
-        <div class="hero-top">
-          <span class="hero-musee">Musée</span>
+        <!-- Header component -->
+        <AppHeader />
 
-          <BaseButton variant="icon" class="hero-cog-btn">
-            <img src="@/assets/cog.svg" alt="Paramètres" class="hero-cog" />
-          </BaseButton>
-        </div>
-
-        <!-- Zone principale : texte à gauche, cartes à droite -->
+        <!-- Main content: text left, cards right -->
         <div class="hero-content">
           <div class="hero-text">
             <p class="hero-small">Vos voyages en</p>
@@ -37,26 +31,26 @@
 
 <script>
 import BaseButton from "@/components/common/BaseButton.vue";
+import AppHeader from "@/components/common/AppHeader.vue";
 
 export default {
   name: "HomeView",
-  components: { BaseButton },
+  components: { BaseButton, AppHeader },
   methods: {
     startExperience() {
-      // Navigate to MuseumRoomsView
       this.$router.push({ name: 'MuseumRooms' });
     },
   },
 };
 </script>
-
 <style scoped>
-/* Fond général de la page */
+/* Apply Playfair Display to hero text */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
+
 .home {
   background: #111;
 }
 
-/* Centrer le bloc principal */
 .hero {
   display: flex;
   justify-content: center;
@@ -64,93 +58,48 @@ export default {
   height: 100vh;
 }
 
-/* Cadre principal avec l’image du lac */
 .hero-frame {
   position: relative;
   height: 100%;
   width: 100%;
-
   background-image: url("@/assets/hero-bg.png");
   background-size: cover;
   background-position: center;
 }
 
-/* Léger assombrissement sur la partie gauche */
-.hero-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.28),
-    rgba(0, 0, 0, 0.06)
-  );
-  z-index: 0;
-}
-
-/* Bande supérieure avec texte + engrenage */
-.hero-top {
-  position: relative;
-  z-index: 2;
-  padding: 1rem 1.8rem 0.9rem;
-  border-bottom: 2px dashed rgba(255, 255, 255, 0.65);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.hero-musee {
-  font-family: "Georgia", serif;
-  font-size: 1.25rem;
-  color: #fff;
-  font-style: italic;
-}
-
-/* Bouton engrenage */
-.hero-cog-btn {
-  padding: 0.35rem;
-}
-
-.hero-cog {
-  width: 32px;
-  height: 32px;
-}
-
-/* Zone avec le texte et les cartes */
 .hero-content {
-  position: relative;
-  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   height: 80%;
-  padding: 1.8rem 6rem 1.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 100%;
+  place-items: center;
 }
 
-/* Texte à gauche */
 .hero-text {
   max-width: 42%;
   color: #fff;
 }
 
+.hero-small,
+.hero-title {
+  font-family: "Playfair Display", serif;
+}
+
 .hero-small {
   margin: 0 0 0.2rem;
   font-size: 1.7rem;
-  font-family: "Georgia", serif;
 }
 
 .hero-title {
   margin: 0 0 1.6rem;
   font-size: 3.8rem;
   line-height: 1.05;
-  font-family: "Georgia", serif;
 }
 
 .hero-title span {
   text-decoration: underline;
 }
 
-/* Cartes à droite */
 .hero-cards {
   display: flex;
   gap: 1.2rem;
@@ -159,36 +108,28 @@ export default {
 }
 
 .hero-card {
-  width: 155px;
-  height: 290px;
+  width: 200px;
+  height: 400px;
   border-radius: 26px;
   background-size: cover;
   background-position: center;
 }
 
-/* Carte centrale légèrement plus haute */
 .hero-card:nth-child(2) {
-  transform: translateY(-12px);
+  transform: translateY(30px);
 }
 
-/* Images des cartes */
-.card1 {
-  background-image: url("@/assets/card1.png");
-}
-.card2 {
-  background-image: url("@/assets/card2.png");
-}
-.card3 {
-  background-image: url("@/assets/card3.png");
-}
+.card1 { background-image: url("@/assets/card1.png"); }
+.card2 { background-image: url("@/assets/card2.png"); }
+.card3 { background-image: url("@/assets/card3.png"); }
 
-/* Responsive */
 @media (max-width: 900px) {
   .hero-frame {
     width: calc(100% - 2rem);
   }
 
   .hero-content {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.6rem;
