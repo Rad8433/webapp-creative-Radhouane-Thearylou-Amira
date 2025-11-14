@@ -42,9 +42,9 @@ export default {
   name: "HomeView",
   components: { BaseButton },
   methods: {
-    // action future quand on clique sur “Commencer”
     startExperience() {
-      console.log("Start clicked");
+      // Navigate to MuseumRoomsView
+      this.$router.push({ name: 'MuseumRooms' });
     },
   },
 };
@@ -116,15 +116,15 @@ export default {
   height: 32px;
 }
 
-/* Zone avec le texte et les cartes (remontée vers le centre) */
+/* Zone avec le texte et les cartes */
 .hero-content {
   position: relative;
   z-index: 2;
   height: calc(100% - 64px);
-  padding: 1.8rem 2.2rem 1.6rem; /* moins de padding en bas pour tout remonter */
+  padding: 1.8rem 2.2rem 1.6rem;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* centre verticalement texte + cartes */
+  align-items: center;
 }
 
 /* Texte à gauche */
@@ -158,7 +158,6 @@ export default {
   padding-right: 0.5rem;
 }
 
-/* Style général d'une carte */
 .hero-card {
   width: 155px;
   height: 290px;
@@ -167,7 +166,7 @@ export default {
   background-position: center;
 }
 
-/* Effet Figma : carte centrale plus haute */
+/* Carte centrale légèrement plus haute */
 .hero-card:nth-child(2) {
   transform: translateY(-12px);
 }
@@ -183,7 +182,7 @@ export default {
   background-image: url("@/assets/card3.png");
 }
 
-/* Responsive léger */
+/* Responsive */
 @media (max-width: 900px) {
   .hero-frame {
     width: calc(100% - 2rem);
