@@ -89,83 +89,91 @@
   };
   </script>
   
-  <style scoped>
-.menu {
-  background: rgba(0, 0, 255, 0);
-}
+<style scoped>
+  @font-face {
+    src: url("/src/assets/font/FuturaCyrillicBold.ttf") format("truetype");
+    font-family: "futura-bold";
+  }
 
-.rooms-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
+  .menu {
+    background: rgba(0, 0, 255, 0);
+  }
 
-.room-card {
-  position: relative;
-  background: white;
-  padding: 8rem 0; 
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.3s;
-  text-align: center;
-  overflow: hidden; 
-}
+  .rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
 
-.room-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-}
+  .room-card {
+    position: relative;
+    background: white;
+    padding: 14rem 0 2rem 0; 
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transition: all 0.3s;
+    overflow: hidden; 
+    font-family: 'roboto', sans-serif;
+  }
 
-img {
-  position: absolute; 
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%; 
-  object-fit: cover; 
-  border-radius: 12px;
-  z-index: 1; 
-}
+  .room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.50);
+  }
 
-.room-card h2, .room-description, .memory-count {
-  position: relative;
-  z-index: 1; 
- 
-}
+  img {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    object-fit: cover; 
+    border-radius: 12px;
+    z-index: 1; 
+  }
 
-.room-card h2 {
-  color: #fff; 
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
-}
+  .room-card h2, .room-description, .memory-count {
+    position: relative;
+    z-index: 1; 
+  
+  }
 
-.room-description {
-  color: #fff; 
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-}
+  .room-card h2 {
+    color: #fff; 
+    margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+    font-family: 'futura-bold', sans-serif;
+  }
 
-.memory-count {
-  color: #fff;
-  font-weight: bold;
-  font-size: 1rem;
-  margin-top: 0.5rem;
-}
+  .room-description {
+    color: #fff; 
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
 
-.back-button {
-  background: #95a5a6;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
+  .memory-count {
+    color: #fff;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
 
-.back-button:hover {
-  background: #7f8c8d;
-}
+  .back-button {
+    background: #95a5a6;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
 
-  </style>
+  .back-button:hover {
+    background: #7f8c8d;
+  }
+
+</style>
