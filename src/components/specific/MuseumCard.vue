@@ -96,7 +96,7 @@
 
 .rooms-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(390px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -104,7 +104,7 @@
 .room-card {
   position: relative;
   background: white;
-  padding: 8rem; 
+  padding: 8rem 0; 
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
