@@ -1,0 +1,29 @@
+{
+    "souvenirsDeVoyage": [
+      {
+        "titreSouvenir": "Coucher de soleil à Bali",
+        "imageSouvenir": "https://example.com/images/bali-sunset.jpg",
+        "descriptionSouvenir": "Un coucher de soleil à couper le souffle sur l'océan, avec un ciel peint de teintes orange et rose.",
+        "lieuSouvenir": "Bali, Indonésie",
+        "dateSouvenir": "2023-05-15",
+        "tagsSouvenir": ["coucher de soleil", "plage", "Bali", "vacances"]
+      },
+      {
+        "titreSouvenir": "Randonnée dans les Alpes",
+        "imageSouvenir": "https://example.com/images/alps-hike.jpg",
+        "descriptionSouvenir": "Une randonnée difficile mais gratifiante jusqu'au sommet du Mont Blanc avec des vues imprenables.",
+        "lieuSouvenir": "Alpes, France",
+        "dateSouvenir": "2022-08-22",
+        "tagsSouvenir": ["randonnée", "montagne", "Alpes", "aventure"]
+      },
+      {
+        "titreSouvenir": "Visite des temples de Kyoto",
+        "imageSouvenir": "https://example.com/images/kyoto-temple.jpg",
+        "descriptionSouvenir": "Flâner dans les temples sereins de Kyoto, en absorbant l'histoire riche et les magnifiques jardins.",
+        "lieuSouvenir": "Kyoto, Japon",
+        "dateSouvenir": "2021-11-03",
+        "tagsSouvenir": ["temple", "Kyoto", "culture", "histoire"]
+      }
+    ]
+  }
+  
