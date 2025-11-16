@@ -71,7 +71,7 @@
       goToRoom(roomId) {
         // TODO: Naviguer vers la page de détail de la salle ayant l'id roomID
         this.$router.push({
-          name: 'roomDetail',
+          name: 'Room',
           params: { id: roomId }
         })
         // Note de cours: https://tim-montmorency.com/compendium/582-511-web5/vue/router-and-views.html#32-navigation-programmatique-dans-les-methodes
