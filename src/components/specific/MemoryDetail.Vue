@@ -1,19 +1,22 @@
 <template>
-    <div class="menu"></div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        msg: 'Bonjour!'
-      }
+  <div class="carte">
+    <div class="carteDetail">
+
+    </div>
+  </div>
+</template>
+<script>
+export default {
+  data() {
+    return {
+      msg: 'Bonjour!'
     }
   }
-  </script>
-  
-  <style>
-  .menu {
-    background: blue;
-  }
-  </style>
+}
+</script>
+
+<style scoped>
+.carte {
+}
+</style>
+

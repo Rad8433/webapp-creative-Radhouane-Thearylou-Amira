@@ -1,9 +1,17 @@
 <template>
-    <div class="menu"></div>
+    <div class="menu">
+      <MemoryForm />
+    </div>
   </template>
   
   <script>
+  import MemoryForm from '@/components/specific/MemoryForm.vue';
+
   export default {
+    name: "MuseumRoomsView",
+    components: {
+      MemoryForm,
+    },
     data() {
       return {
         msg: 'Bonjour!'
@@ -14,6 +22,5 @@
   
   <style>
   .menu {
-    background: blue;
   }
   </style>
