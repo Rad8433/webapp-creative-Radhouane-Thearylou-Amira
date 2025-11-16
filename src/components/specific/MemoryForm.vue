@@ -83,8 +83,12 @@
           reader.readAsDataURL(file);
         }
       },
-      retoure() {
-        this.$router.push({ name: 'MuseumRooms' });
+      retoure(roomId) {
+        // TODO: Naviguer vers la page de détail de la salle ayant l'id roomID
+        this.$router.push({
+          name: 'Room',
+          params: { id: roomId }
+        })
       },
     }
   };

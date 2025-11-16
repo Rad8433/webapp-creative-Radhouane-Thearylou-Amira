@@ -11,7 +11,7 @@
     <!-- Placeholder for cards grid -->
     <section class="cards-placeholder">
       <!-- Cards component will go here -->
-      <MuseumCard />
+      <MuseumGrid />
     </section>
 
     <!-- Footer -->
@@ -23,14 +23,14 @@
 <script>
 import AppHeader from "@/components/common/AppHeader.vue";
 import AppFooter from "@/components/common/AppFooter.vue";
-import MuseumCard from '@/components/specific/MuseumCard.vue';
+import MuseumGrid from '@/components/specific/MuseumGrid.vue';
 
 export default {
   name: "MuseumRoomsView",
   components: {
     AppHeader,
     AppFooter,
-    MuseumCard,
+    MuseumGrid,
   },
 };
 </script>

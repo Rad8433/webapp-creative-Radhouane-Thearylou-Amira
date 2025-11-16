@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MuseumRoomsView from '../views/MuseumRoomsView.vue'
 import RoomView from '../views/RoomView.vue'
+import ModalView from '@/views/ModalView.vue'
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: '/Room/:id',
     name: 'Room',
     component: RoomView
+  },
+  {
+    path: '/Modal',
+    name: 'Modal',
+    component: ModalView
   },
 ]
 
