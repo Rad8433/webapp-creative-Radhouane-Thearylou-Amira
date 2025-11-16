@@ -2,6 +2,7 @@
   <main class="museum-rooms">
     <!-- Reusable header with customized title -->
     <div class="global">
+      <MemoryForm />
     <AppHeader>
       <template #title>
         Salles du Musée
@@ -10,8 +11,8 @@
 
     <!-- Placeholder for cards grid -->
     <section class="cards-placeholder">
-      <!-- Cards component will go here -->
-      <MuseumCard />
+      <!-- Cards component will go here <MuseumCard />-->
+      
     </section>
 
     <!-- Footer -->
@@ -23,14 +24,16 @@
 <script>
 import AppHeader from "@/components/common/AppHeader.vue";
 import AppFooter from "@/components/common/AppFooter.vue";
-import MuseumCard from '@/components/specific/MuseumCard.vue';
+//import MuseumCard from '@/components/specific/MuseumCard.vue';
+import MemoryForm from '@/components/specific/MemoryForm.vue';
 
 export default {
   name: "MuseumRoomsView",
   components: {
     AppHeader,
     AppFooter,
-    MuseumCard,
+    //MuseumCard,
+    MemoryForm,
   },
 };
 </script>

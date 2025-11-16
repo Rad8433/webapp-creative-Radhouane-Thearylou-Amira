@@ -14,7 +14,7 @@ export default {
   props: {
     variant: {
       type: String,
-      default: "primary", // primary, ghost, icon
+      default: "primary",
     }
   }
 };
@@ -40,8 +40,26 @@ export default {
 }
 
 .primary:hover {
-  background: #111;
+  background: #ffffff;
+  color: #000;
 }
+
+/* --- SECONDARY BUTTON (Terminer le form en envois de celui-ci) --- */
+.secondary {
+  background: #0F4C81;
+  color: #fff;
+  width: 100%;
+  padding: 0.9rem 2.2rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.secondary:hover {
+  background: #a6d5ff;
+  color: #000;
+}
+
 
 /* --- ICON BUTTON (Cogwheel) --- */
 .icon {
