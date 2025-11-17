@@ -1,29 +1,37 @@
 <template>
   <main class="museum-rooms">
-    <!-- Reusable header with customized title -->
     <div class="global">
-    <AppHeader>
-      <template #title>
-        Salles du Musée
-      </template>
-    </AppHeader>
+      <AppHeader>
+        <template #title>
+          Salles du Musée
+        </template>
+      </AppHeader>
 
-    <!-- Placeholder for cards grid -->
-    <section class="cards-placeholder">
-      <!-- Cards component will go here -->
-      <MuseumGrid />
-    </section>
+      <!-- BARRE DE FILTRES -->
+      <OptionBar
+        v-model:search="filters.search"
+        v-model:room="filters.room"
+        v-model:tag="filters.tag"
+        :date-label="filters.dateLabel"
+        :room-options="roomOptions"
+        :tag-options="tagOptions"
+      />
 
-    <!-- Footer -->
-    <AppFooter />
-  </div>
+      <!-- GRID DES SALLES (filtrée) -->
+      <section class="cards-placeholder">
+        <MuseumGrid :filters="filters" />
+      </section>
+
+      <AppFooter />
+    </div>
   </main>
 </template>
 
 <script>
 import AppHeader from "@/components/common/AppHeader.vue";
 import AppFooter from "@/components/common/AppFooter.vue";
-import MuseumGrid from '@/components/specific/MuseumGrid.vue';
+import MuseumGrid from "@/components/specific/MuseumGrid.vue";
+import OptionBar from "@/components/layout/OptionBar.vue";
 
 export default {
   name: "MuseumRoomsView",
@@ -31,17 +39,37 @@ export default {
     AppHeader,
     AppFooter,
     MuseumGrid,
+    OptionBar, // ✅ pas OptionBars
+  },
+  data() {
+    return {
+      filters: {
+        search: "",
+        dateLabel: "Date",
+        room: "all",
+        tag: "all",
+      },
+      roomOptions: [
+        { value: "vacances", label: "Vacances & Évasions" },
+        { value: "aventure", label: "Aventures" },
+        // ...
+      ],
+      tagOptions: [
+        { value: "mer", label: "#mer" },
+        { value: "montagne", label: "#montagne" },
+        // ...
+      ],
+    };
   },
 };
 </script>
 
 <style scoped>
-/* Using ::v-deep to target the child component's scoped class */
 ::v-deep .app-header__right svg path {
   fill: black !important;
 }
 ::v-deep .app-header__title {
-  color: black;  /* Change title text color */
+  color: black;
 }
 .global {
   display: flex;
