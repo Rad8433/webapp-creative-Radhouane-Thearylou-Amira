@@ -1,42 +1,68 @@
 <template>
-    <div class="room">
-        <div class="memory-room">
+  <div class="room">
+    <div class="memory-room">
+      <!-- Go Back Button -->
+      <button class="back-btn" @click="goBack">← Back</button>
+      
+      <!-- OptionBar with Search, Date, and Tag filters (no Room or Sort option) -->
+      <OptionBar 
+        v-model:search="filters.search" 
+        v-model:date="filters.date" 
+        v-model:tag="filters.tag" 
+        :tag-options="tagOptions"
+        :showRoom="false"  
+        :showSort="false"   
+      />
 
-            <!-- Go Back Button -->
-            <button class="back-btn" @click="goBack">← Back</button>
-
-            <!-- Centered Swiper -->
-            <MemorySwiper />
-
-
-        </div>
-        <div class="bouton">
-            <BaseButton variant="primary" @click="ajout">
-                +
-            </BaseButton>
-        </div>
+      <!-- Centered Swiper -->
+      <MemorySwiper :filters="filters" />
     </div>
+
+    <!-- Add Button -->
+    <div class="bouton">
+      <BaseButton variant="primary" @click="ajout">
+        +
+      </BaseButton>
+    </div>
+  </div>
 </template>
-  
+
 <script>
-    import BaseButton from '@/components/common/BaseButton.vue';
-    import MemorySwiper from '@/components/specific/MemorySwiper.vue';
+import BaseButton from '@/components/common/BaseButton.vue';
+import MemorySwiper from '@/components/specific/MemorySwiper.vue';
+import OptionBar from "@/components/layout/OptionBar.vue";
 
-    export default {
-        name: 'MemoryRoom',
-        components: { MemorySwiper, BaseButton },
-
-        methods: {
-            goBack() {
-                this.$router.back(); 
-            },
-            ajout() {
-                this.$router.push({ name: 'Modal' });
-            }
-        }
+export default {
+  name: 'MemoryRoom',
+  components: { MemorySwiper, BaseButton, OptionBar },
+  data() {
+    return {
+      filters: {
+        search: "",
+        tag: "all",
+        date: "all",  // Add a filter for date
+      },
+      tagOptions: [
+        { value: "#vacances", label: "#vacances" },
+        { value: "#aventure", label: "#aventure" },
+        { value: "#urbain", label: "#urbain" },
+        { value: "#humour", label: "#humour" },
+        { value: "#food", label: "#food" },
+        { value: "#rêve", label: "#rêve" },
+      ],
     };
+  },
+  methods: {
+    goBack() {
+      this.$router.back();
+    },
+    ajout() {
+      this.$router.push({ name: 'Modal' });
+    }
+  }
+};
 </script>
-  
+
 <style scoped>
     .room{
         display: flex;
@@ -47,14 +73,17 @@
         background: linear-gradient(135deg, #ffecd2, #fcb69f);
     }
 
-    .memory-room {
-        height: 80%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        position: relative;
-    }
+ .memory-room {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;   
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+  position: relative;
+  gap: 20px; 
+}
 
     .back-btn {
         position: absolute;

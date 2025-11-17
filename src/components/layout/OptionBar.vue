@@ -1,6 +1,6 @@
 <template>
   <div class="optionbar">
-    <!-- Recherche -->
+    <!-- Recherche (Search) -->
     <div class="optionbar__item optionbar__item--search">
       <span class="optionbar__icon">
         <!-- simple loupe -->
@@ -11,12 +11,11 @@
       </span>
 
       <input type="text" :value="search" @input="$emit('update:search', $event.target.value)" placeholder="Recherche" />
-
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- Toutes les salles -->
-    <div class="optionbar__item">
+    <!-- Room (Dropdown for selecting room) -->
+    <div v-if="showRoom" class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="room" @change="$emit('update:room', $event.target.value)">
           <option value="all">Toutes les salles</option>
@@ -26,11 +25,10 @@
         </select>
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- Tous les tags -->
+    <!-- Tag (Dropdown for selecting tags) -->
     <div class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="tag" @change="$emit('update:tag', $event.target.value)">
@@ -41,12 +39,24 @@
         </select>
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- Tri par nombre de mémoires -->
-    <div class="optionbar__item optionbar__item--sort">
+    <!-- Date (Dropdown for selecting date) -->
+    <div v-if="showDate" class="optionbar__item">
+      <div class="optionbar__select-wrapper">
+        <select :value="date" @change="$emit('update:date', $event.target.value)">
+          <option value="all">Date</option>
+          <option value="recent">Récent</option>
+          <option value="old">Ancien</option>
+        </select>
+        <span class="optionbar__chevron">▾</span>
+      </div>
+      <span class="optionbar__underline"></span>
+    </div>
+
+    <!-- Mémoires (Sorting by memory count) -->
+    <div v-if="showSort" class="optionbar__item optionbar__item--sort">
       <div class="optionbar__select-wrapper">
         <select :value="sort" @change="$emit('update:sort', $event.target.value)">
           <option value="asc">Mémoires ↑ (croissant)</option>
@@ -54,7 +64,6 @@
         </select>
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
   </div>
@@ -76,10 +85,13 @@ export default {
       type: String,
       default: "all",
     },
-    // nouveau prop pour le tri
     sort: {
       type: String,
-      default: "asc", // ou "desc" selon ce que tu veux par défaut
+      default: "asc", // Default sorting option
+    },
+    date: {
+      type: String,
+      default: "all",
     },
     roomOptions: {
       type: Array,
@@ -89,18 +101,29 @@ export default {
       type: Array,
       default: () => [],
     },
+    showRoom: {
+      type: Boolean,
+      default: true, // Whether to show the "Room" dropdown
+    },
+    showSort: {
+      type: Boolean,
+      default: true, // Whether to show the "Mémoires" (Sort) dropdown
+    },
+    showDate: {
+      type: Boolean,
+      default: true, // Whether to show the Date dropdown
+    },
   },
-  emits: ["update:search", "update:room", "update:tag", "update:sort"],
+  emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"],
 };
 </script>
-
 <style scoped>
 .optionbar {
   display: flex;
   align-items: flex-end;
   gap: 3rem;
   padding: 0.8rem 0;
-  background-color: #f0e9de;
+  background-color: tra;
   /* même beige que la vue du musée */
   color: #3a3a3a;
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,

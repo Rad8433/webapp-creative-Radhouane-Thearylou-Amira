@@ -8,8 +8,15 @@
       </AppHeader>
 
       <!-- BARRE DE FILTRES -->
-      <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
-        v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" />
+      <OptionBar 
+        v-model:search="filters.search" 
+        v-model:room="filters.room"
+        v-model:tag="filters.tag"
+        v-model:sort="filters.sort"
+        :room-options="roomOptions" 
+        :tag-options="tagOptions"
+        :showDate="false"  
+      />
 
       <!-- GRID DES SALLES (filtrée) -->
       <section class="cards-placeholder">
@@ -33,7 +40,7 @@ export default {
     AppHeader,
     AppFooter,
     MuseumGrid,
-    OptionBar, // ✅ pas OptionBars
+    OptionBar,
   },
   data() {
     return {
@@ -41,7 +48,7 @@ export default {
         search: "",
         room: "all",
         tag: "all",
-        sort: "asc",
+        sort: "asc",  // Default sort
       },
       roomOptions: [
         { value: "room-1", label: "Vacances et évasions" },
@@ -64,7 +71,6 @@ export default {
   },
 };
 </script>
-
 <style scoped>
 ::v-deep .app-header__right svg path {
   fill: black !important;
