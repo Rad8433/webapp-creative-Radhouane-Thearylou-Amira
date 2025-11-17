@@ -3,11 +3,7 @@
     <div class="form">
       
       <div class="formContenus">
-        <AppHeader>
-          <template #title>
-            Salles du Musée
-          </template>
-        </AppHeader>
+             <button class="back-btn" @click="goBack">← Back</button>
         <h1>Décrivez votre mémoire</h1>
 
         <div class="form-group titre">
@@ -44,7 +40,7 @@
           <label for="legende">Légende</label><br>
           <input type="text" id="legende">
         </div>
-        <BaseButton variant="secondary" @click="retoure">
+        <BaseButton variant="secondary" @click="goBack">
           Terminer
         </BaseButton>
       </div>
@@ -53,45 +49,53 @@
 </template>
 
 <script>
-  import AppHeader from "@/components/common/AppHeader.vue";
-  import BaseButton from '../common/BaseButton.vue';
+import AppHeader from "@/components/common/AppHeader.vue";
+import BaseButton from '../common/BaseButton.vue';
+import { mapStores } from 'pinia'
+import { useMemoryStore } from '../../stores/useMemoryStore.js'
 
-  export default {
-    name: "MuseumRoomsView",
-    components: {
-      AppHeader,
-      BaseButton,
+export default {
+  name: "MuseumRoomsView",
+  components: {
+    AppHeader,
+    BaseButton,
+  },
+
+  computed: {
+    ...mapStores(useMemoryStore),  // ← IMPORTANT
+  },
+
+  data() {
+    return {
+      image: null
+    };
+  },
+
+  methods: {
+    goBack() {
+      this.$router.back();
     },
-    data() {
-      return {
-        image: null  // ici l'image sera stockée
-      };
+
+    triggerFileInput() {
+      this.$refs.fileInput.click();
     },
 
-    methods: {
-      triggerFileInput() {
-        this.$refs.fileInput.click();
-      },
+    onImageSelected(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.image = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    },
 
-      onImageSelected(event) {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = () => {
-            this.image = reader.result; 
-          };
-          reader.readAsDataURL(file);
-        }
-      },
-      retoure(roomId) {
-        // TODO: Naviguer vers la page de détail de la salle ayant l'id roomID
-        this.$router.push({
-          name: 'Room',
-          params: { id: roomId }
-        })
-      },
-    }
-  };
+    retour(roomId) {
+    this.$router.push(`/rooms/${this.$route.params.id}`)
+    },
+  }
+};
 </script>
 
   
