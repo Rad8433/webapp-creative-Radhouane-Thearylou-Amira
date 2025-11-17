@@ -46,7 +46,7 @@
     <div v-if="showDate" class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="date" @change="$emit('update:date', $event.target.value)">
-          <option value="all">Date</option>
+          <option value="all" disabled>Date</option>
           <option value="recent">Récent</option>
           <option value="old">Ancien</option>
         </select>

@@ -24,6 +24,10 @@ export default {
       type: String,
       default: "#Tags"
     },
+    tags: {
+      type: String,
+      default: "#Tags"
+    },
     date: {
       type: String,
       default: "01/01/2025"

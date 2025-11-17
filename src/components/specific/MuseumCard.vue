@@ -4,7 +4,7 @@
 
     <h2>{{ room.name }}</h2>
     <p class="room-description">{{ room.description }}</p>
-    <p class="memory-count">{{ room.tag }}</p>
+    <p class="memory-count">{{ room.memoriesCount }} mémoires</p>
   </div>
 </template>
 
