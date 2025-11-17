@@ -1,7 +1,7 @@
 <template>
   <div class="gird">
     <div class="rooms-grid">
-      <!-- ⚠️ on boucle maintenant sur filteredRooms -->
+      <!-- On boucle sur les salles filtrées + triées -->
       <MuseumCard v-for="room in filteredRooms" :key="room.id" :room="room" @click="goToRoom(room.id)" />
     </div>
   </div>
@@ -32,6 +32,8 @@ export default {
           description:
             "Soleil, plages, escapades reposantes et petits moments de pause loin du quotidien.",
           tag: "#vacances",
+          // temporaire: nombre de mémoires stockées
+          memoriesCount: 3,
         },
         {
           id: "room-2",
@@ -39,7 +41,8 @@ export default {
           name: "Aventures",
           description:
             "Randonnées, défis, imprévus et adrénaline pour les voyageurs en quête d’action.",
-          tag: "#aventure", // ✅ aligné avec l’OptionBar
+          tag: "#aventure",
+          memoriesCount: 3,
         },
         {
           id: "room-3",
@@ -48,6 +51,7 @@ export default {
           description:
             "Ruelles cachées, architecture, graffitis et vie nocturne des grandes villes.",
           tag: "#urbain",
+          memoriesCount: 3,
         },
         {
           id: "room-4",
@@ -56,6 +60,7 @@ export default {
           description:
             "Gaffes, quiproquos et souvenirs gênants qui finissent en fous rires.",
           tag: "#humour",
+          memoriesCount: 3,
         },
         {
           id: "room-5",
@@ -64,6 +69,7 @@ export default {
           description:
             "Plats typiques, marchés locaux et découvertes culinaires aux quatre coins du monde.",
           tag: "#food",
+          memoriesCount: 3,
         },
         {
           id: "room-6",
@@ -72,19 +78,22 @@ export default {
           description:
             "Lieux mythiques, paysages irréels et voyages qu’on garde sur sa bucket list.",
           tag: "#rêve",
+          memoriesCount: 3,
         },
       ],
     };
   },
 
   computed: {
-    // 💡 c'est ici que la magie des filtres se fait
+    // 💡 ici : filtres + tri asc/desc sur memoriesCount
     filteredRooms() {
-      let result = this.rooms;
+      // toujours cloner avant de trier (pour ne pas modifier this.rooms)
+      let result = [...this.rooms];
 
       const search = this.filters.search?.trim().toLowerCase();
       const roomFilter = this.filters.room;
       const tagFilter = this.filters.tag;
+      const sort = this.filters.sort;
 
       // Filtre "Toutes les salles"
       if (roomFilter && roomFilter !== "all") {
@@ -100,6 +109,17 @@ export default {
       if (search) {
         result = result.filter((r) =>
           r.name.toLowerCase().includes(search)
+        );
+      }
+
+      // 🔽 Tri par nombre de mémoires
+      if (sort === "asc") {
+        result = result.sort(
+          (a, b) => (a.memoriesCount || 0) - (b.memoriesCount || 0)
+        );
+      } else if (sort === "desc") {
+        result = result.sort(
+          (a, b) => (b.memoriesCount || 0) - (a.memoriesCount || 0)
         );
       }
 

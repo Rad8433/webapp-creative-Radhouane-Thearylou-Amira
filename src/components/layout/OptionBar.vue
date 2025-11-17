@@ -4,38 +4,13 @@
     <div class="optionbar__item optionbar__item--search">
       <span class="optionbar__icon">
         <!-- simple loupe -->
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-        >
-          <circle
-            cx="11"
-            cy="11"
-            r="7"
-            stroke="#3a3a3a"
-            stroke-width="2"
-            fill="none"
-          />
-          <line
-            x1="16"
-            y1="16"
-            x2="21"
-            y2="21"
-            stroke="#3a3a3a"
-            stroke-width="2"
-            stroke-linecap="round"
-          />
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7" stroke="#3a3a3a" stroke-width="2" fill="none" />
+          <line x1="16" y1="16" x2="21" y2="21" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round" />
         </svg>
       </span>
 
-      <input
-        type="text"
-        :value="search"
-        @input="$emit('update:search', $event.target.value)"
-        placeholder="Recherche"
-      />
+      <input type="text" :value="search" @input="$emit('update:search', $event.target.value)" placeholder="Recherche" />
 
       <span class="optionbar__underline"></span>
     </div>
@@ -43,16 +18,9 @@
     <!-- Toutes les salles -->
     <div class="optionbar__item">
       <div class="optionbar__select-wrapper">
-        <select
-          :value="room"
-          @change="$emit('update:room', $event.target.value)"
-        >
+        <select :value="room" @change="$emit('update:room', $event.target.value)">
           <option value="all">Toutes les salles</option>
-          <option
-            v-for="r in roomOptions"
-            :key="r.value"
-            :value="r.value"
-          >
+          <option v-for="r in roomOptions" :key="r.value" :value="r.value">
             {{ r.label }}
           </option>
         </select>
@@ -65,18 +33,24 @@
     <!-- Tous les tags -->
     <div class="optionbar__item">
       <div class="optionbar__select-wrapper">
-        <select
-          :value="tag"
-          @change="$emit('update:tag', $event.target.value)"
-        >
+        <select :value="tag" @change="$emit('update:tag', $event.target.value)">
           <option value="all">Tous les tags</option>
-          <option
-            v-for="t in tagOptions"
-            :key="t.value"
-            :value="t.value"
-          >
+          <option v-for="t in tagOptions" :key="t.value" :value="t.value">
             {{ t.label }}
           </option>
+        </select>
+        <span class="optionbar__chevron">▾</span>
+      </div>
+
+      <span class="optionbar__underline"></span>
+    </div>
+
+    <!-- Tri par nombre de mémoires -->
+    <div class="optionbar__item optionbar__item--sort">
+      <div class="optionbar__select-wrapper">
+        <select :value="sort" @change="$emit('update:sort', $event.target.value)">
+          <option value="asc">Mémoires ↑ (croissant)</option>
+          <option value="desc">Mémoires ↓ (décroissant)</option>
         </select>
         <span class="optionbar__chevron">▾</span>
       </div>
@@ -102,6 +76,11 @@ export default {
       type: String,
       default: "all",
     },
+    // nouveau prop pour le tri
+    sort: {
+      type: String,
+      default: "asc", // ou "desc" selon ce que tu veux par défaut
+    },
     roomOptions: {
       type: Array,
       default: () => [],
@@ -111,7 +90,7 @@ export default {
       default: () => [],
     },
   },
-  emits: ["update:search", "update:room", "update:tag"],
+  emits: ["update:search", "update:room", "update:tag", "update:sort"],
 };
 </script>
 
@@ -121,7 +100,8 @@ export default {
   align-items: flex-end;
   gap: 3rem;
   padding: 0.8rem 0;
-  background-color: #f0e9de; /* même beige que la vue du musée */
+  background-color: #f0e9de;
+  /* même beige que la vue du musée */
   color: #3a3a3a;
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;

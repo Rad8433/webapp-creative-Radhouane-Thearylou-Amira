@@ -9,7 +9,7 @@
 
       <!-- BARRE DE FILTRES -->
       <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
-        :room-options="roomOptions" :tag-options="tagOptions" />
+        v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" />
 
       <!-- GRID DES SALLES (filtrée) -->
       <section class="cards-placeholder">
@@ -39,9 +39,9 @@ export default {
     return {
       filters: {
         search: "",
-        dateLabel: "Date",
         room: "all",
         tag: "all",
+        sort: "asc",
       },
       roomOptions: [
         { value: "room-1", label: "Vacances et évasions" },
