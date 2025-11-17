@@ -1,7 +1,7 @@
 {
   "memoires": [
     {
-      "room-id": 1,
+      "roomId": "room-1",
       "titreSouvenir": "Coucher de soleil à Bali",
       "imageSouvenir": "/src/assets/swiper/room-1/bali.jpg",
       "descriptionSouvenir": "Un coucher de soleil à couper le souffle sur l'océan, avec un ciel peint de teintes orange et rose.",
@@ -10,7 +10,7 @@
       "tagsSouvenir": ["coucher de soleil", "plage", "Bali", "vacances"]
     },
     {
-      "room-id": 1,
+      "roomId": "room-1",
       "titreSouvenir": "Randonnée dans les Alpes",
       "imageSouvenir": "/src/assets/swiper/room-1/alpes.jpg",
       "descriptionSouvenir": "Une randonnée difficile mais gratifiante jusqu'au sommet du Mont Blanc avec des vues imprenables.",
@@ -19,7 +19,7 @@
       "tagsSouvenir": ["randonnée", "montagne", "Alpes", "aventure"]
     },
     {
-      "room-id": 1,
+      "roomId": "room-1",
       "titreSouvenir": "Visite des temples de Kyoto",
       "imageSouvenir": "/src/assets/swiper/room-1/kyoto.jpg",
       "descriptionSouvenir": "Flâner dans les temples sereins de Kyoto, en absorbant l'histoire riche et les magnifiques jardins.",
@@ -29,7 +29,7 @@
     },
 
     {
-      "room-id": 2,
+      "roomId": "room-2",
       "titreSouvenir": "Safari en Afrique",
       "imageSouvenir": "/src/assets/swiper/room-2/safari.jpg",
       "descriptionSouvenir": "Observer les lions, éléphants et girafes dans leur habitat naturel lors d'un safari inoubliable.",
@@ -38,7 +38,7 @@
       "tagsSouvenir": ["safari", "faune", "Afrique", "aventure"]
     },
     {
-      "room-id": 2,
+      "roomId": "room-2",
       "titreSouvenir": "Exploration de la Grande Barrière de Corail",
       "imageSouvenir": "/src/assets/swiper/room-2/corail.jpg",
       "descriptionSouvenir": "Plongée sous-marine pour découvrir les récifs coralliens colorés et la vie marine diversifiée.",
@@ -47,7 +47,7 @@
       "tagsSouvenir": ["plongée", "corail", "Australie", "nature"]
     },
     {
-      "room-id": 2,
+      "roomId": "room-2",
       "titreSouvenir": "Traversée du désert en 4x4",
       "imageSouvenir": "/src/assets/swiper/room-2/desert.jpg",
       "descriptionSouvenir": "Conduire à travers les dunes dorées et admirer le silence infini du désert.",
@@ -57,7 +57,7 @@
     },
 
     {
-      "room-id": 3,
+      "roomId": "room-3",
       "titreSouvenir": "Balade dans les ruelles de Lisbonne",
       "imageSouvenir": "/src/assets/swiper/room-3/lisbonne.jpg",
       "descriptionSouvenir": "Découvrir les ruelles colorées, les tramways rétro et le charme unique de Lisbonne.",
@@ -66,7 +66,7 @@
       "tagsSouvenir": ["ville", "ruelles", "Lisbonne", "urbain"]
     },
     {
-      "room-id": 3,
+      "roomId": "room-3",
       "titreSouvenir": "Graffitis de Berlin",
       "imageSouvenir": "/src/assets/swiper/room-3/berlin.jpg",
       "descriptionSouvenir": "Explorer l'art de rue vibrant qui recouvre les murs de la capitale.",
@@ -75,7 +75,7 @@
       "tagsSouvenir": ["street-art", "Berlin", "urbain", "culture"]
     },
     {
-      "room-id": 3,
+      "roomId": "room-3",
       "titreSouvenir": "Nuit animée à New York",
       "imageSouvenir": "/src/assets/swiper/room-3/newyork.jpg",
       "descriptionSouvenir": "Une soirée inoubliable dans les rues illuminées de Manhattan.",
@@ -85,7 +85,7 @@
     },
 
     {
-      "room-id": 4,
+      "roomId": "room-4",
       "titreSouvenir": "La chute dans le sable",
       "imageSouvenir": "/src/assets/swiper/room-4/chute-sable.jpg",
       "descriptionSouvenir": "Un fou rire après une chute mémorable en courant sur la plage.",
@@ -94,7 +94,7 @@
       "tagsSouvenir": ["drôle", "plage", "chute"]
     },
     {
-      "room-id": 4,
+      "roomId": "room-4",
       "titreSouvenir": "La pizza renversée",
       "imageSouvenir": "/src/assets/swiper/room-4/pizza.jpg",
       "descriptionSouvenir": "Une pizza entièrement renversée en voulant faire une photo parfaite.",
@@ -103,7 +103,7 @@
       "tagsSouvenir": ["gag", "nourriture", "oops"]
     },
     {
-      "room-id": 4,
+      "roomId": "room-4",
       "titreSouvenir": "Le parapluie cassé",
       "imageSouvenir": "/src/assets/swiper/room-4/parapluie.jpg",
       "descriptionSouvenir": "Un vent trop fort, un parapluie retourné, et un moment culte.",
@@ -113,7 +113,7 @@
     },
 
     {
-      "room-id": 5,
+      "roomId": "room-5",
       "titreSouvenir": "Ramen authentiques",
       "imageSouvenir": "/src/assets/swiper/room-5/ramen.jpg",
       "descriptionSouvenir": "Un bol de ramen savoureux dégusté dans une petite échoppe japonaise.",
@@ -122,7 +122,7 @@
       "tagsSouvenir": ["ramen", "Japon", "gastronomie"]
     },
     {
-      "room-id": 5,
+      "roomId": "room-5",
       "titreSouvenir": "Tapas à Barcelone",
       "imageSouvenir": "/src/assets/swiper/room-5/tapas.jpg",
       "descriptionSouvenir": "Dégustation de tapas variés dans une ruelle animée du centre.",
@@ -131,7 +131,7 @@
       "tagsSouvenir": ["tapas", "Espagne", "street-food"]
     },
     {
-      "room-id": 5,
+      "roomId": "room-5",
       "titreSouvenir": "Marché nocturne de Taipei",
       "imageSouvenir": "/src/assets/swiper/room-5/taipei.jpg",
       "descriptionSouvenir": "Une explosion de saveurs au cœur d’un marché de nuit traditionnel.",
@@ -141,7 +141,7 @@
     },
 
     {
-      "room-id": 6,
+      "roomId": "room-6",
       "titreSouvenir": "Bora Bora paradisiaque",
       "imageSouvenir": "/src/assets/swiper/room-6/borabora.jpg",
       "descriptionSouvenir": "Eaux turquoise, bungalow sur pilotis et détente absolue.",
@@ -150,7 +150,7 @@
       "tagsSouvenir": ["rêve", "tropical", "lagon"]
     },
     {
-      "room-id": 6,
+      "roomId": "room-6",
       "titreSouvenir": "Aurores boréales",
       "imageSouvenir": "/src/assets/swiper/room-6/aurores.jpg",
       "descriptionSouvenir": "Un spectacle céleste magique illuminant le ciel arctique.",
@@ -159,7 +159,7 @@
       "tagsSouvenir": ["aurores", "Islande", "nature"]
     },
     {
-      "room-id": 6,
+      "roomId": "room-6",
       "titreSouvenir": "Escale aux Maldives",
       "imageSouvenir": "/src/assets/swiper/room-6/maldives.jpg",
       "descriptionSouvenir": "Séjour dans un décor de carte postale entre mer et tranquillité.",
