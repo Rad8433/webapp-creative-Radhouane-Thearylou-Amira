@@ -1,14 +1,15 @@
 <template>
   <header class="app-header">
-    <!-- Title (default or custom) -->
-    <h1 class="app-header__title">
+    <!-- Le titre change dependament du texte passer dans le props title-->
+    <h1 class="headerTitle">
       <slot name="title">
         {{ title }}
       </slot>
     </h1>
 
-    <!-- Right side (settings button by default, customizable) -->
-    <div class="app-header__right">
+    <!--On peut passer des données de l’enfant vers le contenu du parent. -->
+    <div class="headerEngrenage">
+      <!--Le slot permet de passer des données de l’enfant vers le parent. En utilisant des props en pourras modifier le contenus de celui-ci dans la page.-->
       <slot name="right">
         <BaseButton variant="icon">
           <svg width="32" height="32" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -44,14 +45,13 @@ export default {
   padding: 1rem 1.8rem 0.9rem;
 }
 
-.app-header__title {
+.headerTitle {
   font-family: "Georgia", serif;
   font-size: 2rem;
   color: #ffffff;
 }
 
-.app-header__right img,
-.app-header__cog {
+.headerEngrenage img {
   width: 32px;
   height: 32px;
 }
