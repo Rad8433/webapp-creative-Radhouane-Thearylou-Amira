@@ -8,14 +8,8 @@
       </AppHeader>
 
       <!-- BARRE DE FILTRES -->
-      <OptionBar
-        v-model:search="filters.search"
-        v-model:room="filters.room"
-        v-model:tag="filters.tag"
-        :date-label="filters.dateLabel"
-        :room-options="roomOptions"
-        :tag-options="tagOptions"
-      />
+      <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
+        :room-options="roomOptions" :tag-options="tagOptions" />
 
       <!-- GRID DES SALLES (filtrée) -->
       <section class="cards-placeholder">
@@ -50,14 +44,21 @@ export default {
         tag: "all",
       },
       roomOptions: [
-        { value: "vacances", label: "Vacances & Évasions" },
-        { value: "aventure", label: "Aventures" },
-        // ...
+        { value: "room-1", label: "Vacances et évasions" },
+        { value: "room-2", label: "Aventures" },
+        { value: "room-3", label: "Explorations urbaines" },
+        { value: "room-4", label: "Moments drôles" },
+        { value: "room-5", label: "Gastronomies" },
+        { value: "room-6", label: "Destinations de rêves" },
       ],
+
       tagOptions: [
-        { value: "mer", label: "#mer" },
-        { value: "montagne", label: "#montagne" },
-        // ...
+        { value: "#vacances", label: "#vacances" },
+        { value: "#aventure", label: "#aventure" },
+        { value: "#urbain", label: "#urbain" },
+        { value: "#humour", label: "#humour" },
+        { value: "#food", label: "#food" },
+        { value: "#rêve", label: "#rêve" },
       ],
     };
   },
@@ -68,9 +69,11 @@ export default {
 ::v-deep .app-header__right svg path {
   fill: black !important;
 }
+
 ::v-deep .app-header__title {
   color: black;
 }
+
 .global {
   display: flex;
   flex-direction: column;
@@ -80,6 +83,7 @@ export default {
   font-family: Georgia, serif;
   color: #3a3a3a;
 }
+
 .museum-rooms {
   background-color: #f0e9de;
   min-height: 100vh;
