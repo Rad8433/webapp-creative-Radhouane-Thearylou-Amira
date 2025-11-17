@@ -39,7 +39,7 @@ export default {
   transition: all 0.3s;
   overflow: hidden;
   width: 100%;
-  max-width: 420px; /* empêche les cartes d'être trop larges */
+  max-width: 420px;
   font-family: 'roboto', sans-serif;
 }
 

@@ -46,7 +46,7 @@ export default {
     },
     bgColor: {
       type: String,
-      default: "#e0e0e0" // default card color
+      default: "#e0e0e0" 
     }
   }
 };

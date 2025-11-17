@@ -21,7 +21,7 @@ const routes = [
     component: RoomView
   },
   {
-    path: '/Modal',
+    path: '/Modal/:id',
     name: 'Modal',
     component: ModalView
   },

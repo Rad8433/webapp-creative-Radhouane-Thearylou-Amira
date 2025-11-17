@@ -1,9 +1,5 @@
 <template>
-  <button
-    class="base-button"
-    :class="variant"
-    @click="$emit('click')"
-  >
+  <button class="base-button" :class="variant" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -60,6 +56,37 @@ export default {
   color: #000;
 }
 
+/* --- TROISIEME BUTTON (Ajouter une nouvelle carte) --- */
+.troisieme {
+  background: #0bac76;
+  color: #fff;
+  width: 90px;
+  padding: 0.9rem 2.2rem;
+  border-radius: 8px;
+  font-size: 1.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.troisieme:hover {
+  background: #4de4b1;
+  color: #000;
+}
+
+/* --- TROISIEME BUTTON (Ajouter une nouvelle carte) --- */
+.quatrieme {
+  background: #e48e5c;
+  color: #fff;
+  width: 70px;
+  padding: 0.6rem 0rem;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+.quatrieme:hover {
+  background: #ffe6bf;
+  color: #000;
+}
 
 /* --- ICON BUTTON (Cogwheel) --- */
 .icon {

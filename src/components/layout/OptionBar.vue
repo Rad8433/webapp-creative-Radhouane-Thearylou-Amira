@@ -87,7 +87,7 @@ export default {
     },
     sort: {
       type: String,
-      default: "asc", // Default sorting option
+      default: "asc",
     },
     date: {
       type: String,
@@ -103,15 +103,15 @@ export default {
     },
     showRoom: {
       type: Boolean,
-      default: true, // Whether to show the "Room" dropdown
+      default: true, 
     },
     showSort: {
       type: Boolean,
-      default: true, // Whether to show the "Mémoires" (Sort) dropdown
+      default: true,
     },
     showDate: {
       type: Boolean,
-      default: true, // Whether to show the Date dropdown
+      default: true, 
     },
   },
   emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"],
@@ -124,7 +124,6 @@ export default {
   gap: 3rem;
   padding: 0.8rem 0;
   background-color: tra;
-  /* même beige que la vue du musée */
   color: #3a3a3a;
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
     "Segoe UI", sans-serif;
@@ -148,7 +147,6 @@ export default {
   margin-right: 0.75rem;
 }
 
-/* Inputs & selects */
 .optionbar__item input,
 .optionbar__item select {
   border: none;
@@ -170,7 +168,6 @@ export default {
   cursor: pointer;
 }
 
-/* Wrapper pour le select + chevron */
 .optionbar__select-wrapper {
   display: flex;
   align-items: center;
@@ -182,7 +179,6 @@ export default {
   margin-left: 0.4rem;
 }
 
-/* Ligne en dessous */
 .optionbar__underline {
   position: absolute;
   left: 0;
@@ -192,7 +188,6 @@ export default {
   background-color: rgba(58, 58, 58, 0.4);
 }
 
-/* Un peu de responsive */
 @media (max-width: 900px) {
   .optionbar {
     flex-wrap: wrap;

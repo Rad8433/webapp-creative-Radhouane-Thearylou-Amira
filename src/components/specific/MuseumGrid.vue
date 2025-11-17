@@ -1,7 +1,6 @@
 <template>
   <div class="gird">
     <div class="rooms-grid">
-      <!-- On boucle sur les salles filtrées + triées -->
       <MuseumCard v-for="room in filteredRooms" :key="room.id" :room="room" @click="goToRoom(room.id)" />
     </div>
   </div>
@@ -13,8 +12,6 @@ import MuseumCard from "./MuseumCard.vue";
 export default {
   name: "MuseumGrid",
   components: { MuseumCard },
-
-  // 👇 on reçoit les filtres depuis MuseumRoomsView
   props: {
     filters: {
       type: Object,
@@ -32,7 +29,6 @@ export default {
           description:
             "Soleil, plages, escapades reposantes et petits moments de pause loin du quotidien.",
           tag: "#vacances",
-          // temporaire: nombre de mémoires stockées
           memoriesCount: 3,
         },
         {
@@ -85,9 +81,7 @@ export default {
   },
 
   computed: {
-    // 💡 ici : filtres + tri asc/desc sur memoriesCount
     filteredRooms() {
-      // toujours cloner avant de trier (pour ne pas modifier this.rooms)
       let result = [...this.rooms];
 
       const search = this.filters.search?.trim().toLowerCase();
@@ -95,24 +89,17 @@ export default {
       const tagFilter = this.filters.tag;
       const sort = this.filters.sort;
 
-      // Filtre "Toutes les salles"
       if (roomFilter && roomFilter !== "all") {
         result = result.filter((r) => r.id === roomFilter);
       }
-
-      // Filtre "Tous les tags"
       if (tagFilter && tagFilter !== "all") {
         result = result.filter((r) => r.tag === tagFilter);
       }
-
-      // Filtre "Recherche"
       if (search) {
         result = result.filter((r) =>
           r.name.toLowerCase().includes(search)
         );
       }
-
-      // 🔽 Tri par nombre de mémoires
       if (sort === "asc") {
         result = result.sort(
           (a, b) => (a.memoriesCount || 0) - (b.memoriesCount || 0)

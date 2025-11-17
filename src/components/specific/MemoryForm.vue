@@ -3,7 +3,6 @@
     <div class="form">
       
       <div class="formContenus">
-             <button class="back-btn" @click="goBack">← Back</button>
         <h1>Décrivez votre mémoire</h1>
 
         <div class="form-group titre">
@@ -62,7 +61,7 @@ export default {
   },
 
   computed: {
-    ...mapStores(useMemoryStore),  // ← IMPORTANT
+    ...mapStores(useMemoryStore),  
   },
 
   data() {
@@ -73,7 +72,7 @@ export default {
 
   methods: {
     goBack() {
-      this.$router.back();
+      this.$router.push({ name: 'Room', params: { id: this.$route.params.id } })
     },
 
     triggerFileInput() {
@@ -92,7 +91,7 @@ export default {
     },
 
     retour(roomId) {
-    this.$router.push(`/rooms/${this.$route.params.id}`)
+    this.$router.push(`/Room/${this.$route.params.id}`)
     },
   }
 };

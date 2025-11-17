@@ -1,29 +1,17 @@
 <template>
   <div class="room">
-    <div class="memory-room">
-      <!-- Go Back Button -->
-      <button class="back-btn" @click="goBack">← Back</button>
-      
-      <!-- OptionBar with Search, Date, and Tag filters (no Room or Sort option) -->
-      <OptionBar 
-        v-model:search="filters.search" 
-        v-model:date="filters.date" 
-        v-model:tag="filters.tag" 
-        :tag-options="tagOptions"
-        :showRoom="false"  
-        :showSort="false"   
-      />
-
-      <!-- Centered Swiper -->
-      <MemorySwiper :filters="filters" />
-    </div>
-
-    <!-- Add Button -->
-    <div class="bouton">
-      <BaseButton variant="primary" @click="ajout">
-        +
+    <div class="retoure">
+      <BaseButton variant="quatrieme" @click="goBack">
+        <- 
       </BaseButton>
     </div>
+    <div class="memory-room"> 
+      <OptionBar v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag" :tag-options="tagOptions" :showRoom="false" :showSort="false" />
+      <MemorySwiper :filters="filters" />
+    </div>
+      <BaseButton variant="troisieme" @click="ajout">
+        +
+      </BaseButton>
   </div>
 </template>
 
@@ -40,7 +28,7 @@ export default {
       filters: {
         search: "",
         tag: "all",
-        date: "all",  // Add a filter for date
+        date: "all",  
       },
       tagOptions: [
         { value: "#vacances", label: "#vacances" },
@@ -54,59 +42,45 @@ export default {
   },
   methods: {
     goBack() {
-      this.$router.back();
+      this.$router.push({ name: 'MuseumRooms'});
+
     },
     ajout() {
-      this.$router.push({ name: 'Modal' });
+      this.$router.push({ name: 'Modal', params: { id: this.$route.params.id } });
     }
   }
 };
 </script>
 
 <style scoped>
-    .room{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-        background: linear-gradient(135deg, #ffecd2, #fcb69f);
-    }
+  .room{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  }
 
- .memory-room {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;   
-  justify-content: flex-start;
-  align-items: center;
-  padding: 20px;
-  position: relative;
-  gap: 20px; 
-}
+  .retoure {
+    width: 45%;
+  }
 
-    .back-btn {
-        position: absolute;
-        top: 0px;
-        left: 20px;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(6px);
-        border: none;
-        padding: 10px 18px;
-        border-radius: 8px;
-        font-size: 16px;
-        font-weight: 600;
-        cursor: pointer;
-        color: #333;
-    }
+  .memory-room {
+    height: 80%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;   
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    gap: 20px; 
+  }
 
-    .back-btn:hover {
-        background: rgba(255, 255, 255, 1);
-    }
-
-    .bouton {
-        width: 60px;
-    }
+  .bouton {
+      width: 60px;
+  }
 
 </style>
   
