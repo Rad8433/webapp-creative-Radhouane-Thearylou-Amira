@@ -37,6 +37,9 @@ export default {
 
 <style scoped>
 /* Using ::v-deep to target the child component's scoped class */
+::v-deep .app-header__right svg path {
+  fill: black !important;
+}
 ::v-deep .app-header__title {
   color: black;  /* Change title text color */
 }
