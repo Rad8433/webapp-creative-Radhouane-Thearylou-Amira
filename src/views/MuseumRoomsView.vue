@@ -3,8 +3,8 @@
     <div class="global">
 
       <!-- En-tête avec titre personnalisé -->
-      <AppHeader>
-        <template #title>
+      <AppHeader variantHeader="one">
+        <template #title >
           Salles du Musée
         </template>
       </AppHeader>
@@ -72,16 +72,8 @@ export default {
 };
 </script>
 
-<style scoped>
+<style >
 /* Change la couleur de l’icône dans l’en-tête */
-:deep(.app-header__right svg path) {
-  fill: black !important;
-}
-
-/* Change la couleur du titre dans l’en-tête */
-:deep(.app-header__title) {
-  color: black !important;
-}
 
 /* Conteneur principal centré et avec marges internes */
 .global {

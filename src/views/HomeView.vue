@@ -4,7 +4,9 @@
       <div class="hero-frame">
 
         <!-- Affiche le composant d’en-tête du site -->
-        <AppHeader />
+        <AppHeader>
+        <BaseButton engrenage="svg"></BaseButton>
+        </AppHeader>
 
         <!-- Contenu principal : texte à gauche et cartes à droite -->
         <div class="hero-content">

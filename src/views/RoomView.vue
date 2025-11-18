@@ -96,21 +96,6 @@ export default {
 </script>
 
 <style scoped>
-/* Change la couleur des icônes dans la barre de filtres */
-:deep(.optionbar__icon svg circle),
-:deep(.optionbar__icon svg line) {
-  stroke: #ffffff !important;
-}
-
-/* Ligne soulignée blanche dans OptionBar */
-::v-deep .optionbar__underline {
-  background-color: white;
-}
-
-/* Texte des boutons dans OptionBar en blanc */
-::v-deep .optionbar__item {
-  color: white;
-}
 
 /* Style général de la salle de mémoires */
 .room {
