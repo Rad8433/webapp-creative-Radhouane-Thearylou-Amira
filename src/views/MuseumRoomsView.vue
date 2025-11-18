@@ -1,21 +1,24 @@
 <template>
   <main class="museum-rooms">
     <div class="global">
+
+      <!-- En-tête avec titre personnalisé -->
       <AppHeader>
         <template #title>
           Salles du Musée
         </template>
       </AppHeader>
 
-      <!-- BARRE DE FILTRES -->
+      <!-- Barre de filtres : recherche, salle, tag, tri -->
       <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
         v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" :showDate="false" />
 
-      <!-- GRID DES SALLES (filtrée) -->
+      <!-- Zone où les salles filtrées sont affichées -->
       <section class="cards-placeholder">
         <MuseumGrid :filters="filters" />
       </section>
 
+      <!-- Pied de page -->
       <AppFooter />
     </div>
   </main>
@@ -37,12 +40,15 @@ export default {
   },
   data() {
     return {
+      // Valeurs des filtres contrôlées par la barre OptionBar
       filters: {
         search: "",
         room: "all",
         tag: "all",
-        sort: "asc",  // Default sort
+        sort: "asc",  // Tri par défaut (ascendant)
       },
+
+      // Liste des salles disponibles dans le filtre
       roomOptions: [
         { value: "room-1", label: "Vacances et évasions" },
         { value: "room-2", label: "Aventures" },
@@ -52,6 +58,7 @@ export default {
         { value: "room-6", label: "Destinations de rêves" },
       ],
 
+      // Liste des tags disponibles dans le filtre
       tagOptions: [
         { value: "#vacances", label: "#vacances" },
         { value: "#aventure", label: "#aventure" },
@@ -64,15 +71,19 @@ export default {
   },
 };
 </script>
+
 <style scoped>
+/* Change la couleur de l’icône dans l’en-tête */
 :deep(.app-header__right svg path) {
   fill: black !important;
 }
 
+/* Change la couleur du titre dans l’en-tête */
 :deep(.app-header__title) {
   color: black !important;
 }
 
+/* Conteneur principal centré et avec marges internes */
 .global {
   display: flex;
   flex-direction: column;
@@ -83,6 +94,7 @@ export default {
   color: #3a3a3a;
 }
 
+/* Style général de la vue des salles du musée */
 .museum-rooms {
   background-color: #f0e9de;
   min-height: 100vh;
@@ -93,6 +105,7 @@ export default {
   align-items: center;
 }
 
+/* Zone où la grille peut s'étendre */
 .cards-placeholder {
   flex-grow: 1;
 }

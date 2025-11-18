@@ -1,5 +1,7 @@
 <template>
+  <!-- Bouton de base : applique une classe selon le variant et émet l’événement "click" -->
   <button class="base-button" :class="variant" @click="$emit('click')">
+    <!-- Le contenu du bouton vient du slot -->
     <slot />
   </button>
 </template>
@@ -7,16 +9,19 @@
 <script>
 export default {
   name: "BaseButton",
+
+  // Le bouton accepte une prop "variant" pour changer son style
   props: {
     variant: {
       type: String,
-      default: "primary",
+      default: "primary", // style par défaut
     }
   }
 };
 </script>
 
 <style scoped>
+/* Style général appliqué à tous les boutons */
 .base-button {
   border: none;
   cursor: pointer;
@@ -25,7 +30,7 @@ export default {
   font-size: 1rem;
 }
 
-/* --- PRIMARY BUTTON (Commencer) --- */
+/* --- BOUTON PRIMARY (ex: "Commencer") --- */
 .primary {
   background: #000;
   color: #fff;
@@ -40,7 +45,7 @@ export default {
   color: #000;
 }
 
-/* --- SECONDARY BUTTON (Terminer le form en envois de celui-ci) --- */
+/* --- BOUTON SECONDARY (ex: bouton envoyer dans un formulaire) --- */
 .secondary {
   background: #0F4C81;
   color: #fff;
@@ -56,7 +61,7 @@ export default {
   color: #000;
 }
 
-/* --- TROISIEME BUTTON (Ajouter une nouvelle carte) --- */
+/* --- BOUTON TROISIÈME (ex: ajouter une mémoire) --- */
 .troisieme {
   background: #0bac76;
   color: #fff;
@@ -72,7 +77,7 @@ export default {
   color: #000;
 }
 
-/* --- TROISIEME BUTTON (Ajouter une nouvelle carte) --- */
+/* --- BOUTON QUATRIÈME (ex: bouton retour) --- */
 .quatrieme {
   background: #e48e5c;
   color: #fff;
@@ -88,11 +93,12 @@ export default {
   color: #000;
 }
 
-/* --- ICON BUTTON (Cogwheel) --- */
+/* --- BOUTON ICÔNE (ex: engrenage dans AppHeader) --- */
 .icon {
   background: rgba(0, 0, 0, 0);
   padding: 0.45rem;
   border-radius: 999px;
+  /* forme ronde */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,6 +108,7 @@ export default {
   background: rgba(0, 0, 0, 0.7);
 }
 
+/* Taille de l’image dans un bouton icône */
 .icon img {
   width: 24px;
   height: 24px;

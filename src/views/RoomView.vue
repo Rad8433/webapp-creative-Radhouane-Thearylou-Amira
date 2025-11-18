@@ -1,14 +1,23 @@
 <template>
   <div class="room" :style="{ background: roomBackground }">
+    <!-- Bouton retour vers la liste des salles -->
     <div class="retoure">
       <BaseButton variant="quatrieme" @click="goBack">
         <- </BaseButton>
     </div>
+
+    <!-- Section principale : filtres + swiper des mémoires -->
     <div class="memory-room">
+
+      <!-- Barre de filtres : recherche, date, tag (sans salle ni tri) -->
       <OptionBar v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag"
         :tag-options="tagOptions" :showRoom="false" :showSort="false" />
+
+      <!-- Swiper qui affiche les mémoires filtrées -->
       <MemorySwiper :filters="filters" />
     </div>
+
+    <!-- Bouton pour ajouter une nouvelle mémoire -->
     <BaseButton variant="troisieme" @click="ajout">
       +
     </BaseButton>
@@ -23,13 +32,17 @@ import OptionBar from "@/components/layout/OptionBar.vue";
 export default {
   name: 'MemoryRoom',
   components: { MemorySwiper, BaseButton, OptionBar },
+
   data() {
     return {
+      // Filtres utilisés dans la salle de mémoires
       filters: {
         search: "",
         tag: "all",
         date: "all",
       },
+
+      // Liste des tags disponibles
       tagOptions: [
         { value: "#vacances", label: "#vacances" },
         { value: "#aventure", label: "#aventure" },
@@ -40,16 +53,21 @@ export default {
       ],
     };
   },
+
   methods: {
+    // Retour à la page des salles
     goBack() {
       this.$router.push({ name: 'MuseumRooms' });
-
     },
+
+    // Ouvre la modal pour ajouter une mémoire dans cette salle
     ajout() {
       this.$router.push({ name: 'Modal', params: { id: this.$route.params.id } });
     }
   },
+
   computed: {
+    // Choisit le fond d'écran selon l'ID de la salle
     roomBackground() {
       const id = this.$route.params.id;
 
@@ -78,19 +96,23 @@ export default {
 </script>
 
 <style scoped>
+/* Change la couleur des icônes dans la barre de filtres */
 :deep(.optionbar__icon svg circle),
 :deep(.optionbar__icon svg line) {
   stroke: #ffffff !important;
 }
 
+/* Ligne soulignée blanche dans OptionBar */
 ::v-deep .optionbar__underline {
   background-color: white;
 }
 
+/* Texte des boutons dans OptionBar en blanc */
 ::v-deep .optionbar__item {
   color: white;
 }
 
+/* Style général de la salle de mémoires */
 .room {
   display: flex;
   flex-direction: column;
@@ -100,10 +122,12 @@ export default {
   background: linear-gradient(135deg, #ffecd2, #fcb69f);
 }
 
+/* Positionnement du bouton retour */
 .retoure {
   width: 45%;
 }
 
+/* Conteneur principal des filtres + swiper */
 .memory-room {
   height: 80%;
   width: 100%;
@@ -116,6 +140,7 @@ export default {
   gap: 20px;
 }
 
+/* Largeur d’un bouton générique (si utilisé) */
 .bouton {
   width: 60px;
 }
