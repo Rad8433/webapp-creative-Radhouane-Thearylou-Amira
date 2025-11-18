@@ -107,7 +107,7 @@ export default {
 .quatrieme {
   background: #e48e5c;
   color: #fff;
-  width: 70px;
+  width: 60px;
   padding: 0.6rem 0rem;
   border-radius: 8px;
   font-size: 1.5rem;

@@ -7,7 +7,7 @@
       <!-- En-tête avec titre personnalisé -->
       <AppHeader variantHeader="titleBlack">
         <template #title >
-          Salles du Musée
+          Choissiez votre destination
         </template>
         
       </AppHeader>
