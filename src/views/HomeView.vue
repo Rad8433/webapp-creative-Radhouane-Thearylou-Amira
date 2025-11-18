@@ -4,9 +4,12 @@
       <div class="hero-frame">
 
         <!-- Affiche le composant d’en-tête du site -->
-        <AppHeader>
-        <BaseButton engrenage="svg"></BaseButton>
+        <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
+          <template #title >
+          Salles du Musée
+        </template>
         </AppHeader>
+        
 
         <!-- Contenu principal : texte à gauche et cartes à droite -->
         <div class="hero-content">

@@ -1,12 +1,15 @@
 <template>
   <main class="museum-rooms">
     <div class="global">
-
+      <BaseButton variant="quatrieme" @click="goBack">
+        <- 
+      </BaseButton>
       <!-- En-tête avec titre personnalisé -->
-      <AppHeader variantHeader="one">
+      <AppHeader variantHeader="titleBlack">
         <template #title >
           Salles du Musée
         </template>
+        
       </AppHeader>
 
       <!-- Barre de filtres : recherche, salle, tag, tri -->
@@ -29,6 +32,7 @@ import AppHeader from "@/components/common/AppHeader.vue";
 import AppFooter from "@/components/common/AppFooter.vue";
 import MuseumGrid from "@/components/specific/MuseumGrid.vue";
 import OptionBar from "@/components/layout/OptionBar.vue";
+import BaseButton from "@/components/common/BaseButton.vue";
 
 export default {
   name: "MuseumRoomsView",
@@ -37,6 +41,7 @@ export default {
     AppFooter,
     MuseumGrid,
     OptionBar,
+    BaseButton,
   },
   data() {
     return {
@@ -68,6 +73,11 @@ export default {
         { value: "#rêve", label: "#rêve" },
       ],
     };
+  },
+  methods: {
+    goBack() {
+      this.$router.push({ name: 'home' });
+    },
   },
 };
 </script>

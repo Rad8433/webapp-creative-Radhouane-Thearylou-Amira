@@ -22,11 +22,11 @@ export default {
   props: {
     variant: {
       type: String,
-      default: "primary", // style par défaut
+      default: "", // style par défaut
     },
     engrenage: {
       type: String,
-      default: "primary", // style par défaut
+      default: "", // style par défaut
     }
   }
 };
@@ -38,10 +38,14 @@ export default {
   display: none;
 }
 
-.cogVisible svg {
+.cogVisible {
   display: block;
-  background-color: #0bac76;
+  fill: white;
 }
+
+
+
+
 /* Style général appliqué à tous les boutons */
 .base-button {
   border: none;
@@ -49,6 +53,7 @@ export default {
   transition: 0.25s ease;
   font-family: inherit;
   font-size: 1rem;
+  background: none;
 }
 
 /* --- BOUTON PRIMARY (ex: "Commencer") --- */
@@ -114,24 +119,19 @@ export default {
   color: #000;
 }
 
-/* --- BOUTON ICÔNE (ex: engrenage dans AppHeader) --- */
-.icon {
-  background: rgba(0, 0, 0, 0);
-  padding: 0.45rem;
-  border-radius: 999px;
-  /* forme ronde */
+.cogPrimary {
+  background: #0F4C81;
+  color: #fff;
+  width: 60px;
+  height: 60px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  border-radius: 60px;
 }
 
-.icon:hover {
-  background: rgba(0, 0, 0, 0.7);
-}
-
-/* Taille de l’image dans un bouton icône */
-.icon img {
-  width: 24px;
-  height: 24px;
+.cogPrimary:hover {
+  background: #ffe6bf;
+  color: #000;
 }
 </style>

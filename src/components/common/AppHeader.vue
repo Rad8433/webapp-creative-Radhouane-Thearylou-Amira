@@ -1,5 +1,7 @@
 <template>
+
   <header class="app-header">
+    <section>
     <!-- Le titre du header -->
     <h1 class="headerTitle" :class="variantHeader">
       <slot name="title">
@@ -9,12 +11,10 @@
     </h1>
 
     <!-- Zone à droite du header (icône, bouton, etc.) -->
-    <div class="headerEngrenage">
-      <!-- Le slot permet au parent de remplacer ce contenu -->
-      <slot name="right">
-        <!-- Contenu par défaut : bouton avec une icône engrenage -->
-      </slot>
+    <div class="headerEngrenage" :class="visibleCog">
+        <BaseButton variant="cogPrimary" engrenage="cogVisible" ></BaseButton>
     </div>
+  </section>
   </header>
 </template>
 
@@ -35,24 +35,51 @@ export default {
       type: String,
       default: "Musée",
     },
+    visibleCog: {
+      type: String,
+      default: "",
+    },
   },
 };
 </script>
 
 <style scoped>
+
+.cogDisplay {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.cogDisplayN {
+  display: none;
+}
 /* Mise en page générale du header */
 .app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.8rem 0.9rem;
+  width: 95%;
 }
-
 /* Style du titre */
 .headerTitle {
   font-family: "Georgia", serif;
   font-size: 2rem;
+}
 
+.titleBlack {
+  color: #000000;
+}
+
+.titleWhite {
+  color: #ffffff;
 }
 
 .one {
@@ -63,9 +90,4 @@ export default {
   color: #ffffff;
 }
 
-/* Taille de l’icône engrenage si une image est utilisée */
-.headerEngrenage img {
-  width: 32px;
-  height: 32px;
-}
 </style>
