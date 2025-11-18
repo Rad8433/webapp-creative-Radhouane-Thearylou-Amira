@@ -103,7 +103,7 @@ export default {
     },
     showRoom: {
       type: Boolean,
-      default: true, 
+      default: true,
     },
     showSort: {
       type: Boolean,
@@ -111,7 +111,7 @@ export default {
     },
     showDate: {
       type: Boolean,
-      default: true, 
+      default: true,
     },
   },
   emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"],

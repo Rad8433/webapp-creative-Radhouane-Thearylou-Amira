@@ -8,15 +8,8 @@
       </AppHeader>
 
       <!-- BARRE DE FILTRES -->
-      <OptionBar 
-        v-model:search="filters.search" 
-        v-model:room="filters.room"
-        v-model:tag="filters.tag"
-        v-model:sort="filters.sort"
-        :room-options="roomOptions" 
-        :tag-options="tagOptions"
-        :showDate="false"  
-      />
+      <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
+        v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" :showDate="false" />
 
       <!-- GRID DES SALLES (filtrée) -->
       <section class="cards-placeholder">
@@ -72,12 +65,12 @@ export default {
 };
 </script>
 <style scoped>
-::v-deep .app-header__right svg path {
+:deep(.app-header__right svg path) {
   fill: black !important;
 }
 
-::v-deep .app-header__title {
-  color: black;
+:deep(.app-header__title) {
+  color: black !important;
 }
 
 .global {

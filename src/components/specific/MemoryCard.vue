@@ -50,7 +50,7 @@ export default {
     },
     bgColor: {
       type: String,
-      default: "#e0e0e0" 
+      default: "#e0e0e0"
     }
   }
 };
@@ -86,6 +86,7 @@ export default {
   margin: 8px 0;
   font-weight: bold;
   font-size: 1.2rem;
+  color: #000;
 }
 
 .card-image {
