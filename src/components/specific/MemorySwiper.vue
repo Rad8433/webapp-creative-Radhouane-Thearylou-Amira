@@ -1,20 +1,20 @@
 <template>
   <div>
     <!-- Composant Swiper (carrousel) -->
-    <swiper :effect="'coverflow'" <!-- Effet 3D coverflow -->
-      :grabCursor="true" <!-- Curseur main au survol -->
-      :centeredSlides="true" <!-- Centre la diapositive active -->
-      :slidesPerView="'auto'" <!-- Taille automatique des slides -->
-      :spaceBetween="-40" <!-- Superposition légère entre les cartes -->
-      :coverflowEffect="{ <!-- Paramètres de l’effet coverflow -->
+    <swiper :effect="'coverflow'" 
+      :grabCursor="true" 
+      :centeredSlides="true" 
+      :slidesPerView="'auto'" 
+      :spaceBetween="-40" 
+      :coverflowEffect="{ 
       rotate: 50,
       stretch: 0,
       depth: 60,
       modifier: 1,
       slideShadows: false
       }"
-      :pagination="false" <!-- Pas de pagination -->
-      :modules="modules" <!-- Charge les modules utilisés -->
+      :pagination="false" 
+      :modules="modules" 
       class="mySwiper"
       >
       <!-- Une carte MemoryCard par mémoire filtrée -->
