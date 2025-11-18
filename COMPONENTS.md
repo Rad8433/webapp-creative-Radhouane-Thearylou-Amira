@@ -1,4 +1,4 @@
-# 📁 Liste des composants (Architecture de l’application)
+# 📁 Liste des composants
 
 ## **HomeView**
 - **Responsabilité** : Page d’accueil présentant l’introduction de l’expérience et un bouton pour commencer.
