@@ -2,19 +2,19 @@
 
   <header class="app-header">
     <section>
-    <!-- Le titre du header -->
-    <h1 class="headerTitle" :class="variantHeader">
-      <slot name="title">
-        <!-- Si aucun slot n’est fourni, on affiche le titre du prop -->
-        {{ title }}
-      </slot>
-    </h1>
+      <!-- Le titre du header -->
+      <h1 class="headerTitle" :class="variantHeader">
+        <slot name="title">
+          <!-- Si aucun slot n’est fourni, on affiche le titre du prop -->
+          {{ title }}
+        </slot>
+      </h1>
 
-    <!-- Zone à droite du header (icône, bouton, etc.) -->
-    <div class="headerEngrenage" :class="visibleCog">
-        <BaseButton variant="cogPrimary" engrenage="cogVisible" ></BaseButton>
-    </div>
-  </section>
+      <!-- Zone à droite du header (icône, bouton, etc.) -->
+      <div class="headerEngrenage" :class="visibleCog">
+        <BaseButton variant="cogPrimary" engrenage="cogVisible"></BaseButton>
+      </div>
+    </section>
   </header>
 </template>
 
@@ -44,7 +44,6 @@ export default {
 </script>
 
 <style scoped>
-
 .cogDisplay {
   display: block;
   width: 32px;
@@ -54,6 +53,7 @@ export default {
 .cogDisplayN {
   display: none;
 }
+
 /* Mise en page générale du header */
 .app-header {
   display: flex;
@@ -68,6 +68,7 @@ section {
   padding: 1rem 1.8rem 0.9rem;
   width: 95%;
 }
+
 /* Style du titre */
 .headerTitle {
   font-family: "Georgia", serif;
@@ -81,13 +82,4 @@ section {
 .titleWhite {
   color: #ffffff;
 }
-
-.one {
-  color: #000000;
-}
-
-.two {
-  color: #ffffff;
-}
-
 </style>
