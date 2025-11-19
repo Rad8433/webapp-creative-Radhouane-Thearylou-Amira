@@ -1,6 +1,5 @@
 <template>
   <main class="home">
-    <section class="hero">
       <div class="hero-frame">
         <div class="header">
         <!-- Affiche le composant d’en-tête du site -->
@@ -34,7 +33,6 @@
         </div>
 
       </div>
-    </section>
   </main>
 </template>
 
@@ -62,36 +60,33 @@ export default {
 /* Style général de la section d’accueil */
 .home {
   background: #111;
-  
-}
-
-
-/* Section principale centrée verticalement */
-.hero {
   display: flex;
   justify-content: center;
   width: 100%;
   height: 100vh;
+  background-image: url("@/assets/hero-bg.png");
+  background-size: cover;
+  background-position: center;
 }
+
+
 .header{
-  padding: 0 20em;
+
 
 }
 /* Conteneur principal avec l’image de fond */
 .hero-frame {
   position: relative;
   height: 100%;
-  width: 100%;
-  background-image: url("@/assets/hero-bg.png");
-  background-size: cover;
-  background-position: center;
+  width: 70vw;
+
 }
 
 /* Mise en page du contenu texte + cartes */
 .hero-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 0 22em 0;
+ 
   height: 80%;
   width: 100%;
   align-items: center;

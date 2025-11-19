@@ -54,7 +54,7 @@ export default {
   overflow: hidden;
   /* masque ce qui dépasse (image) */
   width: 100%;
-  max-width: 420px;
+ 
   font-family: 'roboto', sans-serif;
 }
 

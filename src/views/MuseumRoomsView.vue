@@ -109,7 +109,7 @@ export default {
   align-items: center;
 }
 .header{
-  padding: 0 0 0 1em;
+ width: 100%;
 }
 .backButton{
   padding-top:1em;
@@ -120,14 +120,16 @@ export default {
   justify-content: flex-start; 
   flex-wrap: wrap; 
   gap: 1rem; 
-  padding-left: 3em;
+ 
+  width: 100%;
  
 }
-
-/* Zone où la grille peut s'étendre */
-.cards-placeholder {
-  flex-grow: 1;
+.filtre > * {
+  flex: 1 1 auto;
+  max-width: 100%;
 }
+
+
 
 
 /* ================================
@@ -151,58 +153,33 @@ export default {
    Desktop Medium (992px - 1199px)
    ================================= */
 @media (min-width: 992px) and (max-width: 1199px) {
-  .global {
-    width: 70vw;
-    gap: 1.8rem;
-  }
 
   .backButton {
     padding-left: 3em;
   }
 
-  .header {
-    padding-left: 1em;
-  }
 
-  .filtre {
-    padding-left: 3em;
-
-   
-  }
 }
 
 /* ================================
    Tablet (≤992px)
    ================================= */
 @media (max-width: 992px) {
-  .global {
-    width: 90%;
-    gap: 1.5rem;
-  }
+
 
   .backButton {
     padding-left: 2.5em;
     padding-top: 0.8em;
   }
 
-  .header {
-    padding-left: 0.5em;
-  }
-
-  .filtre {
-    padding-left: 2.5em;
-   
-  }
+ 
+  
 }
 
 /* ================================
    Tablet Vertical / Large Mobile (≤768px)
    ================================= */
 @media (max-width: 768px) {
-  .global {
-    width: 95%;
-    gap: 1rem;
-  }
 
   .backButton {
     padding-left: 2em;
@@ -210,27 +187,15 @@ export default {
     align-self: flex-start;
   }
 
-  .header {
-    padding-left: 0;
-    text-align: center;
-  }
 
-  .filtre {
-    padding-left: 2em;
-    justify-content: center;
-    flex-wrap: wrap;
 
-  }
 }
 
 /* ================================
    Mobile (≤0px)
    ================================= */
 @media (max-width: 590px) {
-  .global {
-    width: 100%;
-   
-  }
+
 
   .backButton {
     padding-left: 2em;
@@ -238,19 +203,9 @@ export default {
   
   }
 
-  .header {
-    padding-left: 0;
-    text-align: center;
-  }
+ 
 
-  .filtre {
-    padding-left: 2em;
-    justify-content: center;
-    
-  }
 
-  .cards-placeholder {
-    padding: 0 0.5em;
-  }
+
 }
 </style>

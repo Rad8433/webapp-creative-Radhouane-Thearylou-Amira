@@ -1,97 +1,63 @@
 <template>
   <div class="optionbar">
-
-    <!-- --- RECHERCHE TEXTE --- -->
-    <!-- Champ de recherche avec icône loupe -->
     <div class="optionbar__item optionbar__item--search">
       <span class="optionbar__icon">
-        <!-- Petite icône de loupe -->
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="7" stroke="#3a3a3a" stroke-width="2" fill="none" />
           <line x1="16" y1="16" x2="21" y2="21" stroke="#3a3a3a" stroke-width="2" stroke-linecap="round" />
         </svg>
       </span>
 
-      <!-- Input contrôlé → renvoie la valeur au parent -->
       <input type="text" :value="search" @input="$emit('update:search', $event.target.value)" placeholder="Recherche" />
-
-      <!-- Barre décorative sous l’input -->
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- --- FILTRE PAR SALLE --- -->
-    <!-- Affiché seulement si showRoom = true -->
     <div v-if="showRoom" class="optionbar__item">
       <div class="optionbar__select-wrapper">
-
-        <!-- Select contrôlé → renvoie la valeur au parent -->
         <select :value="room" @change="$emit('update:room', $event.target.value)">
           <option value="all">Toutes les salles</option>
-
-          <!-- Liste générée dynamiquement -->
           <option v-for="r in roomOptions" :key="r.value" :value="r.value">
             {{ r.label }}
           </option>
         </select>
-
-        <!-- Petite icône de chevron pour indiquer le dropdown -->
         <span class="optionbar__chevron">▾</span>
       </div>
-
-      <!-- Barre décorative -->
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- --- FILTRE PAR TAG --- -->
     <div class="optionbar__item">
       <div class="optionbar__select-wrapper">
-
-        <!-- Dropdown pour les tags -->
         <select :value="tag" @change="$emit('update:tag', $event.target.value)">
           <option value="all">Tous les tags</option>
-
-          <!-- Option générée depuis les props -->
           <option v-for="t in tagOptions" :key="t.value" :value="t.value">
             {{ t.label }}
           </option>
         </select>
-
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- --- FILTRE PAR DATE --- -->
-    <!-- Affiché seulement si showDate = true -->
     <div v-if="showDate" class="optionbar__item">
       <div class="optionbar__select-wrapper">
-
         <select :value="date" @change="$emit('update:date', $event.target.value)">
           <option value="all" disabled>Date</option>
           <option value="recent">Récent</option>
           <option value="old">Ancien</option>
         </select>
-
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
 
-    <!-- --- TRI PAR NOMBRE DE MEMOIRES --- -->
-    <!-- Affiché seulement si showSort = true -->
     <div v-if="showSort" class="optionbar__item optionbar__item--sort">
       <div class="optionbar__select-wrapper">
-
         <select :value="sort" @change="$emit('update:sort', $event.target.value)">
           <option value="asc">Mémoires ↑ (croissant)</option>
           <option value="desc">Mémoires ↓ (décroissant)</option>
         </select>
-
         <span class="optionbar__chevron">▾</span>
       </div>
-
       <span class="optionbar__underline"></span>
     </div>
   </div>
@@ -100,66 +66,54 @@
 <script>
 export default {
   name: "OptionBar",
-
-  // Reçoit les valeurs actuelles depuis le parent
   props: {
     search: { type: String, default: "" },
     room: { type: String, default: "all" },
     tag: { type: String, default: "all" },
     sort: { type: String, default: "asc" },
     date: { type: String, default: "all" },
-
-    // Options disponibles
     roomOptions: { type: Array, default: () => [] },
     tagOptions: { type: Array, default: () => [] },
-
-    // Permet d'afficher ou cacher certaines options
     showRoom: { type: Boolean, default: true },
     showSort: { type: Boolean, default: true },
-    showDate: { type: Boolean, default: true },
+    showDate: { type: Boolean, default: true }
   },
-
-  // Liste des événements envoyés vers le parent
-  emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"],
+  emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"]
 };
 </script>
 
 <style scoped>
-/* Conteneur principal de la barre */
 .optionbar {
   display: flex;
   align-items: flex-end;
   flex-wrap: wrap;
   gap: 3rem;
   padding: 0.8rem 0;
-  background-color: tra;
+  background-color: transparent;
   color: #3a3a3a;
-  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 0.95rem;
 }
 
-/* Élément individuel (input ou select) */
 .optionbar__item {
   position: relative;
   display: flex;
   align-items: center;
   min-width: 180px;
+  flex-grow: 1;
 }
 
-/* Taille spéciale pour la zone recherche */
 .optionbar__item--search {
-  max-width: 260px;
+  max-width: none;
+  flex-grow: 2;
 }
 
-/* Icône à gauche (loupe) */
 .optionbar__icon {
   display: flex;
   align-items: center;
   margin-right: 0.75rem;
 }
 
-/* Style commun pour input et select */
 .optionbar__item input,
 .optionbar__item select {
   border: none;
@@ -172,31 +126,26 @@ export default {
   padding-bottom: 0.3rem;
 }
 
-/* Le input a un curseur texte */
 .optionbar__item input {
   cursor: text;
 }
 
-/* Le select utilise l’apparence personnalisée */
 .optionbar__item select {
   appearance: none;
   cursor: pointer;
 }
 
-/* Wrapper pour bien aligner select + chevron */
 .optionbar__select-wrapper {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-/* Petite flèche à droite du select */
 .optionbar__chevron {
   font-size: 0.75rem;
   margin-left: 0.4rem;
 }
 
-/* Barre visuelle sous chaque champ */
 .optionbar__underline {
   position: absolute;
   left: 0;
@@ -206,7 +155,6 @@ export default {
   background-color: rgba(58, 58, 58, 0.4);
 }
 
-/* Responsive en dessous de 900px */
 @media (max-width: 900px) {
   .optionbar {
     flex-wrap: wrap;

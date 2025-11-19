@@ -65,7 +65,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.8rem 0.9rem;
+  padding: 1rem 0 1em 0;
   width: 100%;
 }
 

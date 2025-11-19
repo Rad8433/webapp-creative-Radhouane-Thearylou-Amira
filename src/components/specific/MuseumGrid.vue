@@ -85,7 +85,8 @@ export default {
 /* Conteneur global de la grille */
 .grid {
   background: rgba(0, 0, 255, 0);
-  padding: 3rem;
+  padding: 3em 0 5em 0 ;
+
   width: 100%;
 }
 
@@ -94,7 +95,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 2rem;
-  justify-items: center;
+
 }
 
 
@@ -106,7 +107,7 @@ export default {
   .rooms-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1.8rem;
-    padding: 2.5rem;
+   
   }
 }
 
@@ -117,7 +118,7 @@ export default {
   .rooms-grid {
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
-    padding: 2rem;
+    
   }
 }
 
@@ -128,7 +129,7 @@ export default {
   .rooms-grid {
     grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 1.2rem;
-    padding: 1.5rem;
+
   }
 }
 
@@ -139,7 +140,7 @@ export default {
   .rooms-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    padding: 1rem;
+   
   }
 }
 </style>
