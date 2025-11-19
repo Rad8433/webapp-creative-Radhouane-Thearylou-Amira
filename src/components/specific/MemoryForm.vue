@@ -134,7 +134,7 @@ section {
 /* Conteneur principal du formulaire */
 .form {
   background: rgb(43, 148, 143);
-  width: 550px;
+  width: fit-content;   
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,5 +220,15 @@ input {
 #legende {
   height: 6vh;
   margin-bottom: 30px;
+}
+
+@media (max-width: 650px) {
+  .form {
+    padding: 20px 15px;
+
+  }
+  .image-circle {
+    height: 20vh; 
+  }
 }
 </style>
