@@ -6,7 +6,7 @@
         <!-- Affiche le composant d’en-tête du site -->
         <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
           <template #title >
-          Salles du Musée
+          Musée
         </template>
         </AppHeader>
         </div>
@@ -15,7 +15,7 @@
         <div class="hero-content">
           <div class="hero-text">
             <!-- Petit texte d’introduction -->
-           <h1 class="hero-title">Vos voyages </br> <span>en mémoires</span></h1>
+           <h1 class="hero-title">Vos voyages <br> <span>en mémoires</span></h1>
             <!-- Titre principal de la page -->
           
 
@@ -62,7 +62,9 @@ export default {
 /* Style général de la section d’accueil */
 .home {
   background: #111;
+  
 }
+
 
 /* Section principale centrée verticalement */
 .hero {

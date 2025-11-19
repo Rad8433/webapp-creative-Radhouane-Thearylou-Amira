@@ -86,7 +86,7 @@ export default {
 </script>
 
 <style scoped>
-/* Change la couleur de l’icône dans l’en-tête */
+
 
 /* Conteneur principal centré et avec marges internes */
 .global {
@@ -117,9 +117,9 @@ export default {
 }
 .filtre {
   display: flex;
-  justify-content: flex-start; /* align left on desktop */
-  flex-wrap: wrap; /* allow wrapping */
-  gap: 1rem; /* spacing between items */
+  justify-content: flex-start; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
   padding-left: 3em;
  
 }
