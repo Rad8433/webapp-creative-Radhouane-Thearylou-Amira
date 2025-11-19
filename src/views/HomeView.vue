@@ -72,7 +72,7 @@ export default {
   height: 100vh;
 }
 .header{
-  padding: 0 18em;
+  padding: 0 20em;
 
 }
 /* Conteneur principal avec l’image de fond */
@@ -89,7 +89,7 @@ export default {
 .hero-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 0 20em 0;
+  padding: 0 22em 0;
   height: 80%;
   width: 100%;
   align-items: center;

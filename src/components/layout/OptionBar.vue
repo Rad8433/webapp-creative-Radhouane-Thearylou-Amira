@@ -129,6 +129,7 @@ export default {
 .optionbar {
   display: flex;
   align-items: flex-end;
+  flex-wrap: wrap;
   gap: 3rem;
   padding: 0.8rem 0;
   background-color: tra;

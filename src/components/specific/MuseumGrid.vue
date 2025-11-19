@@ -1,5 +1,5 @@
 <template>
-  <div class="gird">
+  <div class="grid">
     <!-- Grille contenant toutes les cartes de salles -->
     <div class="rooms-grid">
       <!-- Une MuseumCard par salle filtrée -->
@@ -16,7 +16,6 @@ export default {
   name: "MuseumGrid",
   components: { MuseumCard },
 
-  // Reçoit l'objet "filters" depuis la page MuseumRoomsView
   props: {
     filters: {
       type: Object,
@@ -26,15 +25,13 @@ export default {
 
   data() {
     return {
-      // Liste des salles provenant du fichier JSON
       rooms: roomsData.rooms,
     };
   },
 
   computed: {
-    // Filtre toutes les salles selon les critères appliqués
     filteredRooms() {
-      let result = [...this.rooms]; // copie pour éviter de modifier l'original
+      let result = [...this.rooms];
 
       const search = this.filters.search?.trim().toLowerCase();
       const roomFilter = this.filters.room;
@@ -63,8 +60,7 @@ export default {
         result = result.sort(
           (a, b) => (a.memoriesCount || 0) - (b.memoriesCount || 0)
         );
-      }
-      else if (sort === "desc") {
+      } else if (sort === "desc") {
         result = result.sort(
           (a, b) => (b.memoriesCount || 0) - (a.memoriesCount || 0)
         );
@@ -75,7 +71,6 @@ export default {
   },
 
   methods: {
-    // Redirige vers la page Room (vue détaillée d’une salle)
     goToRoom(roomId) {
       this.$router.push({
         name: "Room",
@@ -88,7 +83,7 @@ export default {
 
 <style>
 /* Conteneur global de la grille */
-.gird {
+.grid {
   background: rgba(0, 0, 255, 0);
   padding: 3rem;
   width: 100%;
@@ -98,8 +93,53 @@ export default {
 .rooms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  /* S’adapte à l’espace disponible */
   gap: 2rem;
   justify-items: center;
+}
+
+
+
+/* ================================
+   Between 993px and 1183px → 2 columns
+   ================================= */
+@media (min-width: 993px) and (max-width: 1319px) {
+  .rooms-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+    padding: 2.5rem;
+  }
+}
+
+/* ================================
+   Tablet (992px)
+   ================================= */
+@media (max-width: 992px) {
+  .rooms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+}
+
+/* ================================
+   Petit Tablet / Large Mobile (768px)
+   ================================= */
+@media (max-width: 768px) {
+  .rooms-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+}
+
+/* ================================
+   Mobile (600px)
+   ================================= */
+@media (max-width: 600px) {
+  .rooms-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+  }
 }
 </style>

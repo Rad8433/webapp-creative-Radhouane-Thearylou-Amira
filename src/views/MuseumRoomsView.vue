@@ -1,16 +1,19 @@
 <template>
   <main class="museum-rooms">
     <div class="global">
+      <div class="backButton">
       <BaseButton variant="quatrieme" @click="goBack">
         <- 
-      </BaseButton>
+      </BaseButton></div>
+      <div class="header">
       <!-- En-tête avec titre personnalisé -->
-      <AppHeader variantHeader="titleBlack">
+      <AppHeader variantHeader="titleBlack"> 
         <template #title >
           Choissiez votre destination
         </template>
-        
+       
       </AppHeader>
+    </div>
       <div class="filtre">
       <!-- Barre de filtres : recherche, salle, tag, tri -->
       <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
@@ -82,7 +85,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 /* Change la couleur de l’icône dans l’en-tête */
 
 /* Conteneur principal centré et avec marges internes */
@@ -90,7 +93,6 @@ export default {
   display: flex;
   flex-direction: column;
   width: 70vw;
-
   box-sizing: border-box;
   font-family: Georgia, serif;
   color: #3a3a3a;
@@ -106,9 +108,149 @@ export default {
   justify-content: center;
   align-items: center;
 }
+.header{
+  padding: 0 0 0 1em;
+}
+.backButton{
+  padding-top:1em;
+  padding-left: 3em;
+}
+.filtre {
+  display: flex;
+  justify-content: flex-start; /* align left on desktop */
+  flex-wrap: wrap; /* allow wrapping */
+  gap: 1rem; /* spacing between items */
+  padding-left: 3em;
+ 
+}
 
 /* Zone où la grille peut s'étendre */
 .cards-placeholder {
   flex-grow: 1;
+}
+
+
+/* ================================
+   Desktop (1200px - 1399px)
+   ================================= */
+@media (min-width: 1200px) and (max-width: 1399px) {
+ 
+
+  .filtre {
+  
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: -1rem;
+  }
+  .filtre > * {
+  flex: 1 1 5000px; /* items shrink and wrap nicely */
+}
+}
+
+/* ================================
+   Desktop Medium (992px - 1199px)
+   ================================= */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .global {
+    width: 70vw;
+    gap: 1.8rem;
+  }
+
+  .backButton {
+    padding-left: 3em;
+  }
+
+  .header {
+    padding-left: 1em;
+  }
+
+  .filtre {
+    padding-left: 3em;
+
+   
+  }
+}
+
+/* ================================
+   Tablet (≤992px)
+   ================================= */
+@media (max-width: 992px) {
+  .global {
+    width: 90%;
+    gap: 1.5rem;
+  }
+
+  .backButton {
+    padding-left: 2.5em;
+    padding-top: 0.8em;
+  }
+
+  .header {
+    padding-left: 0.5em;
+  }
+
+  .filtre {
+    padding-left: 2.5em;
+   
+  }
+}
+
+/* ================================
+   Tablet Vertical / Large Mobile (≤768px)
+   ================================= */
+@media (max-width: 768px) {
+  .global {
+    width: 95%;
+    gap: 1rem;
+  }
+
+  .backButton {
+    padding-left: 2em;
+    padding-top: 0.5em;
+    align-self: flex-start;
+  }
+
+  .header {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .filtre {
+    padding-left: 2em;
+    justify-content: center;
+    flex-wrap: wrap;
+
+  }
+}
+
+/* ================================
+   Mobile (≤0px)
+   ================================= */
+@media (max-width: 590px) {
+  .global {
+    width: 100%;
+   
+  }
+
+  .backButton {
+    padding-left: 2em;
+    padding-top: 0.5em;
+  
+  }
+
+  .header {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .filtre {
+    padding-left: 2em;
+    justify-content: center;
+    
+  }
+
+  .cards-placeholder {
+    padding: 0 0.5em;
+  }
 }
 </style>
