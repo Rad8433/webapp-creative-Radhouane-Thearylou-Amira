@@ -1,9 +1,11 @@
+//Importation de Vue et établissement des routes
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import MuseumRoomsView from '../views/MuseumRoomsView.vue'
 import RoomView from '../views/RoomView.vue'
 import ModalView from '@/views/ModalView.vue'
 
+//Création des chemins de navigation
 const routes = [
   {
     path: '/',

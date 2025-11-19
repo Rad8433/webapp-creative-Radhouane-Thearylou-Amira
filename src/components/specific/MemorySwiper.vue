@@ -185,9 +185,13 @@ export default {
 
 
 .container {
-  max-width: 90vw;       
+  max-width: 90vw;  
+  padding-right: 2em;     
   margin: 0 auto;
+  border: none;
 }
+
+
 
 
 .swiper-slide {
