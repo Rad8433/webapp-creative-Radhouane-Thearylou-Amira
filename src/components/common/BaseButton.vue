@@ -119,6 +119,19 @@ export default {
   color: #000;
 }
 
+
+.cinquieme {
+  color: #fff;
+  width: 50px;
+  font-size: 1.5rem;
+  margin-left: -0.5em;
+  margin-bottom: 0.5em;
+}
+
+.cinquieme:hover {
+  color: #000;
+}
+
 .cogPrimary {
   background: #888856;
   color: #fff;

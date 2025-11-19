@@ -1,9 +1,9 @@
 <template>
   <section>
     <div class="form">
-
       <div class="formContenus">
         <!-- Titre principal du formulaire -->
+        <BaseButton variant="cinquieme" @click="goBack"><-</BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
         <!-- Champ : titre de la mémoire -->
@@ -139,7 +139,7 @@ section {
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 40px;
+  padding: 15px 40px 40px 40px;
   border-radius: 15px;
 }
 
