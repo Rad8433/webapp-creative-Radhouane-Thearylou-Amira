@@ -5,11 +5,11 @@
 
         <!-- Affiche le composant d’en-tête du site -->
         <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
-          <template #title >
-          Salles du Musée
-        </template>
+          <template #title>
+            Musée
+          </template>
         </AppHeader>
-        
+
 
         <!-- Contenu principal : texte à gauche et cartes à droite -->
         <div class="hero-content">
