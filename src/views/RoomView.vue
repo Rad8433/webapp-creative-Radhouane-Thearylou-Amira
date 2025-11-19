@@ -1,6 +1,6 @@
 <template>
   <div class="room" :style="{ background: roomBackground }">
-    <div class="retoure">
+    <div class="retour">
       <BaseButton variant="quatrieme" @click="goBack">
         <- </BaseButton>
     </div>
@@ -9,10 +9,10 @@
       <h1 class="room-title">
         {{ roomTitle }}
       </h1>
- 
+      <div class="filtre">
       <OptionBar v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag"
         :tag-options="tagOptions" :showRoom="false" :showSort="false" />
- 
+    </div>
       <MemorySwiper :filters="filters" />
     </div>
  
@@ -100,6 +100,13 @@ export default {
 </script>
  
 <style scoped>
+h1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
 .room {
   display: flex;
   flex-direction: column;
@@ -108,8 +115,14 @@ export default {
   height: 100vh;
 }
  
-.retoure {
-  width: 45%;
+.retour {
+width: 45em;
+}
+
+.filtre{
+  display: flex;
+  justify-content: start;
+  
 }
  
 .memory-room {
@@ -135,6 +148,28 @@ export default {
  
 .bouton {
   width: 60px;
+}
+@media (min-width:730px) and (max-width: 900px) {
+  .retour {
+width: 41em;
+}
+
+}
+
+@media (min-width:700px) and  (max-width: 730px) {
+  .retour {
+    width: 40em;
+  }
+
+
+}
+
+@media   (max-width: 700px) {
+  .retour {
+    width: 90%;
+  }
+
+
 }
 </style>
  

@@ -1,22 +1,46 @@
 <template>
-  <div>
+  <div class="container">
     <!-- Composant Swiper (carrousel) -->
-    <swiper :effect="'coverflow'" 
-      :grabCursor="true" 
-      :centeredSlides="true" 
-      :slidesPerView="'auto'" 
-      :spaceBetween="-40" 
-      :coverflowEffect="{ 
-      rotate: 50,
-      stretch: 0,
-      depth: 60,
-      modifier: 1,
-      slideShadows: false
+    <swiper
+      :effect="'coverflow'"
+      :grabCursor="true"
+      :centeredSlides="true"
+      :slidesPerView="'auto'"
+      :spaceBetween="-40"
+
+      
+      :coverflowEffect="{
+        rotate: 50,
+        stretch: 0,
+        depth: 60,
+        modifier: 1,
+        slideShadows: false
       }"
-      :pagination="false" 
-      :modules="modules" 
+
+      :pagination="false"
+      :modules="modules"
       class="mySwiper"
-      >
+
+      
+      :breakpoints="{
+        0: {
+          spaceBetween: -15,
+          coverflowEffect: { rotate: 20, depth: 30 }
+        },
+        480: {
+          spaceBetween: -25,
+          coverflowEffect: { rotate: 35, depth: 45 }
+        },
+        768: {
+          spaceBetween: -40,
+          coverflowEffect: { rotate: 50, depth: 60 }
+        },
+        1024: {
+          spaceBetween: -60,
+          coverflowEffect: { rotate: 60, depth: 80 }
+        }
+      }"
+    >
       <!-- Une carte MemoryCard par mémoire filtrée -->
       <swiper-slide v-for="(card, index) in filteredMemories" :key="index">
         <MemoryCard v-bind="card" />
@@ -128,6 +152,11 @@ export default {
   width: 100%;
   padding: 50px 0;
   margin: auto;
+  overflow-x: hidden;
+}
+
+.container{
+  border: 1.5px solid rgba(255, 255, 255, 0.171);
 }
 
 /* Style des slides individuelles */
@@ -135,6 +164,34 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 300px;
+
+
+  width: min(80vw, 300px);
+}
+
+
+@media (max-width: 1024px) and (min-width: 768px) {
+
+.container {
+  max-width: 700px; /* Tablet container */
+}
+
+.swiper-slide {
+  width: 35vw; /* 1.5 cards visible */
+}
+}
+
+@media (max-width: 768px) {
+
+
+.container {
+  max-width: 90vw;       
+  margin: 0 auto;
+}
+
+
+.swiper-slide {
+  width: 85vw  
+}
 }
 </style>
