@@ -6,7 +6,7 @@
         <!-- Affiche le composant d’en-tête du site -->
         <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
           <template #title >
-          Musée
+          Salles du Musée
         </template>
         </AppHeader>
         </div>
