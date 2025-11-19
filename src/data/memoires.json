@@ -7,7 +7,12 @@
       "descriptionSouvenir": "Un coucher de soleil à couper le souffle sur l'océan, avec un ciel peint de teintes orange et rose.",
       "lieuSouvenir": "Bali, Indonésie",
       "dateSouvenir": "2023-05-15",
-      "tagsSouvenir": ["coucher de soleil", "plage", "Bali", "vacances"]
+      "tagsSouvenir": [
+        "coucher de soleil",
+        "plage",
+        "Bali",
+        "vacances"
+      ]
     },
     {
       "roomId": "room-1",
@@ -16,7 +21,12 @@
       "descriptionSouvenir": "Une randonnée difficile mais gratifiante jusqu'au sommet du Mont Blanc avec des vues imprenables.",
       "lieuSouvenir": "Alpes, France",
       "dateSouvenir": "2022-08-22",
-      "tagsSouvenir": ["randonnée", "montagne", "Alpes", "aventure"]
+      "tagsSouvenir": [
+        "randonnée",
+        "montagne",
+        "Alpes",
+        "aventure"
+      ]
     },
     {
       "roomId": "room-1",
@@ -25,9 +35,13 @@
       "descriptionSouvenir": "Flâner dans les temples sereins de Kyoto, en absorbant l'histoire riche et les magnifiques jardins.",
       "lieuSouvenir": "Kyoto, Japon",
       "dateSouvenir": "2021-11-03",
-      "tagsSouvenir": ["temple", "Kyoto", "culture", "histoire"]
+      "tagsSouvenir": [
+        "temple",
+        "Kyoto",
+        "culture",
+        "histoire"
+      ]
     },
-
     {
       "roomId": "room-2",
       "titreSouvenir": "Safari en Afrique",
@@ -35,7 +49,12 @@
       "descriptionSouvenir": "Observer les lions, éléphants et girafes dans leur habitat naturel lors d'un safari inoubliable.",
       "lieuSouvenir": "Serengeti, Tanzanie",
       "dateSouvenir": "2020-07-10",
-      "tagsSouvenir": ["safari", "faune", "Afrique", "aventure"]
+      "tagsSouvenir": [
+        "safari",
+        "faune",
+        "Afrique",
+        "aventure"
+      ]
     },
     {
       "roomId": "room-2",
@@ -44,7 +63,12 @@
       "descriptionSouvenir": "Plongée sous-marine pour découvrir les récifs coralliens colorés et la vie marine diversifiée.",
       "lieuSouvenir": "Grande Barrière de Corail, Australie",
       "dateSouvenir": "2019-12-05",
-      "tagsSouvenir": ["plongée", "corail", "Australie", "nature"]
+      "tagsSouvenir": [
+        "plongée",
+        "corail",
+        "Australie",
+        "nature"
+      ]
     },
     {
       "roomId": "room-2",
@@ -53,9 +77,13 @@
       "descriptionSouvenir": "Conduire à travers les dunes dorées et admirer le silence infini du désert.",
       "lieuSouvenir": "Sahara, Maroc",
       "dateSouvenir": "2021-04-18",
-      "tagsSouvenir": ["désert", "aventure", "4x4", "exploration"]
+      "tagsSouvenir": [
+        "désert",
+        "aventure",
+        "4x4",
+        "exploration"
+      ]
     },
-
     {
       "roomId": "room-3",
       "titreSouvenir": "Balade dans les ruelles de Lisbonne",
@@ -63,16 +91,26 @@
       "descriptionSouvenir": "Découvrir les ruelles colorées, les tramways rétro et le charme unique de Lisbonne.",
       "lieuSouvenir": "Lisbonne, Portugal",
       "dateSouvenir": "2022-03-12",
-      "tagsSouvenir": ["ville", "ruelles", "Lisbonne", "urbain"]
+      "tagsSouvenir": [
+        "ville",
+        "ruelles",
+        "Lisbonne",
+        "urbain"
+      ]
     },
     {
       "roomId": "room-3",
       "titreSouvenir": "Graffitis de Berlin",
-      "imageSouvenir": "/src/assets/swiper/room-3/berlin.jpg",
+      "imageSouvenir": "/src/assets/swiper/room-3/berlin.jpeg",
       "descriptionSouvenir": "Explorer l'art de rue vibrant qui recouvre les murs de la capitale.",
       "lieuSouvenir": "Berlin, Allemagne",
       "dateSouvenir": "2021-09-02",
-      "tagsSouvenir": ["street-art", "Berlin", "urbain", "culture"]
+      "tagsSouvenir": [
+        "street-art",
+        "Berlin",
+        "urbain",
+        "culture"
+      ]
     },
     {
       "roomId": "room-3",
@@ -81,17 +119,25 @@
       "descriptionSouvenir": "Une soirée inoubliable dans les rues illuminées de Manhattan.",
       "lieuSouvenir": "New York, USA",
       "dateSouvenir": "2023-06-20",
-      "tagsSouvenir": ["NYC", "nuit", "urbain", "sortie"]
+      "tagsSouvenir": [
+        "NYC",
+        "nuit",
+        "urbain",
+        "sortie"
+      ]
     },
-
     {
       "roomId": "room-4",
       "titreSouvenir": "La chute dans le sable",
-      "imageSouvenir": "/src/assets/swiper/room-4/chute-sable.jpg",
+      "imageSouvenir": "/src/assets/swiper/room-4/chute-sable.png",
       "descriptionSouvenir": "Un fou rire après une chute mémorable en courant sur la plage.",
       "lieuSouvenir": "Sardaigne, Italie",
       "dateSouvenir": "2020-08-11",
-      "tagsSouvenir": ["drôle", "plage", "chute"]
+      "tagsSouvenir": [
+        "drôle",
+        "plage",
+        "chute"
+      ]
     },
     {
       "roomId": "room-4",
@@ -100,7 +146,11 @@
       "descriptionSouvenir": "Une pizza entièrement renversée en voulant faire une photo parfaite.",
       "lieuSouvenir": "Rome, Italie",
       "dateSouvenir": "2022-05-09",
-      "tagsSouvenir": ["gag", "nourriture", "oops"]
+      "tagsSouvenir": [
+        "gag",
+        "nourriture",
+        "oops"
+      ]
     },
     {
       "roomId": "room-4",
@@ -109,9 +159,12 @@
       "descriptionSouvenir": "Un vent trop fort, un parapluie retourné, et un moment culte.",
       "lieuSouvenir": "Londres, Royaume-Uni",
       "dateSouvenir": "2021-10-17",
-      "tagsSouvenir": ["humour", "météo", "fail"]
+      "tagsSouvenir": [
+        "humour",
+        "météo",
+        "fail"
+      ]
     },
-
     {
       "roomId": "room-5",
       "titreSouvenir": "Ramen authentiques",
@@ -119,7 +172,11 @@
       "descriptionSouvenir": "Un bol de ramen savoureux dégusté dans une petite échoppe japonaise.",
       "lieuSouvenir": "Tokyo, Japon",
       "dateSouvenir": "2022-11-08",
-      "tagsSouvenir": ["ramen", "Japon", "gastronomie"]
+      "tagsSouvenir": [
+        "ramen",
+        "Japon",
+        "gastronomie"
+      ]
     },
     {
       "roomId": "room-5",
@@ -128,7 +185,11 @@
       "descriptionSouvenir": "Dégustation de tapas variés dans une ruelle animée du centre.",
       "lieuSouvenir": "Barcelone, Espagne",
       "dateSouvenir": "2023-03-14",
-      "tagsSouvenir": ["tapas", "Espagne", "street-food"]
+      "tagsSouvenir": [
+        "tapas",
+        "Espagne",
+        "street-food"
+      ]
     },
     {
       "roomId": "room-5",
@@ -137,9 +198,12 @@
       "descriptionSouvenir": "Une explosion de saveurs au cœur d’un marché de nuit traditionnel.",
       "lieuSouvenir": "Taipei, Taïwan",
       "dateSouvenir": "2019-09-30",
-      "tagsSouvenir": ["marché", "Taïwan", "food"]
+      "tagsSouvenir": [
+        "marché",
+        "Taïwan",
+        "food"
+      ]
     },
-
     {
       "roomId": "room-6",
       "titreSouvenir": "Bora Bora paradisiaque",
@@ -147,7 +211,11 @@
       "descriptionSouvenir": "Eaux turquoise, bungalow sur pilotis et détente absolue.",
       "lieuSouvenir": "Bora Bora, Polynésie française",
       "dateSouvenir": "2020-12-21",
-      "tagsSouvenir": ["rêve", "tropical", "lagon"]
+      "tagsSouvenir": [
+        "rêve",
+        "tropical",
+        "lagon"
+      ]
     },
     {
       "roomId": "room-6",
@@ -156,7 +224,11 @@
       "descriptionSouvenir": "Un spectacle céleste magique illuminant le ciel arctique.",
       "lieuSouvenir": "Reykjavik, Islande",
       "dateSouvenir": "2021-02-18",
-      "tagsSouvenir": ["aurores", "Islande", "nature"]
+      "tagsSouvenir": [
+        "aurores",
+        "Islande",
+        "nature"
+      ]
     },
     {
       "roomId": "room-6",
@@ -165,7 +237,11 @@
       "descriptionSouvenir": "Séjour dans un décor de carte postale entre mer et tranquillité.",
       "lieuSouvenir": "Maldives",
       "dateSouvenir": "2023-08-05",
-      "tagsSouvenir": ["Maldives", "plage", "paradis"]
+      "tagsSouvenir": [
+        "Maldives",
+        "plage",
+        "paradis"
+      ]
     }
   ]
 }

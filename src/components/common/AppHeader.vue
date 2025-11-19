@@ -66,7 +66,7 @@ section {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.8rem 0.9rem;
-  width: 95%;
+  width: 100%;
 }
 /* Style du titre */
 .headerTitle {

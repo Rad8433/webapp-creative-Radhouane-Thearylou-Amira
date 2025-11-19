@@ -79,7 +79,7 @@ export default {
   padding: 0.9rem 2.2rem;
   border-radius: 8px;
   font-size: 1.6rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+ 
 }
 
 .secondary:hover {
@@ -95,7 +95,7 @@ export default {
   padding: 0.9rem 2.2rem;
   border-radius: 8px;
   font-size: 1.6rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+
 }
 
 .troisieme:hover {
@@ -111,7 +111,7 @@ export default {
   padding: 0.6rem 0rem;
   border-radius: 8px;
   font-size: 1.5rem;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+
 }
 
 .quatrieme:hover {
@@ -120,10 +120,10 @@ export default {
 }
 
 .cogPrimary {
-  background: #0F4C81;
+  background: #888856;
   color: #fff;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +131,25 @@ export default {
 }
 
 .cogPrimary:hover {
-  background: #ffe6bf;
+  background: #504026;
   color: #000;
 }
+
+.cogSecondary {
+  background: #888856;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+}
+
+.cogSecondary:hover {
+  background: #504026;
+  color: #000;
+}
+
+
 </style>

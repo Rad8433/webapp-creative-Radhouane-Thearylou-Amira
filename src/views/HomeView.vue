@@ -2,23 +2,22 @@
   <main class="home">
     <section class="hero">
       <div class="hero-frame">
-
+        <div class="header">
         <!-- Affiche le composant d’en-tête du site -->
         <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
           <template #title >
-          Salles du Musée
+          Musée
         </template>
         </AppHeader>
-        
+        </div>
 
         <!-- Contenu principal : texte à gauche et cartes à droite -->
         <div class="hero-content">
           <div class="hero-text">
             <!-- Petit texte d’introduction -->
-            <p class="hero-small">Vos voyages en</p>
-
+           <h1 class="hero-title">Vos voyages </br> <span>en mémoires</span></h1>
             <!-- Titre principal de la page -->
-            <h1 class="hero-title"><span>mémoires</span></h1>
+          
 
             <!-- Bouton pour commencer l’expérience -->
             <BaseButton variant="primary" @click="startExperience">
@@ -72,7 +71,10 @@ export default {
   width: 100%;
   height: 100vh;
 }
+.header{
+  padding: 0 18em;
 
+}
 /* Conteneur principal avec l’image de fond */
 .hero-frame {
   position: relative;
@@ -87,33 +89,33 @@ export default {
 .hero-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  padding: 0 20em 0;
   height: 80%;
   width: 100%;
-  place-items: center;
+  align-items: center;
+  justify-items: start;
 }
+
 
 /* Bloc du texte à gauche */
 .hero-text {
-  max-width: 42%;
+  max-width: 65%;
+  width: 100%;
   color: #fff;
 }
 
 /* Applique la police au petit texte et au titre */
-.hero-small,
+
 .hero-title {
   font-family: "Playfair Display", serif;
 }
 
-/* Style du petit texte */
-.hero-small {
-  margin: 0 0 0.2rem;
-  font-size: 1.7rem;
-}
 
 /* Style du titre principal */
 .hero-title {
   margin: 0 0 1.6rem;
-  font-size: 3.8rem;
+  font-size: 3rem;
+  width: 100%;
   line-height: 1.05;
 }
 
@@ -127,16 +129,16 @@ export default {
   display: flex;
   gap: 1.2rem;
   align-items: flex-end;
-  padding-right: 0.5rem;
+  
 }
 
 /* Style de base pour chaque carte */
 .hero-card {
   width: 200px;
-  height: 400px;
-  border-radius: 26px;
+  aspect-ratio: 1/2;
   background-size: cover;
-  background-position: center;
+  background-position: 45% 50%;
+
 }
 
 /* Décale légèrement la carte du milieu */
@@ -157,45 +159,141 @@ export default {
   background-image: url("@/assets/card3.png");
 }
 
-/* Adaptation pour tablettes */
-@media (max-width: 900px) {
 
-  /* Réduit légèrement la largeur du cadre */
-  .hero-frame {
-    width: calc(100% - 2rem);
-  }
 
-  /* Passe en layout vertical */
+
+/* ================================
+   Desktop Medium (1200px)
+   ================================= */
+@media (max-width: 1200px) {
+  .header,
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.6rem;
+    padding: 0 8em;
   }
 
-  /* Centre les cartes en mode mobile/tablette */
-  .hero-cards {
-    align-self: center;
-  }
-}
-
-/* Adaptation pour mobiles */
-@media (max-width: 600px) {
-
-  /* Réduit la taille du titre */
   .hero-title {
     font-size: 2.6rem;
   }
 
-  /* Réduit la taille du sous-texte */
-  .hero-small {
-    font-size: 1.4rem;
-  }
-
-  /* Réduit la taille des cartes */
   .hero-card {
-    width: 120px;
-    height: 230px;
+    width: 160px;
   }
 }
+
+
+/* ================================
+   Tablet (992px)
+   ================================= */
+@media (max-width: 992px) {
+  .header,
+  .hero-content {
+    padding: 0 5em;
+  }
+
+  .hero-content {
+  
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  .hero-text {
+    max-width: 80%;
+  }
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-cards {
+    justify-content: center;
+  }
+}
+
+
+/* ================================
+   Tablet Vertical (768px)
+   ================================= */
+@media (max-width: 768px) {
+  .header,
+  .hero-content {
+    padding: 0 3em;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+  }
+
+  .hero-card {
+    width: 140px;
+  }
+}
+
+
+/* ================================
+   Mobile Large (600px)
+   ================================= */
+@media (max-width: 600px) {
+
+  /* Enleve les cartes */
+  .hero-cards {
+    display: none;
+  }
+
+  .header,
+  .hero-content {
+    padding: 0 2em;
+  }
+
+  
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+ 
+  .hero-title {
+    font-size: 2.8rem;
+    line-height: 1.15;
+  }
+
+  
+  .hero-text {
+    max-width: 100%;
+  }
+
+
+  .hero-text button,
+  .hero-text .base-button,
+  .hero-text .btn {
+    padding: 1rem 2.2rem;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+}
+
+
+/* ================================
+   Mobile Small (450px)
+   ================================= */
+@media (max-width: 450px) {
+
+  .hero-title {
+    font-size: 2.4rem;
+  }
+
+  .hero-text {
+    max-width: 100%;
+  }
+
+  .hero-content {
+    padding: 0 1.5em;
+  }
+}
+
 </style>
