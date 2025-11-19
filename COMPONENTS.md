@@ -103,6 +103,7 @@
 - **Responsabilité** : Bouton réutilisable avec différents styles (`primary`, `secondary`, `troisieme`, `quatrieme`, `icon`).
 - **Props** :
   - `variant` (String)
+  - `engrenage` (String)
 - **Événements émis** :
   - `click`
 
@@ -130,6 +131,8 @@
 - **Responsabilité** : En-tête du site avec un slot pour le titre et un bouton icône (paramètres/engrenage).
 - **Props** :
   - `title` (String)
+  - `variantHeader` (string)
+  - `visibleCog` (string)
 - **Événements émis** : Aucun.
 
 ---
