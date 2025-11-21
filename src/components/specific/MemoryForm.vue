@@ -3,7 +3,7 @@
     <div class="form">
       <div class="formContenus">
         <!-- Titre principal du formulaire -->
-        <BaseButton variant="cinquieme" @click="goBack"><-</BaseButton>
+        <BaseButton variant="cinquieme" @click="goBack"> </BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
         <!-- Champ : titre de la mémoire -->
@@ -32,7 +32,7 @@
         <div class="dateTags">
           <div class="form-group date">
             <label for="date">Date</label><br>
-            <input type="text" id="titre">
+            <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
           </div>
 
           <div class="form-group tags">
@@ -83,7 +83,11 @@ export default {
   data() {
     return {
       // Permet d’afficher l’aperçu de l’image
+      form: {
+        date: "" // ex: "2025-11-21" après sélection
+      },
       image: null
+
     };
   },
 
@@ -134,7 +138,7 @@ section {
 /* Conteneur principal du formulaire */
 .form {
   background: rgb(43, 148, 143);
-  width: fit-content;   
+  width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -227,8 +231,9 @@ input {
     padding: 20px 15px;
 
   }
+
   .image-circle {
-    height: 20vh; 
+    height: 20vh;
   }
 }
 </style>
