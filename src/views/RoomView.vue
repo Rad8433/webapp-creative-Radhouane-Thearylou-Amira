@@ -116,11 +116,12 @@ h1{
 
 }
 .room {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  align-items: center; 
+  justify-content: flex-start;
+  padding: 1.5rem 0;
 }
  
 .retour {
@@ -157,6 +158,9 @@ width: 45em;
 .bouton {
   width: 60px;
 }
+
+
+
 @media (min-width:730px) and (max-width: 900px) {
   .retour {
 width: 41em;
