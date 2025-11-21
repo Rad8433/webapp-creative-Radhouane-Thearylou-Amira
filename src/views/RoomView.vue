@@ -1,15 +1,12 @@
 <template>
   <div class="room" :style="{ background: roomBackground }">
-    <div class="retour">
-      <BaseButton variant="quatrieme" @click="goBack">
-        <- </BaseButton>
-    </div>
- 
-    <div class="memory-room">
        <!-- En-tête avec titre personnalisé -->
-      <h1 class="room-title">
-        {{ roomTitle }}
-      </h1>
+       <div class="retour">
+       <!-- En-tête avec titre personnalisé -->
+       <AppHeader variantHeader="titleWhite" sect endroit="MuseumRooms"  sectionGrid="sectionRoom" visibleCog="cogDisplayN" visibleBouton="cogDisplay" :title="roomTitle"></AppHeader>
+    </div>
+
+    <div class="memory-room">
       <div class="filtre">
         <!-- Barre de filtres : recherche, salle, tag, tri -->
       <OptionBar v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag"
@@ -29,6 +26,7 @@
 import BaseButton from '@/components/common/BaseButton.vue';
 import MemorySwiper from '@/components/specific/MemorySwiper.vue';
 import OptionBar from "@/components/layout/OptionBar.vue";
+import AppHeader from "@/components/common/AppHeader.vue";
   //Données des salles 
 const roomsConfig = {
   "room-1": {
@@ -59,7 +57,7 @@ const roomsConfig = {
  
 export default {
   name: 'MemoryRoom',
-  components: { MemorySwiper, BaseButton, OptionBar },
+  components: { MemorySwiper, BaseButton, OptionBar,AppHeader },
  
   data() {
     return {
@@ -125,7 +123,7 @@ h1{
 }
  
 .retour {
-width: 45em;
+  width: 730px;
 }
 
 .filtre{

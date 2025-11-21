@@ -3,7 +3,7 @@
       <div class="hero-frame">
         <div class="header">
         <!-- Affiche le composant d’en-tête du site -->
-        <AppHeader variantHeader="titleWhite" visibleCog="cogDisplay">
+        <AppHeader variantHeader="titleWhite" justifySelf="titleLeft" sectionGrid="sectionHome" visibleCog="cogDisplay" visibleBouton="cogDisplayN">
           <template #title >
           Musée
         </template>

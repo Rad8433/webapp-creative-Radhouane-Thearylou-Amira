@@ -1,17 +1,9 @@
 <template>
   <main class="museum-rooms">
     <div class="global">
-      <div class="backButton">
-      <BaseButton variant="quatrieme" @click="goBack">
-        <- 
-      </BaseButton></div>
-      <div class="header">
+        <div class="header">
       <!-- En-tête avec titre personnalisé -->
-      <AppHeader variantHeader="titleBlack"> 
-        <template #title >
-          Choissiez votre destination
-        </template>
-       
+      <AppHeader variantHeader="titleBlack" section sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home" title="Choissiez votre destination">
       </AppHeader>
     </div>
       <div class="filtre">
@@ -128,8 +120,6 @@ export default {
   flex: 1 1 auto;
   max-width: 100%;
 }
-
-
 
 
 /* ================================
