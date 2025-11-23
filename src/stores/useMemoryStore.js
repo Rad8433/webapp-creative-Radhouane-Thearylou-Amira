@@ -4,19 +4,18 @@ import data from "@/data/memoires.json";
 
 export const useMemoryStore = defineStore("memory", {
   state: () => {
-    // Group memories by room to calculate memoryNumber correctly
     const memoriesByRoom = {};
     const memories = data.memoires.map((souvenir) => {
       const roomId = souvenir.roomId;
 
       if (!memoriesByRoom[roomId]) {
-        memoriesByRoom[roomId] = 1; // start at 1 for each room
+        memoriesByRoom[roomId] = 1;
       } else {
         memoriesByRoom[roomId]++;
       }
 
       return {
-        id: Date.now().toString() + Math.random(), // unique id
+        id: Date.now().toString() + Math.random(),
         roomId: roomId,
         room: roomId,
         title: souvenir.titreSouvenir,
