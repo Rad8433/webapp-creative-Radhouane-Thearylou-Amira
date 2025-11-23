@@ -3,40 +3,50 @@ import { defineStore } from "pinia";
 import data from "@/data/memoires.json";
 
 export const useMemoryStore = defineStore("memory", {
-  state: () => ({
-    memories: data.memoires.map((souvenir, index) => ({
-      id: index,
-      roomId: souvenir.roomId, // Id de salle
-      room: souvenir.roomId, // alias pour tes getters actuels
-      title: souvenir.titreSouvenir, // Titre
-      image: souvenir.imageSouvenir, // Image
-      caption: souvenir.descriptionSouvenir, // Description (caption)
-      description: souvenir.descriptionSouvenir, // alias pour les getters
-      date: souvenir.dateSouvenir, // Date texte
-      tags: souvenir.tagsSouvenir, // on garde un ARRAY ici
-      memoryNumber: `Memory ${index + 1}`, // Numéro visible
-      bgColor: "#e0e0e0", // Couleur de fond
-    })),
+  state: () => {
+    // Group memories by room to calculate memoryNumber correctly
+    const memoriesByRoom = {};
+    const memories = data.memoires.map((souvenir) => {
+      const roomId = souvenir.roomId;
 
-    filters: {
-      room: null,
-      tag: null,
-    },
-    searchQuery: "",
-  }),
+      if (!memoriesByRoom[roomId]) {
+        memoriesByRoom[roomId] = 1; // start at 1 for each room
+      } else {
+        memoriesByRoom[roomId]++;
+      }
+
+      return {
+        id: Date.now().toString() + Math.random(), // unique id
+        roomId: roomId,
+        room: roomId,
+        title: souvenir.titreSouvenir,
+        image: souvenir.imageSouvenir,
+        caption: souvenir.descriptionSouvenir,
+        description: souvenir.descriptionSouvenir,
+        date: souvenir.dateSouvenir,
+        tags: souvenir.tagsSouvenir,
+        memoryNumber: `Memory ${memoriesByRoom[roomId]}`,
+        bgColor: "#e0e0e0",
+      };
+    });
+
+    return {
+      memories,
+      filters: {
+        room: null,
+        tag: null,
+      },
+      searchQuery: "",
+    };
+  },
 
   getters: {
-    // Memories filtrées par recherche + filtre pièce + tag
     filteredMemories: (state) => {
       return state.memories.filter((memory) => {
         const matchesSearch =
           state.searchQuery === "" ||
-          memory.title
-            .toLowerCase()
-            .includes(state.searchQuery.toLowerCase()) ||
-          memory.description
-            .toLowerCase()
-            .includes(state.searchQuery.toLowerCase());
+          memory.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          memory.description.toLowerCase().includes(state.searchQuery.toLowerCase());
 
         const matchesRoom =
           !state.filters.room || memory.room === state.filters.room;
@@ -59,10 +69,14 @@ export const useMemoryStore = defineStore("memory", {
 
   actions: {
     addMemory(memory) {
+      const memoriesInRoom = this.memories.filter(m => m.roomId === memory.roomId).length;
+      const memoryNumber = `Memory ${memoriesInRoom + 1}`;
+
       this.memories.push({
         ...memory,
         id: Date.now().toString(),
         createdAt: new Date().toISOString(),
+        memoryNumber,
       });
     },
 

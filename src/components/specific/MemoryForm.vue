@@ -2,61 +2,67 @@
   <section>
     <div class="form">
       <div class="formContenus">
-        <!-- Titre principal du formulaire -->
+
         <BaseButton variant="cinquieme" @click="goBack"> </BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
-        <!-- Champ : titre de la mémoire -->
-        <div class="form-group titre">
-          <label for="titre">Titre</label><br>
-          <input type="text" id="titre">
-        </div>
-
-        <!-- Zone pour ajouter une image -->
-        <div class="image-upload">
-          <!-- Zone cliquable (soit + soit l'image affichée) -->
-          <label class="image-circle" @click="triggerFileInput">
-            <!-- Affiche le + si aucune image n'est sélectionnée -->
-            <span v-if="!image" class="plus">+</span>
-            <!-- Texte incitant à ajouter une image -->
-            <span v-if="!image" class="text">Ajouter une image</span>
-            <!-- Affiche l’aperçu si une image a été choisie -->
-            <img v-if="image" :src="image" class="preview-image">
-          </label>
-
-          <!-- Input réel, caché → utilisé pour sélectionner l’image -->
-          <input type="file" ref="fileInput" accept="image/*" @change="onImageSelected" style="display: none;">
-        </div>
-
-        <!-- Champs : date + tags (affichés côte à côte) -->
-        <div class="dateTags">
-          <div class="form-group date">
-            <label for="date">Date</label><br>
-            <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
+        <!-- FORMULAIRE -->
+         <!-- Le submit ecoute juste l'evenement du bouton terminer en ignorant tout les autre evenement du composant bouton et prevent empecher le rechargement de la page <: -->
+        <form @submit.prevent="saveMemory">
+          
+          <!-- Champ : titre -->
+          <div class="form-group titre">
+            <label for="titre">Titre</label><br>
+            <input type="text" id="titre" v-model="form.title">
           </div>
 
-          <div class="form-group tags">
-            <label for="tags">Tags</label><br>
-            <input type="text" id="tags">
+          <!-- Zone pour ajouter une image -->
+          <div class="image-upload">
+            <label class="image-circle" @click="triggerFileInput">
+              <span v-if="!image" class="plus">+</span>
+              <span v-if="!image" class="text">Ajouter une image</span>
+              <img v-if="image" :src="image" class="preview-image">
+            </label>
+
+            <input type="file"
+                   ref="fileInput"
+                   accept="image/*"
+                   @change="onImageSelected"
+                   style="display: none;">
           </div>
-        </div>
 
-        <!-- Champ : courte description -->
-        <div class="form-group description">
-          <label for="description">Courte description</label><br>
-          <input type="text" id="description">
-        </div>
+          <!-- Champs : date + tags -->
+          <div class="dateTags">
+            <div class="form-group date">
+              <label for="date">Date</label><br>
+              <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
+            </div>
 
-        <!-- Champ : légende -->
-        <div class="form-group legende">
-          <label for="legende">Légende</label><br>
-          <input type="text" id="legende">
-        </div>
+            <div class="form-group tags">
+              <label for="tags">Tags</label><br>
+              <input type="text" id="tags" v-model="form.tags">
+            </div>
+          </div>
 
-        <!-- Bouton pour terminer et retourner à la salle -->
-        <BaseButton variant="secondary" @click="goBack">
-          Terminer
-        </BaseButton>
+          <!-- Champ : courte description -->
+          <div class="form-group description">
+            <label for="description">Courte description</label><br>
+            <input type="text" id="description" v-model="form.caption">
+          </div>
+
+          <!-- Champ : légende -->
+          <div class="form-group legende">
+            <label for="legende">Légende</label><br>
+            <input type="text" id="legende" v-model="form.description">
+          </div>
+
+          <!-- Bouton soumission -->
+          <BaseButton variant="secondary" type="submit">
+            Terminer
+          </BaseButton>
+
+        </form>
+
       </div>
     </div>
   </section>
@@ -65,77 +71,83 @@
 <script>
 import AppHeader from "@/components/common/AppHeader.vue";
 import BaseButton from '../common/BaseButton.vue';
-import { mapStores } from 'pinia'
-import { useMemoryStore } from '../../stores/useMemoryStore.js'
+import { mapStores } from 'pinia';
+import { useMemoryStore } from '../../stores/useMemoryStore.js';
 
 export default {
   name: "MuseumRoomsView",
+
   components: {
     AppHeader,
     BaseButton,
   },
 
   computed: {
-    // Connexion au store Pinia
     ...mapStores(useMemoryStore),
   },
 
   data() {
     return {
-      // Permet d’afficher l’aperçu de l’image
       form: {
-        date: "" // ex: "2025-11-21" après sélection
+        title: "",
+        tags: "",
+        caption: "",
+        description: "",
+        date: "",
       },
       image: null
-
     };
   },
 
   methods: {
-    // Retour à la salle associée à la mémoire
     goBack() {
-      this.$router.push({ name: 'Room', params: { id: this.$route.params.id } })
+      this.$router.push({ name: 'Room', params: { id: this.$route.params.id } });
     },
 
-    // Ouvre le sélecteur de fichiers
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
 
-    // Quand l’utilisateur choisit une image → on crée un aperçu
     onImageSelected(event) {
       const file = event.target.files[0];
       if (file) {
         const reader = new FileReader();
-
         reader.onload = () => {
-          // Stocke l’image encodée en base64
-          this.image = reader.result;
+          this.image = reader.result; 
         };
-
-        // Conversion de l'image en base64
         reader.readAsDataURL(file);
       }
     },
 
-    // Autre fonction de retour (non utilisée)
-    retour(roomId) {
-      this.$router.push(`/Room/${this.$route.params.id}`)
+    saveMemory() {
+      const tagsArray = this.form.tags
+        ? this.form.tags.split(",").map(t => t.trim())
+        : [];
+
+      this.memoryStore.addMemory({
+        roomId: this.$route.params.id,
+        title: this.form.title,
+        image: this.image,
+        caption: this.form.caption,
+        description: this.form.description,
+        date: this.form.date,
+        tags: tagsArray,
+        bgColor: "#e0e0e0",
+      });
+
+      this.goBack();
     },
   }
 };
 </script>
 
-
 <style>
-/* Mise en page générale de la section */
 section {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Conteneur principal du formulaire */
 .form {
   background: rgb(43, 148, 143);
   width: fit-content;
@@ -147,14 +159,12 @@ section {
   border-radius: 15px;
 }
 
-/* Bloc pour l’upload d’image */
 .image-upload {
   display: flex;
   justify-content: center;
   margin: 20px 0;
 }
 
-/* Zone cliquable pour ajouter ou afficher une image */
 .image-circle {
   width: 100%;
   height: 15vh;
@@ -172,31 +182,26 @@ section {
   font-size: 20px;
 }
 
-/* Icône + affichée avant l’ajout d’image */
 .plus {
   font-size: 40px;
   color: #777;
 }
 
-/* Image d’aperçu */
 .preview-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-/* Date + tags côte à côte */
 .dateTags {
   display: flex;
 }
 
-/* Styles généraux des groupes du formulaire */
 .form-group {
   margin-top: 20px;
   font-size: 1.2em;
 }
 
-/* Style pour tous les inputs */
 input {
   width: 100%;
   height: 4vh;
@@ -205,22 +210,18 @@ input {
   padding: 5px;
 }
 
-/* Ajuste la marge du premier champ */
 .titre {
   margin-top: 0;
 }
 
-/* Décalage pour le champ Tags */
 .tags {
   margin-left: 20px;
 }
 
-/* Input description plus haut */
 #description {
   height: 10vh;
 }
 
-/* Input légende un peu plus haut */
 #legende {
   height: 6vh;
   margin-bottom: 30px;
@@ -229,7 +230,6 @@ input {
 @media (max-width: 650px) {
   .form {
     padding: 20px 15px;
-
   }
 
   .image-circle {

@@ -4,7 +4,7 @@
 
     <!-- En-tête : tags à gauche, date à droite -->
     <div class="card-header">
-      <span class="tags">{{ tags }}</span>
+      <span class="tags">{{ formattedTags }}</span>
       <span class="date">{{ date }}</span>
     </div>
 
@@ -30,8 +30,8 @@ export default {
 
   props: {
     tags: {
-      type: String,
-      default: "#Tags",
+      type: [String, Array],
+      default: () => []
     },
     date: {
       type: String,
@@ -58,6 +58,14 @@ export default {
       default: "#e0e0e0",
     },
   },
+  computed: {
+    formattedTags() {
+      if (Array.isArray(this.tags)) {
+        return this.tags.join(", "); // or join(" • ")
+      }
+      return this.tags; // fallback string
+    },
+  }
 };
 </script>
 
