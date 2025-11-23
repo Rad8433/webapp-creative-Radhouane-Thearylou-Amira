@@ -12,7 +12,7 @@
 
         <div class="image-upload">
           <img v-if="memory.image" :src="memory.image" class="preview-image" />
-          <div v-else class="image-circle readonly">
+          <div v-else class="image readonly">
             <span class="plus">+</span>
             <span class="text">Pas d'image</span>
           </div>
@@ -87,7 +87,7 @@ section {
   flex-direction: column;
   align-items: center;
   color: white;
-  padding: 15px 25px;
+  padding: 20px 30px;
   border-radius: 15px;
   width: fit-content;
   max-width: 90%;
@@ -113,46 +113,48 @@ label {
 
 .readonly {
   background: rgba(255, 255, 255, 0.1);
-  padding: 4px 6px;
-  border-radius: 4px;
-  min-height: 3vh;
+  padding: 5px 8px;
+  border-radius: 6px;
+  min-height: 3.5vh;
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 0.9em;
+  font-size: 0.95em;
 }
 
 .image-upload {
   display: flex;
   justify-content: center;
-  margin: 15px 0;
+  margin: 20px 0;
   width: 100%;
 }
 
-.image-circle {
-  width: 100%;
-  height: 12vh;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  background-color: #f3f3f3;
-  color: black;
-  font-size: 16px;
-}
-
+.image,
 .preview-image {
   width: 100%;
-  height: 100%;
+  max-width: 600px; /* fixed max width */
+  height: 300px; /* fixed height */
+  border-radius: 15px;
   object-fit: cover;
-  border-radius: 10px;
+}
+
+.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3f3f3;
+  color: black;
+  font-size: 18px;
+}
+
+.plus {
+  font-size: 40px;
+  color: #777;
 }
 
 .dateTags {
   display: flex;
-  gap: 10px;
+  gap: 15px;
   width: 100%;
 }
 
@@ -164,11 +166,13 @@ label {
 
 @media (max-width: 650px) {
   .form {
-    padding: 15px 10px;
+    padding: 15px 15px;
   }
 
-  .image-circle {
-    height: 18vh;
+  .image,
+  .preview-image {
+    max-width: 90%;
+    height: 180px;
   }
 }
 </style>
