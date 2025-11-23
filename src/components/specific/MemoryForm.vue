@@ -3,7 +3,7 @@
     <div class="form">
       <div class="formContenus">
 
-        <BaseButton variant="cinquieme" @click="goBack"> </BaseButton>
+        <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
         <!-- FORMULAIRE -->

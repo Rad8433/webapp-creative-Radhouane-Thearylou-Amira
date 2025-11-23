@@ -1,6 +1,6 @@
 <template>
   <!-- Carte individuelle contenant une mémoire -->
-  <div class="memory-card" :style="{ backgroundColor: bgColor }">
+  <div class="memory-card"  :style="{ backgroundColor: bgColor }">
 
     <!-- En-tête : tags à gauche, date à droite -->
     <div class="card-header">
@@ -58,12 +58,13 @@ export default {
       default: "#e0e0e0",
     },
   },
+
   computed: {
     formattedTags() {
       if (Array.isArray(this.tags)) {
-        return this.tags.join(", "); // or join(" • ")
+        return this.tags.join(", ");
       }
-      return this.tags; // fallback string
+      return this.tags;
     },
   }
 };
