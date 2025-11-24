@@ -247,13 +247,6 @@ section {
   font-size: 1.2em;
 }
 
-input {
-  width: 100%;
-  height: 4vh;
-  border-radius: 4px;
-  border: none;
-  padding: 5px;
-}
 
 .titre {
   margin-top: 0;

@@ -23,15 +23,28 @@
 
         <!-- Image -->
         <div class="image-upload">
-          <img
+
+          <!-- CLICKABLE IMAGE WHEN EDITING -->
+          <div
             v-if="editableMemory.image"
-            :src="editableMemory.image"
-            class="preview-image"
-          />
-          <div v-else class="image readonly">
-            <span class="plus">+</span>
-            <span class="text">Pas d'image</span>
+            class="image-click-area"
+            :class="{ editable: isEditing }"
+            @click="isEditing && triggerFileInput()"
+          >
+            <img :src="editableMemory.image" class="preview-image" />
           </div>
+
+          <!-- If no image -->
+          <div
+            v-else
+            class="image readonly"
+            :class="{ editable: isEditing }"
+            @click="isEditing && triggerFileInput()"
+          >
+            <span class="plus">+</span>
+            <span class="text">Ajouter une image</span>
+          </div>
+
           <input
             v-if="isEditing"
             type="file"
@@ -81,7 +94,6 @@
 </template>
 
 <script>
-import AppHeader from "@/components/common/AppHeader.vue";
 import BaseButton from "../common/BaseButton.vue";
 import { mapStores } from "pinia";
 import { useMemoryStore } from "../../stores/useMemoryStore.js";
@@ -89,10 +101,7 @@ import { useMemoryStore } from "../../stores/useMemoryStore.js";
 export default {
   name: "MemoryDetail",
 
-  components: {
-    AppHeader,
-    BaseButton,
-  },
+  components: { BaseButton },
 
   computed: {
     ...mapStores(useMemoryStore),
@@ -108,12 +117,11 @@ export default {
 
   created() {
     const id = this.$route.params.memoryId;
-    if (id) {
-      const memory = this.memoryStore.memories.find((m) => m.id === id);
-      if (memory) {
-        this.editableMemory = { ...memory };
-        this.tagsString = memory.tags?.join(", ") || "";
-      }
+    const memory = this.memoryStore.memories.find((m) => m.id === id);
+
+    if (memory) {
+      this.editableMemory = { ...memory };
+      this.tagsString = memory.tags?.join(", ") || "";
     }
   },
 
@@ -129,21 +137,29 @@ export default {
       this.isEditing = !this.isEditing;
     },
 
+    triggerFileInput() {
+      this.$refs.fileInput.click();
+    },
+
     onImageSelected(event) {
       const file = event.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = () => {
-          this.editableMemory.image = reader.result;
-        };
-        reader.readAsDataURL(file);
+      if (!file) return;
+
+      if (file.size > 2 * 1024 * 1024) {
+        alert("Image trop grande, elle doit faire moins de 2 Mo.");
+        return;
       }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.editableMemory.image = reader.result;
+      };
+      reader.readAsDataURL(file);
     },
 
     saveMemory() {
       if (!this.editableMemory) return;
 
-      // Convert tags string to array
       this.editableMemory.tags = this.tagsString
         ? this.tagsString.split(",").map((t) => t.trim())
         : [];
@@ -184,33 +200,18 @@ section {
   border-radius: 15px;
   width: fit-content;
   max-width: 90%;
-  box-sizing: border-box;
-}
-
-.formContenus h1 {
-  font-size: 1.6em;
-  margin-bottom: 15px;
 }
 
 .boutonDetail {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  width: 100%;
 }
 
 .form-group {
   margin-top: 15px;
-  font-size: 0.95em;
   width: 100%;
 }
-
-label {
-  font-size: 0.85em;
-  margin-bottom: 3px;
-  display: block;
-}
-
-
 
 .readonly {
   background: rgba(255, 255, 255, 0.1);
@@ -220,7 +221,6 @@ label {
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 0.95em;
 }
 
 .image-upload {
@@ -230,8 +230,14 @@ label {
   width: 100%;
 }
 
-.image,
-.preview-image {
+.image-click-area.editable:hover,
+.image.editable:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.preview-image,
+.image {
   width: 100%;
   max-width: 600px;
   height: 300px;
@@ -240,38 +246,21 @@ label {
 }
 
 .image {
+  background: #f3f3f3;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f3f3f3;
-  color: black;
-  font-size: 18px;
-}
-
-.plus {
-  font-size: 40px;
-  color: #777;
 }
 
 .dateTags {
   display: flex;
   gap: 15px;
-  width: 100%;
-}
-
-.legende {
-  min-height: auto;
-  margin-bottom: 10px;
 }
 
 @media (max-width: 650px) {
-  .form {
-    padding: 15px 15px;
-  }
-
-  .image,
-  .preview-image {
-    max-width: 90%;
+  .preview-image,
+  .image {
     height: 180px;
   }
 }
