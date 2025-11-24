@@ -12,8 +12,9 @@
           
           <!-- Champ : titre -->
           <div class="form-group titre">
-            <label for="titre">Titre</label><br>
-            <input type="text" id="titre" v-model="form.title">
+            <label for="titre">Titre *</label><br>
+            <input type="text" required id="titre" v-model="form.title" placeholder="Titre de la mémoire">
+            <span v-if="errors.title" class="error">{{ errors.title }}</span>
           </div>
 
           <!-- Zone pour ajouter une image -->
@@ -34,19 +35,22 @@
           <!-- Champs : date + tags -->
           <div class="dateTags">
             <div class="form-group date">
-              <label for="date">Date</label><br>
-              <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
+              <label for="date">Date *</label><br>
+              <input id="date" type="date" required v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
+              <span v-if="errors.date" class="error">{{ errors.date }}</span>
             </div>
 
             <div class="form-group tags">
-              <label for="tags">Tags</label><br>
-              <input type="text" id="tags" v-model="form.tags">
+              <label for="tags">Tags *</label><br>
+              <input type="text" id="tags" required v-model="form.tags">
+              <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
             </div>
           </div>
           <!-- Champ : légende -->
           <div class="form-group legende">
-            <label for="legende">Légende</label><br>
-            <input type="text" id="legende" v-model="form.caption">
+            <label for="legende">Légende *</label><br>
+            <input type="text" id="legende" required v-model="form.caption" placeholder="Une courte légende">
+            <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
           </div>
 
           <!-- Bouton soumission -->
@@ -81,6 +85,7 @@ export default {
 
   data() {
     return {
+      errors: {},
       form: {
         title: "",
         tags: "",
@@ -92,6 +97,15 @@ export default {
   },
 
   methods: {
+    handleImageUpload(event) {
+      //Vérifier la taille du fichier (max 2 Mo), Afficher une erreur img contenant "Image trop grande, la taille du fichier doit être en bas de de 2 Mo" dans l'objet errors.
+    },
+    validateForm() {
+      //Réinitialiser l'objet errors à un objet vide { }, ajouter erreurs si des champs sont invalides
+    },
+    handleSubmit() {
+      //Valider le formulaire en appelant validateForm()
+    },
     goBack() {
       this.$router.push({ name: 'Room', params: { id: this.$route.params.id } });
     },
