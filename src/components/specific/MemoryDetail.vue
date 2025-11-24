@@ -259,6 +259,14 @@ section {
 }
 
 @media (max-width: 650px) {
+  section {
+    padding: 0px;
+  }
+
+  .form {
+  max-width: 100%;
+}
+
   .preview-image,
   .image {
     height: 180px;
