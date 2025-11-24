@@ -111,7 +111,7 @@ export default {
     if (id) {
       const memory = this.memoryStore.memories.find((m) => m.id === id);
       if (memory) {
-        this.editableMemory = { ...memory }; // make a copy for editing
+        this.editableMemory = { ...memory };
         this.tagsString = memory.tags?.join(", ") || "";
       }
     }
@@ -210,9 +210,7 @@ label {
   display: block;
 }
 
-input {
-  color: white;
-}
+
 
 .readonly {
   background: rgba(255, 255, 255, 0.1);
