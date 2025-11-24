@@ -2,42 +2,76 @@
   <section>
     <div class="form">
       <div class="formContenus">
-        <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
-        <h1>Détails de la mémoire</h1>
-
-        <div class="form-group titre">
-          <label>Titre</label>
-          <p class="readonly">{{ memory.title }}</p>
+        <div class="boutonDetail">
+          <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
+          <BaseButton variant="cinquieme" @click="toggleEdit">
+            {{ isEditing ? "💾" : "🖍️" }}
+          </BaseButton>
         </div>
 
+        <h1>Détails de la mémoire</h1>
+
+        <!-- Titre -->
+        <div class="form-group titre">
+          <label>Titre</label>
+          <input v-if="isEditing" v-model="editableMemory.title" class="readonly" />
+          <p v-else class="readonly">{{ editableMemory.title }}</p>
+        </div>
+
+        <!-- Image -->
         <div class="image-upload">
-          <img v-if="memory.image" :src="memory.image" class="preview-image" />
+          <img
+            v-if="editableMemory.image"
+            :src="editableMemory.image"
+            class="preview-image"
+          />
           <div v-else class="image readonly">
             <span class="plus">+</span>
             <span class="text">Pas d'image</span>
           </div>
+          <input
+            v-if="isEditing"
+            type="file"
+            ref="fileInput"
+            accept="image/*"
+            @change="onImageSelected"
+            style="display: none;"
+          />
         </div>
 
+        <!-- Date & Tags -->
         <div class="dateTags">
           <div class="form-group date">
             <label>Date</label>
-            <p class="readonly">{{ memory.date }}</p>
+            <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" />
+            <p v-else class="readonly">{{ editableMemory.date }}</p>
           </div>
 
           <div class="form-group tags">
             <label>Tags</label>
-            <p class="readonly">{{ memory.tags?.join(", ") }}</p>
+            <input
+              v-if="isEditing"
+              v-model="tagsString"
+              class="readonly"
+              placeholder="Séparez les tags par une virgule"
+            />
+            <p v-else class="readonly">{{ editableMemory.tags?.join(", ") }}</p>
           </div>
         </div>
 
+    
+        <!-- Légende -->
         <div class="form-group legende">
           <label>Légende</label>
-          <p class="readonly">{{ memory.description }}</p>
+          <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" />
+          <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
 
+        <!-- Numéro de mémoire -->
         <div class="form-group">
           <label>Numéro de mémoire</label>
-          <p class="readonly">{{ memory.memoryNumber }}</p>
+          <input v-if="isEditing" v-model="editableMemory.memoryNumber" class="readonly" />
+          <p v-else class="readonly">{{ editableMemory.memoryNumber }}</p>
         </div>
       </div>
     </div>
@@ -45,30 +79,82 @@
 </template>
 
 <script>
-import BaseButton from '../common/BaseButton.vue';
-import { useMemoryStore } from '../../stores/useMemoryStore.js';
+import AppHeader from "@/components/common/AppHeader.vue";
+import BaseButton from "../common/BaseButton.vue";
+import { mapStores } from "pinia";
+import { useMemoryStore } from "../../stores/useMemoryStore.js";
 
 export default {
   name: "MemoryDetail",
-  components: { BaseButton },
+
+  components: {
+    AppHeader,
+    BaseButton,
+  },
+
   computed: {
-    memoryStore() {
-      return useMemoryStore();
-    },
-    memory() {
-      const id = this.$route.params.memoryId;
-      return this.memoryStore.memories.find(m => m.id === id) || {};
+    ...mapStores(useMemoryStore),
+  },
+
+  data() {
+    return {
+      editableMemory: null,
+      isEditing: false,
+      tagsString: "",
+    };
+  },
+
+  created() {
+    const id = this.$route.params.memoryId;
+    if (id) {
+      const memory = this.memoryStore.memories.find((m) => m.id === id);
+      if (memory) {
+        this.editableMemory = { ...memory }; // make a copy for editing
+        this.tagsString = memory.tags?.join(", ") || "";
+      }
     }
   },
+
   methods: {
     goBack() {
-      this.$router.push({ name: 'Room', params: { id: this.$route.params.id } });
+      this.$router.push({ name: "Room", params: { id: this.$route.params.id } });
     },
-  }
+
+    toggleEdit() {
+      if (this.isEditing) {
+        this.saveMemory();
+      }
+      this.isEditing = !this.isEditing;
+    },
+
+    onImageSelected(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          this.editableMemory.image = reader.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    },
+
+    saveMemory() {
+      if (!this.editableMemory) return;
+
+      // Convert tags string to array
+      this.editableMemory.tags = this.tagsString
+        ? this.tagsString.split(",").map((t) => t.trim())
+        : [];
+
+      this.memoryStore.updateMemory(this.editableMemory.id, {
+        ...this.editableMemory,
+      });
+    },
+  },
 };
 </script>
 
-<style scoped>
+<style>
 section {
   display: flex;
   justify-content: center;
@@ -94,6 +180,12 @@ section {
   margin-bottom: 15px;
 }
 
+.boutonDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .form-group {
   margin-top: 15px;
   font-size: 0.95em;
@@ -104,6 +196,10 @@ label {
   font-size: 0.85em;
   margin-bottom: 3px;
   display: block;
+}
+
+input {
+  color: white;
 }
 
 .readonly {
@@ -127,8 +223,8 @@ label {
 .image,
 .preview-image {
   width: 100%;
-  max-width: 600px; /* fixed max width */
-  height: 300px; /* fixed height */
+  max-width: 600px;
+  height: 300px;
   border-radius: 15px;
   object-fit: cover;
 }
@@ -153,7 +249,6 @@ label {
   width: 100%;
 }
 
-.description,
 .legende {
   min-height: auto;
   margin-bottom: 10px;

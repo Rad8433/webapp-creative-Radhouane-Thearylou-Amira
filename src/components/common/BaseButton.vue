@@ -1,6 +1,6 @@
 <template>
   <!-- Bouton de base : applique une classe selon le variant et émet l’événement "click" -->
-  <button class="base-button" :class="variant" @click="$emit('click')">
+  <button class="base-button" :class="variant">
     <!-- Le contenu du bouton vient du slot -->
     <svg class="cog" :class="engrenage" width="32" height="32" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -43,7 +43,9 @@ export default {
   fill: white;
 }
 
-
+svg {
+  pointer-events: none;
+}
 
 
 /* Style général appliqué à tous les boutons */

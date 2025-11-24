@@ -105,7 +105,7 @@ export default {
 };
 </script>
  
-<style scoped>
+<style>
 h1{
   display: flex;
   flex-direction: column;
@@ -115,6 +115,7 @@ h1{
 }
 .room {
   min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -131,6 +132,7 @@ h1{
   justify-content: start;
   
 }
+
  
 .memory-room {
   height: 80%;
