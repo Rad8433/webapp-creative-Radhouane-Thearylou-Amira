@@ -103,10 +103,7 @@ export default {
   flex-grow: 1;
 }
 
-.optionbar__item--search {
-  max-width: none;
-  flex-grow: 2;
-}
+
 
 .optionbar__icon {
   display: flex;

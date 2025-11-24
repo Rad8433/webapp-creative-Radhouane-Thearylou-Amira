@@ -1,13 +1,22 @@
 <template>
   <div class="container">
-    <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :slidesPerView="'auto'" :spaceBetween="-40"
-      :coverflowEffect="{ rotate: 50, stretch: 0, depth: 60, modifier: 1, slideShadows: false }" :pagination="false"
-      :modules="modules" class="mySwiper" :breakpoints="{
-        0: { spaceBetween: -15, coverflowEffect: { rotate: 20, depth: 30 } },
-        480: { spaceBetween: -25, coverflowEffect: { rotate: 35, depth: 45 } },
-        768: { spaceBetween: -40, coverflowEffect: { rotate: 50, depth: 60 } },
-        1024: { spaceBetween: -60, coverflowEffect: { rotate: 60, depth: 80 } }
-      }">
+    <swiper
+      :effect="'coverflow'"
+      :grabCursor="true"
+      :centeredSlides="true"
+      :slidesPerView="'auto'"
+      :spaceBetween="-80"
+      :coverflowEffect="{ rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: false }"
+      :pagination="false"
+      :modules="modules"
+      class="mySwiper"
+      :breakpoints="{
+        0: { slidesPerView: 1, spaceBetween: -10, coverflowEffect: { rotate: 5, depth: 50 } }, 
+        480: { slidesPerView: 1, spaceBetween: -15, coverflowEffect: { rotate: 7, depth: 70 } },
+        768: { slidesPerView: 2, spaceBetween: -50, coverflowEffect: { rotate: 10, depth: 100 } },
+        1024: { slidesPerView: 2, spaceBetween: -80, coverflowEffect: { rotate: 12, depth: 120 } }
+      }"
+    >
       <swiper-slide v-for="(card, index) in filteredMemories" :key="index">
         <MemoryCard v-bind="card" @click="() => detail(card)" />
       </swiper-slide>
@@ -51,7 +60,7 @@ export default {
     detail(memory) {
       this.$router.push({
         name: 'Modal',
-        params: { id: this.roomId, memoryId: memory.id }, // ✅ pass memoryId
+        params: { id: this.roomId, memoryId: memory.id },
       });
     },
   },
@@ -66,7 +75,9 @@ export default {
 
       if (this.filters.search) {
         const q = this.filters.search.toLowerCase();
-        filtered = filtered.filter(memory => memory.title.toLowerCase().includes(q));
+        filtered = filtered.filter(memory =>
+          memory.title.toLowerCase().includes(q)
+        );
       }
 
       if (this.filters.tag && this.filters.tag !== 'all') {
@@ -77,8 +88,10 @@ export default {
         );
       }
 
-      if (this.filters.date === 'recent') filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
-      else if (this.filters.date === 'old') filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
+      if (this.filters.date === 'recent')
+        filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+      else if (this.filters.date === 'old')
+        filtered.sort((a, b) => new Date(a.date) - new Date(b.date));
 
       if (this.filters.sort === 'asc') {
         filtered.sort((a, b) => {
@@ -103,42 +116,53 @@ export default {
 <style scoped>
 .mySwiper {
   width: 100%;
-  padding: 50px 0;
-  margin: auto;
-  overflow-x: hidden;
+  padding: 60px 0;
 }
 
 .container {
-  border: 1.5px solid rgba(255, 255, 255, 0.171);
+  width: 100%;
+  margin: auto;
 }
 
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: min(80vw, 300px);
+  width: 100%;
+  
+  transition: transform 0.3s ease;
+}
+
+.swiper-slide-active {
+  transform: scale(1.05);
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+  transform: scale(0.90);
+  opacity: 0.75;
+  filter: blur(0.8px);
+  
+  
 }
 
 @media (max-width: 1024px) and (min-width: 768px) {
   .container {
     max-width: 700px;
   }
-
   .swiper-slide {
-    width: 35vw;
+    width: 45vw;
   }
 }
 
 @media (max-width: 768px) {
   .container {
-    max-width: 90vw;
-    padding-right: 2em;
+    max-width: 100%;
+    padding: 0 1em;
     margin: 0 auto;
-    border: none;
   }
-
   .swiper-slide {
-    width: 85vw;
+    width: 90vw;
   }
 }
 </style>
