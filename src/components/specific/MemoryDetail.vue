@@ -4,9 +4,12 @@
       <div class="formContenus">
         <div class="boutonDetail">
           <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
-          <BaseButton variant="cinquieme" @click="toggleEdit">
-            {{ isEditing ? "💾" : "🖍️" }}
-          </BaseButton>
+          <div class="coteBouton">
+            <BaseButton variant="cinquieme" @click="toggleEdit">
+              {{ isEditing ? "💾" : "🖍️" }}
+            </BaseButton>
+            <BaseButton variant="cinquieme" @click="deleteMemoryPrompt"> ❌</BaseButton>
+          </div>
         </div>
 
         <h1>Détails de la mémoire</h1>
@@ -59,7 +62,6 @@
           </div>
         </div>
 
-    
         <!-- Légende -->
         <div class="form-group legende">
           <label>Légende</label>
@@ -149,6 +151,16 @@ export default {
       this.memoryStore.updateMemory(this.editableMemory.id, {
         ...this.editableMemory,
       });
+    },
+
+    deleteMemoryPrompt() {
+      if (!this.editableMemory) return;
+
+      const confirmed = window.confirm("Voulez-vous vraiment supprimer cette mémoire ?");
+      if (confirmed) {
+        this.memoryStore.deleteMemory(this.editableMemory.id);
+        this.goBack();
+      }
     },
   },
 };

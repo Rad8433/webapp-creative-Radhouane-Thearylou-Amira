@@ -199,7 +199,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: white;
+  color: rgb(0, 0, 0);
   padding: 15px 40px 40px 40px;
   border-radius: 15px;
 }
