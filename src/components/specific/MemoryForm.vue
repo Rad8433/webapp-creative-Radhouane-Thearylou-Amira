@@ -1,66 +1,62 @@
 <template>
   <section>
     <div class="form">
-      <div class="formContenus">
+
+      <!-- FORMULAIRE -->
+      <form @submit.prevent="handleSubmit">
 
         <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
-        <!-- FORMULAIRE -->
-         <!-- Le submit ecoute juste l'evenement du bouton terminer en ignorant tout les autre evenement du composant bouton et prevent empecher le rechargement de la page <: -->
-        <form @submit.prevent="saveMemory">
-          
-          <!-- Champ : titre -->
-          <div class="form-group titre">
-            <label for="titre">Titre *</label><br>
-            <input type="text" required id="titre" v-model="form.title" placeholder="Titre de la mémoire">
-            <span v-if="errors.title" class="error">{{ errors.title }}</span>
+        <!-- Champ : titre -->
+        <div class="form-group titre">
+          <label for="titre">Titre *</label><br>
+          <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire">
+          <span v-if="errors.title" class="error">{{ errors.title }}</span>
+        </div>
+
+        <!-- Zone pour ajouter une image -->
+        <div class="image-upload">
+          <label class="image-circle" @click="triggerFileInput">
+            <span v-if="!image" class="plus">+</span>
+            <span v-if="!image" class="text">Ajouter une image</span>
+            <img v-if="image" :src="image" class="preview-image">
+            <span v-if="errors.image" class="error">{{ errors.image }}</span>
+          </label>
+
+          <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none;">
+        </div>
+
+        <!-- Champs : date + tags -->
+        <div class="dateTags">
+          <div class="form-group date">
+            <label for="date">Date *</label><br>
+            <input id="date" type="date" v-model="form.date"
+              :max="new Date().toISOString().slice(0, 10)" />
+            <span v-if="errors.date" class="error">{{ errors.date }}</span>
           </div>
 
-          <!-- Zone pour ajouter une image -->
-          <div class="image-upload">
-            <label class="image-circle" @click="triggerFileInput">
-              <span v-if="!image" class="plus">+</span>
-              <span v-if="!image" class="text">Ajouter une image</span>
-              <img v-if="image" :src="image" class="preview-image">
-            </label>
-
-            <input type="file"
-                   ref="fileInput"
-                   accept="image/*"
-                   @change="onImageSelected"
-                   style="display: none;">
+          <div class="form-group tags">
+            <label for="tags">Tags *</label><br>
+            <input type="text" id="tags" v-model="form.tags">
+            <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
           </div>
+        </div>
 
-          <!-- Champs : date + tags -->
-          <div class="dateTags">
-            <div class="form-group date">
-              <label for="date">Date *</label><br>
-              <input id="date" type="date" required v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
-              <span v-if="errors.date" class="error">{{ errors.date }}</span>
-            </div>
+        <!-- Champ : légende -->
+        <div class="form-group legende">
+          <label for="legende">Légende *</label><br>
+          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende">
+          <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
+        </div>
 
-            <div class="form-group tags">
-              <label for="tags">Tags *</label><br>
-              <input type="text" id="tags" required v-model="form.tags">
-              <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
-            </div>
-          </div>
-          <!-- Champ : légende -->
-          <div class="form-group legende">
-            <label for="legende">Légende *</label><br>
-            <input type="text" id="legende" required v-model="form.caption" placeholder="Une courte légende">
-            <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
-          </div>
+        <!-- Bouton soumission -->
+        <BaseButton variant="secondary" type="submit">
+          Terminer
+        </BaseButton>
 
-          <!-- Bouton soumission -->
-          <BaseButton variant="secondary" type="submit">
-            Terminer
-          </BaseButton>
+      </form>
 
-        </form>
-
-      </div>
     </div>
   </section>
 </template>
@@ -97,14 +93,50 @@ export default {
   },
 
   methods: {
-    handleImageUpload(event) {
-      //Vérifier la taille du fichier (max 2 Mo), Afficher une erreur img contenant "Image trop grande, la taille du fichier doit être en bas de de 2 Mo" dans l'objet errors.
-    },
     validateForm() {
-      //Réinitialiser l'objet errors à un objet vide { }, ajouter erreurs si des champs sont invalides
+      // Réinitialiser les erreurs
+      this.errors = {};
+
+      // Vérifier le titre
+      if (!this.form.title.trim()) {
+        this.errors.title = "Le titre est obligatoire.";
+      }
+
+      // Vérifier la date
+      if (!this.form.date) {
+        this.errors.date = "La date est obligatoire.";
+      }
+
+      // Vérifier les tags
+      if (!this.form.tags.trim()) {
+        this.errors.tags = "Les tags sont obligatoires.";
+      }
+
+      // Vérifier la légende
+      if (!this.form.caption.trim()) {
+        this.errors.caption = "La légende est obligatoire.";
+      }
+
+      // Vérifier qu'il y a bien une image
+      if (!this.image) {
+        this.errors.image = "Veuillez sélectionner une image (max 2 Mo).";
+      }
+
+      // Retourne TRUE si aucune erreur
+      return Object.keys(this.errors).length === 0;
     },
     handleSubmit() {
-      //Valider le formulaire en appelant validateForm()
+      // On valide tous les champs
+      const isValid = this.validateForm();
+
+      // Si non valide : on arrête ici
+      if (!isValid) {
+        console.log("Formulaire invalide");
+        return;
+      }
+
+      // Sinon on sauvegarde
+      this.saveMemory();
     },
     goBack() {
       this.$router.push({ name: 'Room', params: { id: this.$route.params.id } });
@@ -114,12 +146,20 @@ export default {
       this.$refs.fileInput.click();
     },
 
-    onImageSelected(event) {
+    onHandleImage(event) {
       const file = event.target.files[0];
+      this.errors.image = null;
+
       if (file) {
+        if (file.size > 2 * 1024 * 1024) {
+          this.errors.image = "Image trop grande, la taille du fichier doit être en dessous de 2 Mo.";
+          this.image = null;
+          return;
+        }
+
         const reader = new FileReader();
         reader.onload = () => {
-          this.image = reader.result; 
+          this.image = reader.result;
         };
         reader.readAsDataURL(file);
       }
