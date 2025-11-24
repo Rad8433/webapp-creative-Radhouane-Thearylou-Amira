@@ -127,14 +127,15 @@ display: flex;
 flex-direction: column;
 align-items: center; 
 padding: 1.5rem 0 0 0;
-width: 70vw;
+width: 100%;
+ box-sizing: border-box;
 
 
 }
 
 .retour {
 
-width: 100%;
+width: 70vw;
 
 }
 .filtre {
@@ -142,7 +143,7 @@ display: flex;
 justify-content: flex-start; 
 flex-wrap: wrap; 
 gap: 1rem; 
-width: 100%;
+width: 70vw;
 margin-bottom:-1rem ;
 
 }

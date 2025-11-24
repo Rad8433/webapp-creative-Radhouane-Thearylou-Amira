@@ -5,7 +5,7 @@
       :grabCursor="true"
       :centeredSlides="true"
       :slidesPerView="'auto'"
-      :spaceBetween="-80"
+      :spaceBetween="-200"
       :coverflowEffect="{ rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: false }"
       :pagination="false"
       :modules="modules"
@@ -14,7 +14,8 @@
         0: { slidesPerView: 1, spaceBetween: -10, coverflowEffect: { rotate: 5, depth: 50 } }, 
         480: { slidesPerView: 1, spaceBetween: -15, coverflowEffect: { rotate: 7, depth: 70 } },
         768: { slidesPerView: 2, spaceBetween: -50, coverflowEffect: { rotate: 10, depth: 100 } },
-        1024: { slidesPerView: 2, spaceBetween: -80, coverflowEffect: { rotate: 12, depth: 120 } }
+        1024: { slidesPerView: 2, spaceBetween: -100, coverflowEffect: { rotate: 12, depth: 120 } },
+         1224: { slidesPerView: 3, spaceBetween: -200, coverflowEffect: { rotate: 12, depth: 120 } }
       }"
     >
       <swiper-slide v-for="(card, index) in filteredMemories" :key="index">
@@ -117,11 +118,14 @@ export default {
 .mySwiper {
   width: 100%;
   padding: 60px 0;
+
 }
 
 .container {
   width: 100%;
   margin: auto;
+
+
 }
 
 .swiper-slide {
@@ -129,40 +133,17 @@ export default {
   justify-content: center;
   align-items: center;
   width: 100%;
-  
+  transform: scale(0.90);
+
   transition: transform 0.3s ease;
 }
 
 .swiper-slide-active {
   transform: scale(1.05);
+
 }
 
-.swiper-slide-next,
-.swiper-slide-prev {
-  transform: scale(0.90);
-  opacity: 0.75;
-  filter: blur(0.8px);
-  
-  
-}
 
-@media (max-width: 1024px) and (min-width: 768px) {
-  .container {
-    max-width: 700px;
-  }
-  .swiper-slide {
-    width: 45vw;
-  }
-}
 
-@media (max-width: 768px) {
-  .container {
-    max-width: 100%;
-    padding: 0 1em;
-    margin: 0 auto;
-  }
-  .swiper-slide {
-    width: 90vw;
-  }
-}
+
 </style>

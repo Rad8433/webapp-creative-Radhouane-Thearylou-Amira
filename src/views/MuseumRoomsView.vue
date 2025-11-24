@@ -12,9 +12,9 @@
         v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" :showDate="false" />
       </div>
       <!-- Zone où les salles filtrées sont affichées -->
-      <section class="cards-placeholder">
+   
         <MuseumGrid :filters="filters" />
-      </section>
+   
 
       <!-- Pied de page -->
       <AppFooter />
@@ -85,6 +85,7 @@ export default {
   display: flex;
   flex-direction: column;
   width: 70vw;
+  padding: 1.5rem 0 0 0;
   box-sizing: border-box;
   font-family: Georgia, serif;
   color: #3a3a3a;
@@ -112,7 +113,6 @@ export default {
   justify-content: flex-start; 
   flex-wrap: wrap; 
   gap: 1rem; 
- 
   width: 100%;
  
 }
