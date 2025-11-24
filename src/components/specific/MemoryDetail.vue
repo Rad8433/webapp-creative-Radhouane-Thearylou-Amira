@@ -30,11 +30,6 @@
           </div>
         </div>
 
-        <div class="form-group description">
-          <label>Courte description</label>
-          <p class="readonly">{{ memory.caption }}</p>
-        </div>
-
         <div class="form-group legende">
           <label>Légende</label>
           <p class="readonly">{{ memory.description }}</p>

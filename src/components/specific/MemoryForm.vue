@@ -43,17 +43,10 @@
               <input type="text" id="tags" v-model="form.tags">
             </div>
           </div>
-
-          <!-- Champ : courte description -->
-          <div class="form-group description">
-            <label for="description">Courte description</label><br>
-            <input type="text" id="description" v-model="form.caption">
-          </div>
-
           <!-- Champ : légende -->
           <div class="form-group legende">
             <label for="legende">Légende</label><br>
-            <input type="text" id="legende" v-model="form.description">
+            <input type="text" id="legende" v-model="form.caption">
           </div>
 
           <!-- Bouton soumission -->
@@ -92,7 +85,6 @@ export default {
         title: "",
         tags: "",
         caption: "",
-        description: "",
         date: "",
       },
       image: null
@@ -129,7 +121,6 @@ export default {
         title: this.form.title,
         image: this.image,
         caption: this.form.caption,
-        description: this.form.description,
         date: this.form.date,
         tags: tagsArray,
         bgColor: "#e0e0e0",
@@ -216,10 +207,6 @@ input {
 
 .tags {
   margin-left: 20px;
-}
-
-#description {
-  height: 10vh;
 }
 
 #legende {

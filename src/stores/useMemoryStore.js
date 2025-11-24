@@ -21,7 +21,6 @@ export const useMemoryStore = defineStore("memory", {
         title: souvenir.titreSouvenir,
         image: souvenir.imageSouvenir,
         caption: souvenir.descriptionSouvenir,
-        description: souvenir.descriptionSouvenir,
         date: souvenir.dateSouvenir,
         tags: souvenir.tagsSouvenir,
         memoryNumber: `Memory ${memoriesByRoom[roomId]}`,
