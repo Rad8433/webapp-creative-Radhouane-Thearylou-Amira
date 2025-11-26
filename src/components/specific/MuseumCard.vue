@@ -1,7 +1,7 @@
 <template>
   <div class="room-card">
     <!-- Image de la salle en arrière-plan -->
-    <img :src="room.url" :alt="room.name">
+    <img :src="room.url" :alt="room.name" />
 
     <!-- Nom de la salle -->
     <h2>{{ room.name }}</h2>
@@ -10,21 +10,36 @@
     <p class="room-description">{{ room.description }}</p>
 
     <!-- Nombre total de mémoires dans la salle -->
-    <p class="memory-count">{{ room.memoriesCount }} mémoires</p>
+    <p class="memory-count">{{ memoryCount }} mémoires</p>
   </div>
 </template>
 
 <script>
+import { useMemoryStore } from "@/stores/useMemoryStore";
+import { computed } from "vue";
+
 export default {
   name: "MuseumCard",
 
-  // La carte reçoit un objet "room" contenant toutes les infos nécessaires
   props: {
     room: {
       type: Object,
-      required: true   // la prop est obligatoire
-    }
-  }
+      required: true,
+    },
+  },
+
+  setup(props) {
+    const memoryStore = useMemoryStore();
+
+    // Compute the number of memories in this room
+    const memoryCount = computed(() => {
+      return memoryStore.memoriesByRoom(props.room.id).length;
+    });
+
+    return {
+      memoryCount,
+    };
+  },
 };
 </script>
 
