@@ -1,5 +1,6 @@
 <template>
   <div class="optionbar" :class="`optionbar--${variant}`">
+    <!-- Search input -->
     <div class="optionbar__item optionbar__item--search">
       <span class="optionbar__icon">
         <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
@@ -17,6 +18,7 @@
       <span class="optionbar__underline"></span>
     </div>
 
+    <!-- Room select -->
     <div v-if="showRoom" class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="room" @change="$emit('update:room', $event.target.value)">
@@ -28,7 +30,8 @@
       <span class="optionbar__underline"></span>
     </div>
 
-    <div class="optionbar__item">
+    <!-- Tag select (only show if there are tags) -->
+    <div v-if="tagOptions.length > 0" class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="tag" @change="$emit('update:tag', $event.target.value)">
           <option value="all">Tous les tags</option>
@@ -39,6 +42,7 @@
       <span class="optionbar__underline"></span>
     </div>
 
+    <!-- Date select -->
     <div v-if="showDate" class="optionbar__item">
       <div class="optionbar__select-wrapper">
         <select :value="date" @change="$emit('update:date', $event.target.value)">
@@ -51,6 +55,7 @@
       <span class="optionbar__underline"></span>
     </div>
 
+    <!-- Sort select -->
     <div v-if="showSort" class="optionbar__item optionbar__item--sort">
       <div class="optionbar__select-wrapper">
         <select :value="sort" @change="$emit('update:sort', $event.target.value)">

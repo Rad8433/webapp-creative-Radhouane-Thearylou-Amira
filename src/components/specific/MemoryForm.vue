@@ -20,25 +20,29 @@
           <label class="image-circle" @click="triggerFileInput">
             <span v-if="!image" class="plus">+</span>
             <span v-if="!image" class="text">Ajouter une image</span>
-            <img v-if="image" :src="image" class="preview-image">
+            <img v-if="image" :src="image" class="preview-image" />
             <span v-if="errors.image" class="error">{{ errors.image }}</span>
           </label>
 
-          <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none;">
+          <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none;" />
         </div>
 
         <!-- Champs : date + tags -->
-        <div class="dateTags">
+        <div class="date">
           <div class="form-group date">
             <label for="date">Date *</label><br>
-            <input id="date" type="date" v-model="form.date"
-              :max="new Date().toISOString().slice(0, 10)" />
+            <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
             <span v-if="errors.date" class="error">{{ errors.date }}</span>
           </div>
 
           <div class="form-group tags">
             <label for="tags">Tags *</label><br>
-            <input type="text" id="tags" v-model="form.tags">
+            <select id="tag-select" v-model="form.tags">
+              <option value="">-- Sélectionnez un tag --</option>
+              <option v-for="option in tagOptions" :key="option.value" :value="option.value">
+                {{ option.label }}
+              </option>
+            </select>
             <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
           </div>
         </div>
@@ -46,7 +50,7 @@
         <!-- Champ : légende -->
         <div class="form-group legende">
           <label for="legende">Légende *</label><br>
-          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende">
+          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
 
@@ -81,63 +85,65 @@ export default {
 
   data() {
     return {
+      tagOptions: [
+        { value: "#plage", label: "#plage" },
+        { value: "#montagne", label: "#montagne" },
+        { value: "#culture", label: "#culture" },
+        { value: "#nature", label: "#nature" },
+        { value: "#nuit", label: "#nuit" },
+        { value: "#famille", label: "#famille" },
+        { value: "#friends", label: "#friends" },
+        { value: "#exploration", label: "#exploration" },
+      ],
       errors: {},
       form: {
         title: "",
-        tags: "",
+        tags: "", // <-- Bound directly to select here
         caption: "",
         date: "",
       },
-      image: null
+      image: null,
     };
   },
 
   methods: {
     validateForm() {
-      // Réinitialiser les erreurs
       this.errors = {};
 
-      // Vérifier le titre
       if (!this.form.title.trim()) {
         this.errors.title = "Le titre est obligatoire.";
       }
 
-      // Vérifier la date
       if (!this.form.date) {
         this.errors.date = "La date est obligatoire.";
       }
 
-      // Vérifier les tags
       if (!this.form.tags.trim()) {
         this.errors.tags = "Les tags sont obligatoires.";
       }
 
-      // Vérifier la légende
       if (!this.form.caption.trim()) {
         this.errors.caption = "La légende est obligatoire.";
       }
 
-      // Vérifier qu'il y a bien une image
       if (!this.image) {
         this.errors.image = "Veuillez sélectionner une image (max 2 Mo).";
       }
 
-      // Retourne TRUE si aucune erreur
       return Object.keys(this.errors).length === 0;
     },
+
     handleSubmit() {
-      // On valide tous les champs
       const isValid = this.validateForm();
 
-      // Si non valide : on arrête ici
       if (!isValid) {
         console.log("Formulaire invalide");
         return;
       }
 
-      // Sinon on sauvegarde
       this.saveMemory();
     },
+
     goBack() {
       this.$router.push({ name: 'Room', params: { id: this.$route.params.id } });
     },
@@ -166,9 +172,8 @@ export default {
     },
 
     saveMemory() {
-      const tagsArray = this.form.tags
-        ? this.form.tags.split(",").map(t => t.trim())
-        : [];
+      // Tags are a single string like "#plage", wrap in array for store
+      const tagsArray = this.form.tags ? [this.form.tags.trim()] : [];
 
       this.memoryStore.addMemory({
         roomId: this.$route.params.id,
@@ -238,7 +243,7 @@ section {
   object-fit: cover;
 }
 
-.dateTags {
+.date {
   display: flex;
 }
 
@@ -246,7 +251,6 @@ section {
   margin-top: 20px;
   font-size: 1.2em;
 }
-
 
 .titre {
   margin-top: 0;
@@ -259,6 +263,12 @@ section {
 #legende {
   height: 6vh;
   margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
 }
 
 @media (max-width: 650px) {
