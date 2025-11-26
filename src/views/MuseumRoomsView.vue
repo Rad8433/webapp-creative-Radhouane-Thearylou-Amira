@@ -7,9 +7,9 @@
       </AppHeader>
     </div>
       <div class="filtre">
-      <!-- Barre de filtres : recherche, salle, tag, tri -->
-      <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
-        v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" :showDate="false" />
+      <!-- Barre de filtres : recherche, salle, tri -->
+      <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room"
+        v-model:sort="filters.sort" :room-options="roomOptions" :showDate="false" />
       </div>
       <!-- Zone où les salles filtrées sont affichées -->
    
@@ -44,7 +44,6 @@ export default {
       filters: {
         search: "",
         room: "all",
-        tag: "all",
         sort: "asc",  // Tri par défaut (ascendant)
       },
 
@@ -58,15 +57,6 @@ export default {
         { value: "room-6", label: "Destinations de rêves" },
       ],
 
-      // Liste des tags disponibles dans le filtre
-      tagOptions: [
-        { value: "#vacances", label: "#vacances" },
-        { value: "#aventure", label: "#aventure" },
-        { value: "#urbain", label: "#urbain" },
-        { value: "#humour", label: "#humour" },
-        { value: "#food", label: "#food" },
-        { value: "#rêve", label: "#rêve" },
-      ],
     };
   },
   methods: {

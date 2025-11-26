@@ -74,12 +74,14 @@ data() {
     },
      // Liste des tags disponibles dans le filtre
     tagOptions: [
-      { value: "#vacances", label: "#vacances" },
-      { value: "#aventure", label: "#aventure" },
-      { value: "#urbain", label: "#urbain" },
-      { value: "#humour", label: "#humour" },
-      { value: "#food", label: "#food" },
-      { value: "#rêve", label: "#rêve" },
+    { value: "#plage", label: "#plage" },
+  { value: "#montagne", label: "#montagne" },
+  { value: "#culture", label: "#culture" },
+  { value: "#nature", label: "#nature" },
+  { value: "#nuit", label: "#nuit" },
+  { value: "#famille", label: "#famille" },
+  { value: "#friends", label: "#friends" },
+  { value: "#exploration", label: "#exploration" },
     ],
   };
 },
