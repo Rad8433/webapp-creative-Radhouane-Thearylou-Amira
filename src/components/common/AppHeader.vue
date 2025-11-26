@@ -110,7 +110,7 @@ section {
 }
  
 .sectionMuseum {
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 8fr 1fr;
 }
  
 .sectionRoom {
@@ -149,6 +149,7 @@ section {
     font-size: 1.7rem;
     justify-self: flex-end;
   }
+
 }
 
 
