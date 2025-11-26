@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :slidesPerView="'auto'" :spaceBetween="-200"
+    <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :slidesPerView="'auto'" :spaceBetween="50"
       :coverflowEffect="{ rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: false }" :pagination="false"
       :modules="modules" class="mySwiper" :breakpoints="{
-        0: { slidesPerView: 1, spaceBetween: -10, coverflowEffect: { rotate: 5, depth: 50 } },
-        480: { slidesPerView: 1, spaceBetween: -15, coverflowEffect: { rotate: 7, depth: 70 } },
-        768: { slidesPerView: 2, spaceBetween: -50, coverflowEffect: { rotate: 10, depth: 100 } },
-        1024: { slidesPerView: 2, spaceBetween: -100, coverflowEffect: { rotate: 12, depth: 120 } },
-        1224: { slidesPerView: 3, spaceBetween: -200, coverflowEffect: { rotate: 12, depth: 120 } }
+        0: { slidesPerView: 1, spaceBetween: 10, coverflowEffect: { rotate: 5, depth: 50 } },
+        480: { slidesPerView: 1, spaceBetween: 15, coverflowEffect: { rotate: 7, depth: 70 } },
+        768: { slidesPerView: 2, spaceBetween: 30, coverflowEffect: { rotate: 10, depth: 80 } },
+        1024: { slidesPerView: 2, spaceBetween: 50, coverflowEffect: { rotate: 12, depth: 100 } },
+        1224: { slidesPerView: 3, spaceBetween: 50, coverflowEffect: { rotate: 12, depth: 100 } }
       }">
       <swiper-slide v-for="(card, index) in filteredMemories" :key="index">
         <MemoryCard v-bind="card" @click="() => detail(card)" />
@@ -126,12 +126,10 @@ export default {
   align-items: center;
   width: 100%;
   transform: scale(0.90);
-
   transition: transform 0.3s ease;
 }
 
 .swiper-slide-active {
-  transform: scale(1.05);
-
+  transform: translate3d(0, 0, 0) !important;
 }
 </style>
