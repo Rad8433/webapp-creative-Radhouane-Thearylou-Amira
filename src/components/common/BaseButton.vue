@@ -113,7 +113,6 @@ svg {
   padding: 0.6rem 0rem;
   border-radius: 8px;
   font-size: 1.5rem;
-
 }
 
 .quatrieme:hover {
@@ -164,6 +163,20 @@ svg {
 .cogSecondary:hover {
   background: #504026;
   color: #000;
+}
+
+@media (max-width: 509px) {
+  .cogPrimary {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quatrieme {
+    width: 40px;
+    padding: 0.3rem 0rem;
+    border-radius: 8px;
+    font-size: 1.6rem;
+  }
 }
 
 

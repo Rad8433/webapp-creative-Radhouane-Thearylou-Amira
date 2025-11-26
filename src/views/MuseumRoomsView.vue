@@ -3,7 +3,7 @@
     <div class="global">
         <div class="header">
       <!-- En-tête avec titre personnalisé -->
-      <AppHeader variantHeader="titleBlack" section sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home" title="Choissiez votre destination">
+      <AppHeader variantHeader="titleBlack" sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home" title="Choissiez votre destination">
       </AppHeader>
     </div>
       <div class="filtre">
