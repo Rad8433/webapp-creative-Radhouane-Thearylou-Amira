@@ -52,12 +52,14 @@ export default {
 };
 </script>
 
-<style>
-.menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-}
+<style scoped>
+  .menu {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+
 </style>
