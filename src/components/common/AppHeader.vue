@@ -123,6 +123,11 @@ section {
   font-size: 2rem;
   justify-self: center;
 }
+
+.titleMuseum {
+  font-size: 2rem;
+  justify-self: center;
+}
  
 .titleLeft {
   justify-self: start;
@@ -144,18 +149,30 @@ section {
 /* ================================
    Mobile (≤0px)
    ================================= */
-@media (max-width: 594px) {
-  .headerTitle {
+@media (max-width: 700px) {
+  .titleBlack {
     font-size: 1.7rem;
     justify-self: flex-end;
+    grid-row: 2;
+    grid-column: 2;
+    white-space: nowrap;
+  }
+
+  .sectionMuseum {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr;
+  }
+  .headerEngrenage {
+      grid-column: 3;
+      margin-right: 10px;
   }
 
 }
 
 
-@media (max-width: 468px) {
-  .headerTitle {
-    font-size: 1.5rem;
+@media (max-width: 475px) {
+  .titleBlack {
+    font-size: 1.4rem;
     justify-self: flex-end;
   }
 
