@@ -58,7 +58,7 @@
 
         <!-- Bouton soumission -->
         <BaseButton variant="secondary" type="submit">
-          Terminer
+          Ajouter
         </BaseButton>
 
       </form>
