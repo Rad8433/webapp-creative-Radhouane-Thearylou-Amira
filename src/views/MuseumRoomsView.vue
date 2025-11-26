@@ -8,7 +8,7 @@
     </div>
       <div class="filtre">
       <!-- Barre de filtres : recherche, salle, tag, tri -->
-      <OptionBar v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
+      <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room" v-model:tag="filters.tag"
         v-model:sort="filters.sort" :room-options="roomOptions" :tag-options="tagOptions" :showDate="false" />
       </div>
       <!-- Zone où les salles filtrées sont affichées -->

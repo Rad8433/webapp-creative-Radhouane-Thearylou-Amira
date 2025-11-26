@@ -10,7 +10,7 @@
 
     <div class="filtre">
       <!-- Barre de filtres : recherche, salle, tag, tri -->
-    <OptionBar v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag"
+    <OptionBar variant="light" v-model:search="filters.search" v-model:date="filters.date" v-model:tag="filters.tag"
       :tag-options="tagOptions" :showRoom="false" :showSort="false" />
 
   </div>
