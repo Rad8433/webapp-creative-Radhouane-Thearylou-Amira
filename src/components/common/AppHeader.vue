@@ -140,4 +140,26 @@ section {
 .titleWhite {
   color: #ffffff;
 }
+
+/* ================================
+   Mobile (≤0px)
+   ================================= */
+@media (max-width: 594px) {
+  .headerTitle {
+    font-size: 1.7rem;
+    justify-self: flex-end;
+  }
+}
+
+
+@media (max-width: 468px) {
+  .headerTitle {
+    font-size: 1.5rem;
+    justify-self: flex-end;
+  }
+
+  .sectionRoom {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>
