@@ -8,7 +8,7 @@
             <BaseButton variant="cinquieme" @click="toggleEdit">
               {{ isEditing ? "💾" : "🖍️" }}
             </BaseButton>
-            <BaseButton variant="cinquieme" @click="deleteMemoryPrompt"> ❌</BaseButton>
+            <BaseButton variant="cinquieme" @click="deleteMemoryPrompt"> 🗑️</BaseButton>
           </div>
         </div>
 
