@@ -5,7 +5,16 @@
       <!-- FORMULAIRE -->
       <form @submit.prevent="handleSubmit">
 
-        <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
+        <BaseButton variant="cinquieme" @click="goBack"> <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
+                fill="#fff"></path>
+            </g>
+          </svg> </BaseButton>
         <h1>Décrivez votre mémoire</h1>
 
         <!-- Champ : titre -->
@@ -151,17 +160,37 @@ export default {
 </script>
 
 <style>
-section { display: flex; justify-content: center; align-items: center; }
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .form {
   background: rgb(43, 148, 143);
-  width: fit-content;
+  width: 100%;
+  /* prend toute la largeur dispo */
+  max-width: 650px;
+  /* mais pas plus large que ça sur desktop */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   color: black;
-  padding: 15px 40px 40px;
+  padding: 20px 40px 40px;
   border-radius: 15px;
+  box-sizing: border-box;
+}
+
+/* Titre */
+.form h1 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin: 0 0 1rem;
+}
+
+/* FORMULAIRE */
+form {
+  width: 100%;
 }
 
 /* Image upload */
@@ -174,6 +203,8 @@ section { display: flex; justify-content: center; align-items: center; }
 .image-circle {
   width: 100%;
   height: 15vh;
+  min-height: 160px;
+  /* pour éviter que ce soit trop petit sur mobile */
   border-radius: 15px;
   border: none;
   display: flex;
@@ -188,8 +219,16 @@ section { display: flex; justify-content: center; align-items: center; }
   font-size: 20px;
 }
 
-.plus { font-size: 40px; color: #777; }
-.preview-image { width: 100%; height: 100%; object-fit: cover; }
+.plus {
+  font-size: 40px;
+  color: #777;
+}
+
+.preview-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 /* Form grid */
 .form-grid {
@@ -198,13 +237,47 @@ section { display: flex; justify-content: center; align-items: center; }
   gap: 20px;
 }
 
-.form-group { margin-top: 20px; font-size: 1.2em; }
-.titre { margin-top: 0; }
-#legende { height: 6vh; margin-bottom: 30px; }
-.error { color: red; font-size: 0.9em; margin-top: 4px; }
+.form-group {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+
+.titre {
+  margin-top: 0;
+}
+
+/* Inputs génériques */
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: 100%;
+  padding: 0.4em 0.6em;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #f3f3f3;
+  color: black;
+  font: inherit;
+  box-sizing: border-box;
+}
+
+#legende {
+  height: 6vh;
+  min-height: 60px;
+  margin-bottom: 30px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
 
 /* Select styling like input */
-.select-wrapper { position: relative; width: 100%; }
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
 select#tag-select {
   border: none;
   outline: none;
@@ -218,6 +291,7 @@ select#tag-select {
   appearance: none;
   box-sizing: border-box;
 }
+
 .select-arrow {
   position: absolute;
   right: 10px;
@@ -227,10 +301,73 @@ select#tag-select {
   color: #555;
 }
 
-/* Responsive grid */
+/* Bouton retour + bouton submit bien alignés */
+form>.cinquieme {
+  margin-bottom: 10px;
+}
+
+form>.cinquieme svg {
+  display: block;
+}
+
+/* TABLETTE (≈ 1024px et moins) */
+@media (max-width: 1024px) {
+  .form {
+    padding: 20px 24px 32px;
+    max-width: 540px;
+  }
+
+  .form h1 {
+    font-size: 1.6rem;
+  }
+
+  .form-grid {
+    gap: 16px;
+  }
+}
+
+/* MOBILE (≈ 650px et moins) */
 @media (max-width: 650px) {
-  .form { padding: 20px 15px; }
-  .image-circle { height: 20vh; }
-  .form-grid { grid-template-columns: 1fr; gap: 15px; }
+  section {
+    padding: 1.5rem 1rem;
+  }
+
+  .form {
+    padding: 16px 14px 24px;
+    border-radius: 12px;
+  }
+
+  .form h1 {
+    font-size: 1.4rem;
+  }
+
+  .form-group {
+    font-size: 1rem;
+  }
+
+  .image-circle {
+    height: 200px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    /* la date et le tag passent l’un sous l’autre */
+    gap: 15px;
+  }
+
+  #legende {
+    margin-bottom: 20px;
+  }
+}
+
+/* Très petit mobile (genre < 400px) */
+@media (max-width: 400px) {
+  .form {
+    padding: 12px 10px 20px;
+  }
+
+  .image-circle {
+    height: 180px;
+  }
 }
 </style>

@@ -3,12 +3,25 @@
     <div class="form">
       <div class="formContenus">
         <div class="boutonDetail">
-          <BaseButton variant="cinquieme" @click="goBack"> <- </BaseButton>
+          <BaseButton variant="cinquieme" @click="goBack">
+            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+              <g id="SVGRepo_iconCarrier">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
+                  fill="#fff"></path>
+              </g>
+            </svg>
+          </BaseButton>
+
           <div class="coteBouton">
             <BaseButton variant="cinquieme" @click="toggleEdit">
               {{ isEditing ? "💾" : "🖍️" }}
             </BaseButton>
-            <BaseButton variant="cinquieme" @click="deleteMemoryPrompt"> 🗑️</BaseButton>
+            <BaseButton variant="cinquieme" @click="deleteMemoryPrompt">
+              🗑️
+            </BaseButton>
           </div>
         </div>
 
@@ -16,75 +29,64 @@
 
         <!-- Titre -->
         <div class="form-group titre">
-          <label>Titre</label>
+          <label>Titre :</label>
           <input v-if="isEditing" v-model="editableMemory.title" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.title }}</p>
         </div>
 
         <!-- Image -->
         <div class="image-upload">
-
-          <!-- CLICKABLE IMAGE WHEN EDITING -->
-          <div
-            v-if="editableMemory.image"
-            class="image-click-area"
-            :class="{ editable: isEditing }"
-            @click="isEditing && triggerFileInput()"
-          >
+          <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
+            @click="isEditing && triggerFileInput()">
             <img :src="editableMemory.image" class="preview-image" />
           </div>
 
-          <!-- If no image -->
-          <div
-            v-else
-            class="image readonly"
-            :class="{ editable: isEditing }"
-            @click="isEditing && triggerFileInput()"
-          >
+          <div v-else class="image readonly" :class="{ editable: isEditing }" @click="isEditing && triggerFileInput()">
             <span class="plus">+</span>
             <span class="text">Ajouter une image</span>
           </div>
 
-          <input
-            v-if="isEditing"
-            type="file"
-            ref="fileInput"
-            accept="image/*"
-            @change="onImageSelected"
-            style="display: none;"
-          />
+          <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected"
+            style="display: none;" />
         </div>
 
         <!-- Date & Tags -->
         <div class="dateTags">
           <div class="form-group date">
-            <label>Date</label>
+            <label>Date :</label>
             <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" />
             <p v-else class="readonly">{{ editableMemory.date }}</p>
           </div>
 
           <div class="form-group tags">
-            <label>Tags</label>
-            <input
-              v-if="isEditing"
-              v-model="tagsString"
-              class="readonly"
-              placeholder="Séparez les tags par une virgule"
-            />
-            <p v-else class="readonly">{{ editableMemory.tags?.join(", ") }}</p>
+            <label for="tags">Tag :</label>
+
+            <div v-if="isEditing" class="select-wrapper">
+              <select id="tag-select" v-model="selectedTag">
+                <option value="">-- Sélectionnez un tag --</option>
+                <option v-for="option in tagOptions" :key="option.value" :value="option.value">
+                  {{ option.label }}
+                </option>
+              </select>
+              <span class="select-arrow">▾</span>
+            </div>
+
+            <p v-else class="readonly">
+              {{ editableMemory.tags?.join(", ") || "Aucun tag" }}
+            </p>
           </div>
         </div>
 
         <!-- Légende -->
         <div class="form-group legende">
-          <label>Légende</label>
+          <label>Légende :</label>
           <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
 
         <!-- Numéro de mémoire -->
         <div class="form-group">
-          <label>Numéro de mémoire</label>
+          <label>Numéro de mémoire :</label>
           <input v-if="isEditing" v-model="editableMemory.memoryNumber" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.memoryNumber }}</p>
         </div>
@@ -111,7 +113,17 @@ export default {
     return {
       editableMemory: null,
       isEditing: false,
-      tagsString: "",
+      tagOptions: [
+        { value: "#plage", label: "#plage" },
+        { value: "#montagne", label: "#montagne" },
+        { value: "#culture", label: "#culture" },
+        { value: "#nature", label: "#nature" },
+        { value: "#nuit", label: "#nuit" },
+        { value: "#famille", label: "#famille" },
+        { value: "#friends", label: "#friends" },
+        { value: "#exploration", label: "#exploration" },
+      ],
+      selectedTag: "",
     };
   },
 
@@ -121,7 +133,7 @@ export default {
 
     if (memory) {
       this.editableMemory = { ...memory };
-      this.tagsString = memory.tags?.join(", ") || "";
+      this.selectedTag = memory.tags?.[0] || "";
     }
   },
 
@@ -138,7 +150,7 @@ export default {
     },
 
     triggerFileInput() {
-      this.$refs.fileInput.click();
+      this.$refs.fileInput?.click();
     },
 
     onImageSelected(event) {
@@ -160,8 +172,8 @@ export default {
     saveMemory() {
       if (!this.editableMemory) return;
 
-      this.editableMemory.tags = this.tagsString
-        ? this.tagsString.split(",").map((t) => t.trim())
+      this.editableMemory.tags = this.selectedTag
+        ? [this.selectedTag.trim()]
         : [];
 
       this.memoryStore.updateMemory(this.editableMemory.id, {
@@ -172,7 +184,9 @@ export default {
     deleteMemoryPrompt() {
       if (!this.editableMemory) return;
 
-      const confirmed = window.confirm("Voulez-vous vraiment supprimer cette mémoire ?");
+      const confirmed = window.confirm(
+        "Voulez-vous vraiment supprimer cette mémoire ?"
+      );
       if (confirmed) {
         this.memoryStore.deleteMemory(this.editableMemory.id);
         this.goBack();
@@ -194,25 +208,58 @@ section {
   background: rgb(43, 148, 143);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   color: white;
   padding: 20px 30px;
   border-radius: 15px;
-  width: fit-content;
-  max-width: 90%;
+  width: 100%;
+  max-width: 640px;
+  box-sizing: border-box;
 }
 
+/* Contenu interne en grille simple (une colonne par défaut) */
+.formContenus {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 1rem;
+  width: 100%;
+}
+
+/* Ligne du haut : boutons */
 .boutonDetail {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
+.coteBouton {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Titre principal */
+.formContenus h1 {
+  margin: 0.5rem 0 0.5rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+/* Groupes de formulaire */
 .form-group {
-  margin-top: 15px;
+  margin-top: 10px;
   width: 100%;
 }
 
+/* Labels des champs */
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+/* Valeurs / inputs */
 .readonly {
   background: rgba(255, 255, 255, 0.1);
   padding: 5px 8px;
@@ -221,8 +268,17 @@ section {
   width: 100%;
   display: flex;
   align-items: center;
+  border: none;
+  outline: none;
+  color: white;
+  box-sizing: border-box;
 }
 
+input.readonly {
+  font: inherit;
+}
+
+/* IMAGE */
 .image-upload {
   display: flex;
   justify-content: center;
@@ -232,15 +288,15 @@ section {
 
 .image-click-area.editable:hover,
 .image.editable:hover {
-  opacity: 0.8;
+  opacity: 0.85;
   cursor: pointer;
 }
 
 .preview-image,
 .image {
   width: 100%;
-  max-width: 600px;
-  height: 300px;
+  max-width: 100%;
+  height: 260px;
   border-radius: 15px;
   object-fit: cover;
 }
@@ -251,21 +307,90 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
+.plus {
+  font-size: 32px;
+  margin-bottom: 4px;
+}
+
+/* DATE + TAGS EN GRID */
 .dateTags {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
+  width: 100%;
 }
 
-@media (max-width: 650px) {
-  section {
-    padding: 0px;
+.select-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+select#tag-select {
+  border: none;
+  outline: none;
+  background-color: #f3f3f3;
+  color: black;
+  font: inherit;
+  width: 100%;
+  padding: 0.4em 0.6em;
+  border-radius: 5px;
+  cursor: pointer;
+  appearance: none;
+  box-sizing: border-box;
+}
+
+.select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #555;
+}
+
+/* ───────── TABLETTE ───────── */
+@media (max-width: 1024px) {
+  .form {
+    padding: 18px 20px;
+    max-width: 95%;
   }
 
-  .form {
-  max-width: 100%;
+  .formContenus h1 {
+    font-size: 1.6rem;
+  }
 }
+
+/* ───────── MOBILE ───────── */
+@media (max-width: 650px) {
+  .form {
+    padding: 16px 14px;
+    border-radius: 12px;
+    max-width: 100%;
+  }
+
+  .formContenus h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  .preview-image,
+  .image {
+    height: 200px;
+  }
+
+  .dateTags {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Très petit mobile */
+@media (max-width: 400px) {
+  .form {
+    padding: 12px 10px;
+  }
 
   .preview-image,
   .image {
