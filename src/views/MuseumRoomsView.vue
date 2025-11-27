@@ -1,20 +1,21 @@
 <template>
   <main class="museum-rooms">
     <div class="global">
-        <div class="header">
-      <!-- En-tête avec titre personnalisé -->
-      <AppHeader variantHeader="titleBlack" sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home" title="Choissiez votre destination">
-      </AppHeader>
-    </div>
+      <div class="header">
+        <!-- En-tête avec titre personnalisé -->
+        <AppHeader variantHeader="titleBlack" sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home"
+          title="Choissiez votre destination">
+        </AppHeader>
+      </div>
       <div class="filtre">
-      <!-- Barre de filtres : recherche, salle, tri -->
-      <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room"
-        v-model:sort="filters.sort" :room-options="roomOptions" :showDate="false" />
+        <!-- Barre de filtres : recherche, salle, tri -->
+        <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room"
+          v-model:sort="filters.sort" :room-options="roomOptions" :showDate="false" />
       </div>
       <!-- Zone où les salles filtrées sont affichées -->
-   
-        <MuseumGrid :filters="filters" />
-   
+
+      <MuseumGrid :filters="filters" />
+
 
       <!-- Pied de page -->
       <AppFooter />
@@ -68,8 +69,6 @@ export default {
 </script>
 
 <style scoped>
-
-
 /* Conteneur principal centré et avec marges internes */
 .global {
   display: flex;
@@ -91,22 +90,26 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.header{
- width: 100%;
+
+.header {
+  width: 100%;
 }
-.backButton{
-  padding-top:1em;
+
+.backButton {
+  padding-top: 1em;
   padding-left: 3em;
 }
+
 .filtre {
   display: flex;
-  justify-content: flex-start; 
-  flex-wrap: wrap; 
-  gap: 1rem; 
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
   width: 100%;
- 
+
 }
-.filtre > * {
+
+.filtre>* {
   flex: 1 1 auto;
   max-width: 100%;
 }
@@ -116,17 +119,19 @@ export default {
    Desktop (1200px - 1399px)
    ================================= */
 @media (min-width: 1200px) and (max-width: 1399px) {
- 
+
 
   .filtre {
-  
+
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: -1rem;
   }
-  .filtre > * {
-  flex: 1 1 5000px; /* items shrink and wrap nicely */
-}
+
+  .filtre>* {
+    flex: 1 1 5000px;
+    /* items shrink and wrap nicely */
+  }
 }
 
 /* ================================
@@ -152,8 +157,8 @@ export default {
     padding-top: 0.8em;
   }
 
- 
-  
+
+
 }
 
 /* ================================
@@ -180,10 +185,10 @@ export default {
   .backButton {
     padding-left: 2em;
     padding-top: 0.5em;
-  
+
   }
 
- 
+
 
 
 

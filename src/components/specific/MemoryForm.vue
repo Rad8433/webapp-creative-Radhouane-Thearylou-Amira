@@ -97,7 +97,7 @@ export default {
         { value: "#nature", label: "#nature" },
         { value: "#nuit", label: "#nuit" },
         { value: "#famille", label: "#famille" },
-        { value: "#friends", label: "#friends" },
+        { value: "#amis", label: "#amis" },
         { value: "#exploration", label: "#exploration" },
       ],
       errors: {},
