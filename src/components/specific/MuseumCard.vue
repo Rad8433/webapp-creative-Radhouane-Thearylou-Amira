@@ -46,8 +46,8 @@ export default {
 <style scoped>
 /* Police personnalisée utilisée pour le titre */
 @font-face {
-  src: url("/src/assets/font/FuturaCyrillicBold.ttf") format("truetype");
-  font-family: "futura-bold";
+  src: url("/src/assets/font/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+  font-family: "fontTitre";
 }
 
 /* Carte de salle (conteneur principal) */
@@ -69,7 +69,6 @@ export default {
   overflow: hidden;
   /* masque ce qui dépasse (image) */
   width: 100%;
- 
   font-family: 'roboto', sans-serif;
 }
 
@@ -106,7 +105,7 @@ img {
   color: #fff;
   margin-bottom: 0.5rem;
   font-size: 1.7rem;
-  font-family: "futura-bold";
+  font-family: "fontTitre";
 }
 
 /* Courte description */

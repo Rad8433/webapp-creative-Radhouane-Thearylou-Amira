@@ -69,6 +69,7 @@ export default {
 </script>
 
 <style scoped>
+
 /* Conteneur principal centré et avec marges internes */
 .global {
   display: flex;

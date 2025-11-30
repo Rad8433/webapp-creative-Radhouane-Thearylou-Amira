@@ -67,6 +67,17 @@ input {
   color: black;
 }
 
+/* Police personnalisée utilisée pour le titre */
+@font-face {
+  src: url("@/assets/font/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
+  font-family: "fontTitre";
+}
+
+/* Police personnalisée utilisée pour le titre */
+@font-face {
+  src: url("@/assets/font/Poppins-Bold.ttf") format("truetype");
+  font-family: "sousTitre";
+}
 
 body {
   min-height: 100vh;

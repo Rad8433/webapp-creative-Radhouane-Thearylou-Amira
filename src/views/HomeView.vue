@@ -54,8 +54,6 @@ export default {
 </script>
 
 <style scoped>
-/* Importation de la police Playfair Display */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap');
 
 /* Style général de la section d’accueil */
 .home {
@@ -69,11 +67,6 @@ export default {
   background-position: center;
 }
 
-
-.header{
-
-
-}
 /* Conteneur principal avec l’image de fond */
 .hero-frame {
   position: relative;
@@ -86,13 +79,11 @@ export default {
 .hero-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
- 
   height: 80%;
   width: 100%;
   align-items: center;
   justify-items: start;
 }
-
 
 /* Bloc du texte à gauche */
 .hero-text {
@@ -100,14 +91,6 @@ export default {
   width: 100%;
   color: #fff;
 }
-
-/* Applique la police au petit texte et au titre */
-
-.hero-title {
-  font-family: "Playfair Display", serif;
-}
-
-
 /* Style du titre principal */
 .hero-title {
   margin: 0 0 1.6rem;
@@ -155,8 +138,6 @@ export default {
 .card3 {
   background-image: url("@/assets/card3.png");
 }
-
-
 
 
 /* ================================

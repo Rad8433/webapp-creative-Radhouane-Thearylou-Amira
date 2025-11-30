@@ -86,6 +86,7 @@ export default {
 </script>
 
 <style scoped>
+
 .cogDisplay {
   display: block;
   width: 32px;
@@ -128,7 +129,6 @@ section {
 
 /* Style du titre */
 .headerTitle {
-  font-family: "Georgia", serif;
   font-size: 2rem;
   justify-self: center;
 }
