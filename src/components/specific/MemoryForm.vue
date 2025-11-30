@@ -5,7 +5,7 @@
       <form>
 
         <!-- Back button -->
-        <BaseButton variant="cinquieme" @click="goBack">
+        <BaseButton variant="cinquieme" type="button" @click="goBack">
           <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 
                      11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 
@@ -69,7 +69,7 @@
         </div>
 
         <!-- Submit -->
-        <BaseButton variant="secondary" @click="handleSubmit">
+        <BaseButton variant="secondary" type="button" @click="handleSubmit">
           Ajouter
         </BaseButton>
 
@@ -113,13 +113,25 @@ export default {
   methods: {
     validateForm() {
       this.errors = {};
-      if (!this.form.title.trim()) this.errors.title = "Le titre est obligatoire.";
-      if (!this.form.date) this.errors.date = "La date est obligatoire.";
-      if (!this.form.tags) this.errors.tags = "Les tags sont obligatoires.";
-      if (!this.form.caption.trim()) this.errors.caption = "La légende est obligatoire.";
-      if (!this.image) this.errors.image = "Veuillez sélectionner une image.";
+
+      if (!this.form.title.trim())
+        this.errors.title = "Le titre est obligatoire.";
+
+      if (!this.form.date)
+        this.errors.date = "La date est obligatoire.";
+
+      if (!this.form.tags.trim())
+        this.errors.tags = "Les tags sont obligatoires.";
+
+      if (!this.form.caption.trim())
+        this.errors.caption = "La légende est obligatoire.";
+
+      if (!this.image)
+        this.errors.image = "Veuillez sélectionner une image.";
+
       return Object.keys(this.errors).length === 0;
     },
+
 
     handleSubmit() {
       if (!this.validateForm()) return;

@@ -2,16 +2,13 @@
   <section>
     <div class="form">
       <div class="formContenus">
+        <!-- Header buttons -->
         <div class="boutonDetail">
           <BaseButton variant="cinquieme" @click="goBack">
             <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-              <g id="SVGRepo_iconCarrier">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
-                  fill="#fff"></path>
-              </g>
+              <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
+                fill="#fff" />
             </svg>
           </BaseButton>
 
@@ -19,6 +16,7 @@
             <BaseButton variant="cinquieme" @click="toggleEdit">
               {{ isEditing ? "💾" : "🖍️" }}
             </BaseButton>
+
             <BaseButton variant="cinquieme" @click="deleteMemoryPrompt">
               🗑️
             </BaseButton>
@@ -27,14 +25,14 @@
 
         <h1>Détails de la mémoire</h1>
 
-        <!-- Titre -->
+        <!-- Title -->
         <div class="form-group titre">
           <label>Titre :</label>
           <input v-if="isEditing" v-model="editableMemory.title" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.title }}</p>
         </div>
 
-        <!-- Image -->
+        <!-- Image upload -->
         <div class="image-upload">
           <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
             @click="isEditing && triggerFileInput()">
@@ -59,10 +57,10 @@
           </div>
 
           <div class="form-group tags">
-            <label for="tags">Tag :</label>
+            <label>Tag :</label>
 
             <div v-if="isEditing" class="select-wrapper">
-              <select id="tag-select" v-model="selectedTag">
+              <select v-model="selectedTag" id="tag-select">
                 <option value="">-- Sélectionnez un tag --</option>
                 <option v-for="option in tagOptions" :key="option.value" :value="option.value">
                   {{ option.label }}
@@ -77,18 +75,17 @@
           </div>
         </div>
 
-        <!-- Légende -->
+        <!-- Caption -->
         <div class="form-group legende">
           <label>Légende :</label>
           <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
 
-        <!-- Numéro de mémoire -->
+        <!-- Memory number -->
         <div class="form-group">
           <label>Numéro de mémoire :</label>
-          <input v-if="isEditing" v-model="editableMemory.memoryNumber" class="readonly" />
-          <p v-else class="readonly">{{ editableMemory.memoryNumber }}</p>
+          <p class="readonly">{{ editableMemory.memoryNumber }}</p>
         </div>
       </div>
     </div>
@@ -97,7 +94,6 @@
 
 <script>
 import BaseButton from "../common/BaseButton.vue";
-import { mapStores } from "pinia";
 import { useMemoryStore } from "../../stores/useMemoryStore.js";
 
 export default {
@@ -105,14 +101,11 @@ export default {
 
   components: { BaseButton },
 
-  computed: {
-    ...mapStores(useMemoryStore),
-  },
-
   data() {
     return {
       editableMemory: null,
       isEditing: false,
+      selectedTag: "",
       tagOptions: [
         { value: "#plage", label: "#plage" },
         { value: "#montagne", label: "#montagne" },
@@ -123,7 +116,7 @@ export default {
         { value: "#amis", label: "#amis" },
         { value: "#exploration", label: "#exploration" },
       ],
-      selectedTag: "",
+      memoryStore: useMemoryStore(),
     };
   },
 
@@ -131,15 +124,22 @@ export default {
     const id = this.$route.params.memoryId;
     const memory = this.memoryStore.memories.find((m) => m.id === id);
 
-    if (memory) {
-      this.editableMemory = { ...memory };
-      this.selectedTag = memory.tags?.[0] || "";
+    if (!memory) {
+      // Redirect back to Room if memory not found
+      this.$router.replace({ name: "Room", params: { id: this.$route.params.id } });
+      return;
     }
+
+    this.editableMemory = { ...memory };
+    this.selectedTag = memory.tags?.[0] || "";
   },
 
   methods: {
     goBack() {
-      this.$router.push({ name: "Room", params: { id: this.$route.params.id } });
+      this.$router.push({
+        name: "Room",
+        params: { id: this.$route.params.id },
+      });
     },
 
     toggleEdit() {
@@ -170,24 +170,17 @@ export default {
     },
 
     saveMemory() {
-      if (!this.editableMemory) return;
-
-      this.editableMemory.tags = this.selectedTag
-        ? [this.selectedTag.trim()]
-        : [];
-
       this.memoryStore.updateMemory(this.editableMemory.id, {
-        ...this.editableMemory,
+        title: this.editableMemory.title,
+        caption: this.editableMemory.caption,
+        date: this.editableMemory.date,
+        image: this.editableMemory.image,
+        tags: this.selectedTag, // store normalizes it
       });
     },
 
     deleteMemoryPrompt() {
-      if (!this.editableMemory) return;
-
-      const confirmed = window.confirm(
-        "Voulez-vous vraiment supprimer cette mémoire ?"
-      );
-      if (confirmed) {
+      if (confirm("Voulez-vous vraiment supprimer cette mémoire ?")) {
         this.memoryStore.deleteMemory(this.editableMemory.id);
         this.goBack();
       }
@@ -195,6 +188,8 @@ export default {
   },
 };
 </script>
+
+
 
 <style>
 section {
