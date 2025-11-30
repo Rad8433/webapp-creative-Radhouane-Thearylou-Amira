@@ -8,15 +8,11 @@ export const useMemoryStore = defineStore("memory", {
     const memories = data.memoires.map((souvenir) => {
       const roomId = souvenir.roomId;
 
-      if (!memoriesByRoom[roomId]) {
-        memoriesByRoom[roomId] = 1;
-      } else {
-        memoriesByRoom[roomId]++;
-      }
+      memoriesByRoom[roomId] = (memoriesByRoom[roomId] || 0) + 1;
 
       return {
         id: Date.now().toString() + Math.random(),
-        roomId: roomId,
+        roomId,
         room: roomId,
         title: souvenir.titreSouvenir,
         image: souvenir.imageSouvenir,
@@ -44,7 +40,7 @@ export const useMemoryStore = defineStore("memory", {
         const matchesSearch =
           state.searchQuery === "" ||
           memory.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
-          memory.description.toLowerCase().includes(state.searchQuery.toLowerCase());
+          memory.caption?.toLowerCase().includes(state.searchQuery.toLowerCase());
 
         const matchesRoom =
           !state.filters.room || memory.room === state.filters.room;
@@ -66,16 +62,30 @@ export const useMemoryStore = defineStore("memory", {
   },
 
   actions: {
-    addMemory(memory) {
-      const memoriesInRoom = this.memories.filter(m => m.roomId === memory.roomId).length;
-      const memoryNumber = `Memory ${memoriesInRoom + 1}`;
+    /** Create a new memory */
+    createMemory(raw) {
+      const tags = raw.tags
+        ? (Array.isArray(raw.tags) ? raw.tags : [raw.tags.trim()])
+        : [];
 
-      this.memories.push({
-        ...memory,
+      const memoriesInRoom = this.memories.filter(
+        (m) => m.roomId === raw.roomId
+      ).length;
+
+      const memory = {
         id: Date.now().toString(),
+        roomId: raw.roomId,
+        title: raw.title.trim(),
+        image: raw.image,
+        caption: raw.caption.trim(),
+        date: raw.date,
+        tags,
         createdAt: new Date().toISOString(),
-        memoryNumber,
-      });
+        memoryNumber: `Memory ${memoriesInRoom + 1}`,
+        bgColor: "#e0e0e0",
+      };
+
+      this.memories.push(memory);
     },
 
     updateMemory(id, updates) {

@@ -2,40 +2,43 @@
   <section>
     <div class="form">
 
-      <!-- FORMULAIRE -->
-      <form >
+      <form>
 
-        <BaseButton variant="cinquieme" @click="goBack"> <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-            <g id="SVGRepo_iconCarrier">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z"
-                fill="#fff"></path>
-            </g>
-          </svg> </BaseButton>
+        <!-- Back button -->
+        <BaseButton variant="cinquieme" @click="goBack">
+          <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7071 4.29289C12.0976 4.68342 12.0976 5.31658 
+                     11.7071 5.70711L6.41421 11H20C20.5523 11 21 11.4477 
+                     21 12C21 12.5523 20.5523 13 20 13H6.41421L11.7071 
+                     18.2929C12.0976 18.6834 12.0976 19.3166 11.7071 
+                     19.7071C11.3166 20.0976 10.6834 20.0976 10.2929 
+                     19.7071L3.29289 12.7071C3.10536 12.5196 3 12.2652 
+                     3 12C3 11.7348 3.10536 11.4804 3.29289 11.2929L10.2929 
+                     4.29289C10.6834 3.90237 11.3166 3.90237 11.7071 4.29289Z" fill="#fff" />
+          </svg>
+        </BaseButton>
+
         <h1>Décrivez votre mémoire</h1>
 
-        <!-- Champ : titre -->
+        <!-- Title -->
         <div class="form-group titre">
           <label for="titre">Titre *</label>
           <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire" />
           <span v-if="errors.title" class="error">{{ errors.title }}</span>
         </div>
 
-        <!-- Zone pour ajouter une image -->
+        <!-- Image upload -->
         <div class="image-upload">
           <label class="image-circle" @click="triggerFileInput">
             <span v-if="!image" class="plus">+</span>
             <span v-if="!image" class="text">Ajouter une image</span>
             <img v-if="image" :src="image" class="preview-image" />
-            <span v-if="errors.image" class="error">{{ errors.image }}</span>
           </label>
           <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none;" />
+          <span v-if="errors.image" class="error">{{ errors.image }}</span>
         </div>
 
-        <!-- Grid: date + tags -->
+        <!-- Date + tags -->
         <div class="form-grid">
           <div class="form-group date">
             <label for="date">Date *</label>
@@ -58,14 +61,14 @@
           </div>
         </div>
 
-        <!-- Champ : légende -->
+        <!-- Caption -->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
           <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
 
-        <!-- Bouton soumission -->
+        <!-- Submit -->
         <BaseButton variant="secondary" @click="handleSubmit">
           Ajouter
         </BaseButton>
@@ -76,17 +79,18 @@
 </template>
 
 <script>
-import AppHeader from "@/components/common/AppHeader.vue";
-import BaseButton from '../common/BaseButton.vue';
-import { mapStores } from 'pinia';
-import { useMemoryStore } from '../../stores/useMemoryStore.js';
+import BaseButton from "../common/BaseButton.vue";
+import { mapStores } from "pinia";
+import { useMemoryStore } from "@/stores/useMemoryStore";
 
 export default {
-  name: "MuseumRoomsView",
+  name: "MemoryForm",
 
-  components: { AppHeader, BaseButton },
+  components: { BaseButton },
 
-  computed: { ...mapStores(useMemoryStore) },
+  computed: {
+    ...mapStores(useMemoryStore),
+  },
 
   data() {
     return {
@@ -111,51 +115,53 @@ export default {
       this.errors = {};
       if (!this.form.title.trim()) this.errors.title = "Le titre est obligatoire.";
       if (!this.form.date) this.errors.date = "La date est obligatoire.";
-      if (!this.form.tags.trim()) this.errors.tags = "Les tags sont obligatoires.";
+      if (!this.form.tags) this.errors.tags = "Les tags sont obligatoires.";
       if (!this.form.caption.trim()) this.errors.caption = "La légende est obligatoire.";
-      if (!this.image) this.errors.image = "Veuillez sélectionner une image (max 2 Mo).";
+      if (!this.image) this.errors.image = "Veuillez sélectionner une image.";
       return Object.keys(this.errors).length === 0;
     },
 
     handleSubmit() {
-      if (!this.validateForm()) return console.log("Formulaire invalide");
-      this.saveMemory();
+      if (!this.validateForm()) return;
+
+      // Send raw data (store handles all formatting)
+      this.memoryStore.createMemory({
+        roomId: this.$route.params.id,
+        ...this.form,
+        image: this.image,
+      });
+
+      this.goBack();
     },
 
-    goBack() { this.$router.push({ name: 'Room', params: { id: this.$route.params.id } }); },
+    goBack() {
+      this.$router.push({
+        name: "Room",
+        params: { id: this.$route.params.id },
+      });
+    },
 
-    triggerFileInput() { this.$refs.fileInput.click(); },
+    triggerFileInput() {
+      this.$refs.fileInput.click();
+    },
 
     onHandleImage(event) {
       const file = event.target.files[0];
-      this.errors.image = null;
+      if (!file) return;
 
-      if (file) {
-        if (file.size > 2 * 1024 * 1024) {
-          this.errors.image = "Image trop grande, la taille du fichier doit être en dessous de 2 Mo.";
-          this.image = null;
-          return;
-        }
-        const reader = new FileReader();
-        reader.onload = () => { this.image = reader.result; };
-        reader.readAsDataURL(file);
+      if (file.size > 2 * 1024 * 1024) {
+        this.errors.image = "Image trop grande, max 2 Mo.";
+        this.image = null;
+        return;
       }
-    },
 
-    saveMemory() {
-      const tagsArray = this.form.tags ? [this.form.tags.trim()] : [];
-      this.memoryStore.addMemory({
-        roomId: this.$route.params.id,
-        title: this.form.title,
-        image: this.image,
-        caption: this.form.caption,
-        date: this.form.date,
-        tags: tagsArray,
-        bgColor: "#e0e0e0",
-      });
-      this.goBack();
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.image = reader.result;
+      };
+      reader.readAsDataURL(file);
     },
-  }
+  },
 };
 </script>
 
@@ -204,7 +210,6 @@ form {
   width: 100%;
   height: 15vh;
   min-height: 160px;
-  /* pour éviter que ce soit trop petit sur mobile */
   border-radius: 15px;
   border: none;
   display: flex;
