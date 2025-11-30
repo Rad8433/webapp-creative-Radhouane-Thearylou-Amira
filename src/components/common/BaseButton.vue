@@ -97,6 +97,7 @@ svg {
   padding: 0.9rem 2.2rem;
   border-radius: 8px;
   font-size: 1.6rem;
+  margin-bottom: 40px;
 
 }
 
