@@ -1,19 +1,25 @@
 <template>
   <div class="grid">
-    <!-- Grille contenant toutes les cartes de salles -->
     <div class="rooms-grid">
-      <!-- Une MuseumCard par salle filtrée -->
-      <MuseumCard v-for="room in filteredRooms" :key="room.id" :room="room" @click="goToRoom(room.id)" />
+      <MuseumCard
+        v-for="room in filteredRooms"
+        :key="room.id"
+        :room="room"
+        @click="() => goToRoom(room.id)"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import MuseumCard from "./MuseumCard.vue";
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useMemoryStore } from '@/stores/useMemoryStore';
+import MuseumCard from './MuseumCard.vue';
 import roomsData from '@/data/museumrooms.json';
 
 export default {
-  name: "MuseumGrid",
+  name: 'MemoryGrid',
   components: { MuseumCard },
 
   props: {
@@ -23,60 +29,57 @@ export default {
     },
   },
 
-  data() {
-    return {
-      rooms: roomsData.rooms,
+  setup(props) {
+    const router = useRouter();
+    const memoryStore = useMemoryStore();
+    const rooms = roomsData.rooms;
+
+    const goToRoom = (roomId) => {
+      router.push({ name: 'Room', params: { id: roomId } });
     };
-  },
 
-  computed: {
-    filteredRooms() {
-      let result = [...this.rooms];
+    const filteredRooms = computed(() => {
+      let result = [...rooms];
 
-      const search = this.filters.search?.trim().toLowerCase();
-      const roomFilter = this.filters.room;
-      const tagFilter = this.filters.tag;
-      const sort = this.filters.sort;
+      const search = props.filters.search?.trim().toLowerCase();
+      const roomFilter = props.filters.room;
+      const tagFilter = props.filters.tag;
+      const sort = props.filters.sort;
 
-      /* --- FILTRE PAR ID DE SALLE --- */
-      if (roomFilter && roomFilter !== "all") {
+      // Add memoriesCount from memoryStore
+      result = result.map((r) => ({
+        ...r,
+        memoriesCount: memoryStore.memories.filter(
+          (m) => m.roomId === r.id
+        ).length,
+      }));
+
+      // Filter by room
+      if (roomFilter && roomFilter !== 'all') {
         result = result.filter((r) => r.id === roomFilter);
       }
 
-      /* --- FILTRE PAR TAG --- */
-      if (tagFilter && tagFilter !== "all") {
+      // Filter by tag
+      if (tagFilter && tagFilter !== 'all') {
         result = result.filter((r) => r.tag === tagFilter);
       }
 
-      /* --- RECHERCHE PAR NOM --- */
+      // Search by name
       if (search) {
-        result = result.filter((r) =>
-          r.name.toLowerCase().includes(search)
-        );
+        result = result.filter((r) => r.name.toLowerCase().includes(search));
       }
 
-      /* --- TRI PAR NOMBRE DE MEMOIRES --- */
-      if (sort === "asc") {
-        result = result.sort(
-          (a, b) => (a.memoriesCount || 0) - (b.memoriesCount || 0)
-        );
-      } else if (sort === "desc") {
-        result = result.sort(
-          (a, b) => (b.memoriesCount || 0) - (a.memoriesCount || 0)
-        );
+      // Sort by memoriesCount
+      if (sort === 'asc') {
+        result.sort((a, b) => (a.memoriesCount || 0) - (b.memoriesCount || 0));
+      } else if (sort === 'desc') {
+        result.sort((a, b) => (b.memoriesCount || 0) - (a.memoriesCount || 0));
       }
 
       return result;
-    },
-  },
+    });
 
-  methods: {
-    goToRoom(roomId) {
-      this.$router.push({
-        name: "Room",
-        params: { id: roomId },
-      });
-    },
+    return { filteredRooms, goToRoom };
   },
 };
 </script>
