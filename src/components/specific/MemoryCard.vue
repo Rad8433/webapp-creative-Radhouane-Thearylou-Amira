@@ -81,10 +81,10 @@ export default {
 <style scoped>
 /* Carte principale */
 .memory-card {
-  width: 30em; /* Agrandie */
+  width: 30em; 
   height: 40em;
   border-radius: 20px;
-  padding: 24px; /* Plus de padding pour donner de l'espace */
+  padding: 24px; 
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.11);
   display: flex;
   flex-direction: column;
@@ -92,7 +92,12 @@ export default {
   font-family: sans-serif;
   text-align: center;
   transition: transform 0.3s ease;
- 
+}
+
+.memory-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  cursor: pointer;
+  box-shadow: 0 12px 50px rgba(0, 196, 98, 0.247);
 }
 
 /* En-tête de la carte (tags + date) */
