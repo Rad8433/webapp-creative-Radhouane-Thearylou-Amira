@@ -17,6 +17,10 @@ h2 {
   font-family: "sousTitre";
 }
 
+p {
+  font-family: "paragraphe";
+}
+
 
 @media (hover: hover) {
   a:hover {

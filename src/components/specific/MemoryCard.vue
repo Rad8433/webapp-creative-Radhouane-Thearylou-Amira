@@ -95,7 +95,6 @@ export default {
  
 }
 
-
 /* En-tête de la carte (tags + date) */
 .card-header {
   width: 100%;

@@ -44,12 +44,6 @@ export default {
 </script>
 
 <style scoped>
-/* Police personnalisée utilisée pour le titre */
-@font-face {
-  src: url("/src/assets/font/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("truetype");
-  font-family: "fontTitre";
-}
-
 /* Carte de salle (conteneur principal) */
 .room-card {
   position: relative;
@@ -105,7 +99,6 @@ img {
   color: #fff;
   margin-bottom: 0.5rem;
   font-size: 1.7rem;
-  font-family: "fontTitre";
 }
 
 /* Courte description */

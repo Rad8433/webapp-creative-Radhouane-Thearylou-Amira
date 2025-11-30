@@ -73,10 +73,16 @@ input {
   font-family: "fontTitre";
 }
 
-/* Police personnalisée utilisée pour le titre */
+/* Police personnalisée utilisée pour le sous-titre */
 @font-face {
   src: url("@/assets/font/Poppins-Bold.ttf") format("truetype");
   font-family: "sousTitre";
+}
+
+/* Police personnalisée utilisée pour les paragraphes */
+@font-face {
+  src: url("@/assets/font/Poppins-Medium.ttf") format("truetype");
+  font-family: "paragraphe";
 }
 
 body {
