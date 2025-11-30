@@ -3,7 +3,7 @@
     <div class="form">
 
       <!-- FORMULAIRE -->
-      <form @submit.prevent="handleSubmit">
+      <form >
 
         <BaseButton variant="cinquieme" @click="goBack"> <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +66,7 @@
         </div>
 
         <!-- Bouton soumission -->
-        <BaseButton variant="secondary" type="submit">
+        <BaseButton variant="secondary" @click="handleSubmit">
           Ajouter
         </BaseButton>
 
