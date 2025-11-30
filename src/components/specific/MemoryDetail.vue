@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="form">
+    <div class="form" :style="{ backgroundColor: formBackground }">
       <div class="formContenus">
         <!-- Header buttons -->
         <div class="boutonDetail">
@@ -120,12 +120,26 @@ export default {
     };
   },
 
+  computed: {
+    formBackground() {
+      const roomId = this.$route.params.id;
+      const colors = {
+        "room-1": "rgb(53, 186, 173)",
+  "room-2": "rgb(171, 46, 0)",
+  "room-3": "rgb(130, 130, 130)",
+  "room-4": "rgb(29, 184, 0)",
+  "room-5": "rgb(204, 172, 0)",
+  "room-6": "rgb(56, 103, 143)",
+      };
+      return colors[roomId] || "#ffffff";
+    },
+  },
+
   created() {
     const id = this.$route.params.memoryId;
     const memory = this.memoryStore.memories.find((m) => m.id === id);
 
     if (!memory) {
-      // Redirect back to Room if memory not found
       this.$router.replace({ name: "Room", params: { id: this.$route.params.id } });
       return;
     }
@@ -136,16 +150,11 @@ export default {
 
   methods: {
     goBack() {
-      this.$router.push({
-        name: "Room",
-        params: { id: this.$route.params.id },
-      });
+      this.$router.push({ name: "Room", params: { id: this.$route.params.id } });
     },
 
     toggleEdit() {
-      if (this.isEditing) {
-        this.saveMemory();
-      }
+      if (this.isEditing) this.saveMemory();
       this.isEditing = !this.isEditing;
     },
 
@@ -175,7 +184,7 @@ export default {
         caption: this.editableMemory.caption,
         date: this.editableMemory.date,
         image: this.editableMemory.image,
-        tags: this.selectedTag, // store normalizes it
+        tags: this.selectedTag,
       });
     },
 
@@ -188,7 +197,6 @@ export default {
   },
 };
 </script>
-
 
 
 <style>
