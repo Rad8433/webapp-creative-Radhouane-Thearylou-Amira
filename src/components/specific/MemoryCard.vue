@@ -1,26 +1,24 @@
 <template>
-  <!-- Carte mémoire individuelle -->
-  <div class="memory-card" :style="{ backgroundColor: bgColor }">
-    <!-- En-tête : tags et date -->
+  <div class="memory-card" :style="{ backgroundColor: cardBackground }">
     <div class="card-header">
       <span class="tags">{{ tag }}</span> <span class="date">{{ date }}</span>
     </div>
-    <!-- Titre de la mémoire -->
+
     <h2 class="title">{{ title }}</h2>
-    <!-- Image principale -->
-    <div class="card-image"><img :src="image" alt="Memory Image" /></div>
-    <!-- Légende ou description -->
+
+    <div class="card-image">
+      <img :src="image" alt="Memory Image" />
+    </div>
+
     <p class="caption">{{ caption }}</p>
-    <!-- Numéro de la mémoire -->
     <p class="memory-number">{{ memoryNumber }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  // Nom du composant
   name: "MemoryCard",
-  // Propriétés reçues pour afficher les détails de la mémoire
+
   props: {
     tag: { type: String, default: "" },
     date: { type: String, default: "" },
@@ -28,11 +26,24 @@ export default {
     image: { type: String, required: true },
     caption: { type: String, default: "" },
     memoryNumber: { type: String, default: "" },
-    bgColor: { type: String, default: "#e0e0e0" },
+  },
+
+  computed: {
+    cardBackground() {
+      const roomId = this.$route.params.id;
+      const colors = {
+        "room-1": "#5fbcb2",
+        "room-2": "#d96a4d",
+        "room-3": "#b3b3b3",
+        "room-4": "#7fbf9c",
+        "room-5": "#c9b56a",
+        "room-6": "#5f8fab",
+      };
+      return colors[roomId] || "#ffffff";
+    },
   },
 };
 </script>
-
 <style scoped>
 /* Style de la carte mémoire */
 .memory-card {
@@ -52,7 +63,7 @@ export default {
 .memory-card:hover {
   transform: translateY(-10px) scale(1.02);
   cursor: pointer;
-  box-shadow: 0 12px 50px rgba(255, 255, 255, 0.247);
+  box-shadow: 0 12px 50px rgba(255, 255, 255, 0.13);
 }
 
 /* En-tête de la carte (tags + date) */
@@ -91,7 +102,8 @@ export default {
 /* Description ou légende */
 .caption {
   font-size: 1.05rem;
-  color: #333;
+  color: #272727;
+  
 
 }
 

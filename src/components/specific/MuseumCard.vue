@@ -7,13 +7,19 @@
     <!-- Description courte de la salle -->
     <p class="room-description">{{ room.description }}</p>
     <!-- Nombre de mémoires dans la salle -->
-    <p class="memory-count">{{ room.memoriesCount }} mémoires</p>
+    <p class="memory-count">{{ memoryLabel }}</p>
   </div>
 </template>
 <script>
 export default {
   name: "MuseumCard", // Nom du composant
   props: { room: { type: Object, required: true } }, // Propriété pour recevoir les données de la salle
+  computed: {
+    memoryLabel() {
+      const count = this.room.memoriesCount;
+      return count + " " + (count === 1 ? "mémoire" : "mémoires");
+    }
+  }
 };
 </script>
 <style scoped>
