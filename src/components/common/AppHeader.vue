@@ -17,8 +17,9 @@
         {{ title }}
       </h1>
 
-      <!-- Bouton engrenage à droite -->
+      <!--Bouton engrenage à droite, visible en fonction du prop visibleCog.-->
       <div class="headerEngrenage" :class="visibleCog">
+        <!--Appel du composant bouton pour l’engrenage du stockage local.-->
         <BaseButton variant="cogPrimary" engrenage="cogVisible" />
       </div>
     </section>
@@ -26,8 +27,9 @@
 </template>
 
 <script>
+// Importation du composant BaseButton pour les boutons utilisés dans l’en-tête.
 import BaseButton from "@/components/common/BaseButton.vue";
-
+// Appel du composant bouton pour l’engrenage du stockage local.
 export default {
   name: "AppHeader",
   components: { BaseButton },
@@ -35,44 +37,38 @@ export default {
   props: {
     title: {
       type: String,
-      default: "Musée",
+      default: "Musée",// Controle du texte du titre affiché dans l’en-tête
     },
     variantHeader: {
       type: String,
-      default: "", // ex: "titleWhite" ou "titleBlack"
+      default: "", // Controle de la variante du style du titre
     },
     visibleBouton: {
       type: String,
-      default: "", // ex: "cogDisplay" ou "cogDisplayN"
+      default: "", // Contrôle de la visibilité du bouton de retour
     },
     visibleCog: {
       type: String,
-      default: "", // ex: "cogDisplay" ou "cogDisplayN"
+      default: "", // Contrôle de la visibilité de l’engrenage
     },
     endroit: {
       type: String,
-      default: "", // route de destination pour le back
+      default: "", // Contrôle sur l’emplacement de retour du bouton Back.
     },
     sectionGrid: {
       type: String,
-      default: "", // ex: "sectionHome", "sectionMuseum", "sectionRoom"
+      default: "", // Contrôle de la disposition de la grille de l’en-tête.
     },
     justifySelf: {
       type: String,
-      default: "", // ex: "titleLeft"
-    },
-    btnBackDestination: {
-      type: Function,
+      default: "", // Contrôle de l’alignement du titre dans l’en-tête.
     },
   },
 
   methods: {
-    goBackHome() {
+    goBackHome() { // Méthode pour gérer le retour à une page spécifique en utilisant la props endroit.
       this.$router.push({ name: this.endroit });
       console.log("retour", this.endroit);
-    },
-    goBackRoom() {
-      this.$router.push({ name: "endroit" });
     },
   },
 };
@@ -107,7 +103,7 @@ section {
   width: 100%;
 }
 
-/* Layout pour la home */
+/* Layout avec 2 colonnes (retour / titre) */
 .sectionHome {
   grid-template-columns: 1fr 1fr;
 }
@@ -149,7 +145,7 @@ section {
   color: #ffffff;
 }
 
-/* Mobile */
+/* Tablette */
 @media (max-width: 700px) {
   .titleBlack {
     font-size: 1.7rem;
@@ -170,6 +166,7 @@ section {
   }
 }
 
+/* Mobile */
 @media (max-width: 475px) {
   .titleBlack {
     font-size: 1.4rem;

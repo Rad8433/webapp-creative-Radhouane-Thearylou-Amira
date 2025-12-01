@@ -1,7 +1,7 @@
 <template>
   <!-- Bouton de base : applique une classe selon le variant et émet l’événement "click" -->
   <button class="base-button" :class="variant">
-    <!-- Le contenu du bouton vient du slot -->
+    <!--Le SVG de l’engrenage n’apparaît que si le style passé à la prop engrenage le permet.-->
     <svg class="cog" :class="engrenage" width="32" height="32" viewBox="0 0 57 57" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -11,6 +11,7 @@
         d="M28.1258 14.9963C20.8993 14.9963 15.0045 20.9049 15.0045 28.1315C15.0045 35.358 20.8993 41.2528 28.1258 41.2528C35.3524 41.2528 41.261 35.358 41.261 28.1315C41.261 20.9049 35.3524 14.9963 28.1258 14.9963ZM28.1258 18.7473C33.3257 18.7473 37.5101 22.9316 37.5101 28.1315C37.5101 33.3314 33.3257 37.5019 28.1258 37.5019C22.9259 37.5019 18.7554 33.3314 18.7554 28.1315C18.7554 22.9316 22.9259 18.7473 28.1258 18.7473Z"
         fill="white" />
     </svg>
+    <!-- Le contenu du bouton est défini par le slot, ce qui offre plus de flexibilité qu’une prop.-->
     <slot />
   </button>
 </template>
@@ -18,13 +19,13 @@
 <script>
 export default {
   name: "BaseButton",
-  // Le bouton accepte une prop "variant" pour changer son style
+  // Le bouton accepte une prop "variant" pour changer son style.
   props: {
     variant: {
-      type: String, default: "", // style par défaut 
-    }, engrenage: {
-      type: String, default: "",
-      // style par défaut 
+      type: String, default: "", // Controle de la variante du style du bouton.
+    }, 
+    engrenage: {
+      type: String, default: "", // Controle de la visibilité de l’engrenage a travers un props dans le header.
     }
   }
 };
