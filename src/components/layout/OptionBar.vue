@@ -113,6 +113,7 @@
 </script>
 
 <style scoped>
+/* Style de la barre d’options */
   .optionbar {
     display: flex;
     align-items: flex-end;
@@ -124,30 +125,27 @@
     font-size: 0.95rem;
   }
 
-  .optionbar--dark {
-    color: #3a3a3a;
-  }
-
+/* Variante claire pour la barre d’options */
   .optionbar--light {
     color: white;
   }
-
+/* Styles spécifiques pour la variante light */
   .optionbar--light .optionbar__underline {
     background-color: rgba(255, 255, 255, 0.4);
   }
-
+/* Styles des placeholders dans la variante light */
   .optionbar--light ::placeholder {
     color: rgba(255, 255, 255, 0.7);
   }
-
+/* Styles des inputs dans la variante light */
   .optionbar--light select {
     color: #222;
   }
-
+/* Styles des options dans la variante light */
   .optionbar--light select option {
     color: #222;
   }
-
+/* Styles des éléments de la barre d’options */
   .optionbar__item {
     position: relative;
     display: flex;
@@ -155,7 +153,6 @@
     min-width: 180px;
     flex-grow: 1;
   }
-
   .optionbar__icon {
     display: flex;
     align-items: center;

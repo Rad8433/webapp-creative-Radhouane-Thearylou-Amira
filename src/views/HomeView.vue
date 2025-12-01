@@ -146,7 +146,7 @@ export default {
   background-image: url("@/assets/card3.png");
 }
 
-/* ----------- Responsive 1200px ----------- */
+/* Responsive 1200px */
 @media (max-width: 1200px) {
 
   .header,
@@ -163,7 +163,7 @@ export default {
   }
 }
 
-/* ----------- Responsive 992px ----------- */
+/* Responsive 992px */
 @media (max-width: 992px) {
 
   .header,
@@ -192,7 +192,7 @@ export default {
   }
 }
 
-/* ----------- Responsive 768px ----------- */
+/* Responsive 768px */
 @media (max-width: 768px) {
 
   .header,
@@ -209,7 +209,7 @@ export default {
   }
 }
 
-/* ----------- Responsive 600px ----------- */
+/* Responsive 600px */
 @media (max-width: 600px) {
 
   /* Enlève les cartes */
@@ -247,7 +247,7 @@ export default {
   }
 }
 
-/* ----------- Responsive 450px ----------- */
+/* Responsive 450px */
 @media (max-width: 450px) {
   .hero-title {
     font-size: 2.4rem;
