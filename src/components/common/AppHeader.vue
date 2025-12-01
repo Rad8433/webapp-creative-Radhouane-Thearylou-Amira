@@ -105,12 +105,15 @@ section {
 
 /* Layout avec 2 colonnes (retour / titre) */
 .sectionHome {
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+ justify-content: space-between;
+ align-items: center;
 }
 
 /* Layout avec 3 colonnes (retour / titre / engrenage) */
 .sectionMuseum {
   grid-template-columns: 1fr 8fr 1fr;
+
 }
 
 /* Layout pour room (si tu veux plus compact) */
@@ -122,11 +125,16 @@ section {
 .headerTitle {
   font-size: 2rem;
   justify-self: center;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
 /* Titre aligné à gauche dans le props justifySelf*/
 .titleLeft {
+
+  font-size: 3rem;
   justify-self: start;
+ 
 }
 
 /* Bouton retoure aligné à gauche dans sa classe.*/
@@ -148,32 +156,41 @@ section {
 @media (max-width: 700px) {
   .titleBlack {
     font-size: 1.7rem;
-    justify-self: flex-end;
-    grid-row: 2;
-    grid-column: 2;
+   
     white-space: nowrap;
+    
+    
   }
 
   .sectionMuseum {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 2fr;
+
   }
 
   .headerEngrenage {
     grid-column: 3;
     margin-right: 10px;
   }
+.headerTitle{
+  padding-top:2em;
+  width: 100%;
+
+}
+
 }
 
 /* Mobile */
 @media (max-width: 475px) {
   .titleBlack {
-    font-size: 1.4rem;
-    justify-self: flex-end;
+    font-size: 1.3rem;
+    font-weight: 500;
+ 
   }
 
-  .sectionRoom {
-    grid-template-columns: 1fr 1fr;
-  }
+.sectionMuseum{
+  width: 100%;
+
+}
+
 }
 </style>

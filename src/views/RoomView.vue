@@ -129,7 +129,9 @@ h1 {
 }
 
 .retour {
+
   width: 70vw;
+
 }
 
 .filtre {
@@ -169,4 +171,6 @@ h1 {
   width: 100%;
   height: 100%;
 }
+
+
 </style>

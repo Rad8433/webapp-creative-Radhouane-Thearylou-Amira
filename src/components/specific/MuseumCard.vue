@@ -71,6 +71,7 @@ export default {
 .room-description {
   color: #fff;
   font-size: 0.9rem;
+  padding: 0 0.4rem;
   margin-bottom: 1rem;
   text-align: center;
 }

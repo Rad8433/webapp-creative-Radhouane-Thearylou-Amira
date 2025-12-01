@@ -76,6 +76,7 @@ export default {
   background-position: center;
 }
 
+
 /* Cadre qui contient le header et le reste du héros */
 .hero-frame {
   position: relative;

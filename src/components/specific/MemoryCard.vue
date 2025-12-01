@@ -52,7 +52,7 @@ export default {
 .memory-card:hover {
   transform: translateY(-10px) scale(1.02);
   cursor: pointer;
-  box-shadow: 0 12px 50px rgba(0, 196, 98, 0.247);
+  box-shadow: 0 12px 50px rgba(255, 255, 255, 0.247);
 }
 
 /* En-tête de la carte (tags + date) */

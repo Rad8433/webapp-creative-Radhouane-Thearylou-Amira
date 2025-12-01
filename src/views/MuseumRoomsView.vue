@@ -154,5 +154,7 @@ export default {
     padding-left: 2em;
     padding-top: 0.5em;
   }
+ 
+
 }
 </style>
