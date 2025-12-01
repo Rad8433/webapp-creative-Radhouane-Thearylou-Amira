@@ -1,12 +1,13 @@
 <template>
   <div class="menu" :style="{ background: roomBackground }">
-    <!-- Dynamically load component -->
+    <!-- Affiche le formulaire ou le détail de la mémoire selon la présence de memoryId -->
     <component :is="currentComponent" :memory-id="$route.params.memoryId" :room-id="$route.params.id" />
   </div>
 </template>
 <script>
 import MemoryForm from "@/components/specific/MemoryForm.vue";
 import MemoryDetail from "@/components/specific/MemoryDetail.vue";
+// Configuration des salles avec leurs titres et fonds d'écran respectifs
 const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",
@@ -38,17 +39,21 @@ export default {
   components: { MemoryForm, MemoryDetail },
   props: { memoryId: { type: String, default: null } },
   computed: {
+    // Récupère l'ID de la salle depuis les paramètres de la route
     roomId() {
       return this.$route.params.id;
     },
+    // Récupère la configuration de la salle actuelle
     currentRoomConfig() {
       return roomsConfig[this.roomId] || {};
     },
+    // Définit le fond d'écran de la salle actuelle
     roomBackground() {
       return (
         this.currentRoomConfig.bg || "linear-gradient(135deg, #ffecd2, #fcb69f)"
       );
-    }, // Dynamically choose component
+    }, 
+    // Détermine quel composant afficher : formulaire ou détail
     currentComponent() {
       return this.$route.params.memoryId ? MemoryDetail : MemoryForm;
     },
@@ -56,6 +61,7 @@ export default {
 };
 </script>
 <style scoped>
+/* Conteneur principal centré et avec marges internes */
 .menu {
   display: flex;
   align-items: center;

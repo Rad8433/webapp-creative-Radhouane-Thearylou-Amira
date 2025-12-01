@@ -1,6 +1,8 @@
 <template>
+  <!-- Conteneur de la grille des salles du musée -->
   <div class="grid">
     <div class="rooms-grid">
+      <!-- Carte pour chaque salle filtrée -->
       <MuseumCard v-for="room in filteredRooms" :key="room.id" :room="room" @click="goToRoom(room.id)" />
     </div>
   </div>
@@ -12,27 +14,31 @@ import { useMuseumStore } from "@/stores/useMuseumStore";
 import MuseumCard from "./MuseumCard.vue";
 export default {
   name: "MuseumGrid",
+  // Enregistrement du composant MuseumCard
   components: { MuseumCard },
   setup() {
+    // Accède au routeur pour la navigation
     const router = useRouter();
+    // Accède au magasin du musée
     const museumStore = useMuseumStore();
+    // Méthode pour naviguer vers une salle spécifique
     const goToRoom = (roomId) => {
       router.push({ name: "Room", params: { id: roomId } });
-    }; // Lecture directe du getter du store
-    const filteredRooms = computed(() => museumStore.filteredRooms);
-    return { filteredRooms, goToRoom };
+    };
+    const filteredRooms = computed(() => museumStore.filteredRooms); // Accède aux salles filtrées depuis le store
+    return { filteredRooms, goToRoom }; // Expose les données et méthodes au template
   },
 };
 </script>
 <style>
-/* Conteneur global de la grille */
+/* Conteneur principal de la grille */
 .grid {
   background: rgba(0, 0, 255, 0);
   padding: 3em 0 5em 0;
   width: 100%;
 }
 
-/* Grille responsive pour les cartes */
+/* Grille des salles avec espacement */
 .rooms-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));

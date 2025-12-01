@@ -2,8 +2,8 @@
   <section>
     <div class="form" :style="{ backgroundColor: formBackground }">
       <div class="formContenus">
-        <!-- Header buttons -->
         <div class="boutonDetail">
+          <!-- Bouton retour -->
           <BaseButton variant="cinquieme" @click="goBack">
             <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path fill-rule="evenodd" clip-rule="evenodd"
@@ -12,6 +12,7 @@
             </svg>
           </BaseButton>
           <div class="coteBouton">
+            <!-- Boutons éditer et supprimer -->
             <BaseButton variant="cinquieme" @click="toggleEdit">
               {{ isEditing ? "💾" : "🖍️" }}
             </BaseButton>
@@ -21,14 +22,15 @@
           </div>
         </div>
         <h1>Détails de la mémoire</h1>
-        <!-- Title -->
+        <!-- Titre -->
         <div class="form-group titre">
           <label>Titre :</label>
-          <input v-if="isEditing" v-model="editableMemory.title" class="readonly" />
-          <p v-else class="readonly">{{ editableMemory.title }}</p>
+          <input v-if="isEditing" v-model="editableMemory.title" class="readonly" /> <!-- Input en mode édition -->
+          <p v-else class="readonly">{{ editableMemory.title }}</p> <!-- Texte en mode lecture -->
         </div>
-        <!-- Image upload -->
+        <!-- Image -->
         <div class="image-upload">
+          <!-- Image existante ou placeholder -->
           <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
             @click="isEditing && triggerFileInput()">
             <img :src="editableMemory.image" class="preview-image" />
@@ -37,14 +39,14 @@
             <span class="plus">+</span>
             <span class="text">Ajouter une image</span>
           </div>
-          <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected"
-            style="display: none" />
+          <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected" 
+            style="display: none" /> <!-- Input fichier image -->
         </div>
         <!-- Date & Tags -->
         <div class="dateTags">
           <div class="form-group date">
             <label>Date :</label>
-            <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" />
+            <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" /> <!-- Input en mode édition -->
             <p v-else class="readonly">{{ editableMemory.date }}</p>
           </div>
           <div class="form-group tags">
@@ -88,9 +90,13 @@ export default {
 
   data() {
     return {
+      // Mémoire éditable
       editableMemory: null,
+      // Mode édition
       isEditing: false,
+      // Tag sélectionné
       selectedTag: "",
+      // Options de tags
       tagOptions: [
         { value: "#plage", label: "#plage" },
         { value: "#montagne", label: "#montagne" },
@@ -101,11 +107,13 @@ export default {
         { value: "#amis", label: "#amis" },
         { value: "#exploration", label: "#exploration" },
       ],
+      // store des mémoires
       memoryStore: useMemoryStore(),
     };
   },
 
   computed: {
+    // Couleur de fond du formulaire selon la salle
     formBackground() {
       const roomId = this.$route.params.id;
       const colors = {
@@ -120,12 +128,12 @@ export default {
     },
   },
 
-  // Quand la page charge on récupère la mémoire correspondante
   created() {
+    // Récupère la mémoire à afficher
     const id = this.$route.params.memoryId;
     const memory = this.memoryStore.memories.find((m) => m.id === id);
 
-    // Si elle existe pas on retourne à la salle
+    // Si la mémoire n'existe pas, retourne à la salle
     if (!memory) {
       this.$router.replace({
         name: "Room",
@@ -133,25 +141,29 @@ export default {
       });
       return;
     }
-
+    // Initialise la mémoire éditable et le tag sélectionné
     this.editableMemory = { ...memory };
     this.selectedTag = memory.tags?.[0] || "";
   },
 
   methods: {
+    // Retourne à la vue de la salle
     goBack() {
       this.$router.push({
         name: "Room",
         params: { id: this.$route.params.id },
       });
     },
+    // Bascule entre mode édition et sauvegarde
     toggleEdit() {
       if (this.isEditing) this.saveMemory();
       this.isEditing = !this.isEditing;
     },
+    // Ouvre le sélecteur de fichier
     triggerFileInput() {
       this.$refs.fileInput?.click();
     },
+    // Gère la sélection de l'image
     onImageSelected(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -165,6 +177,7 @@ export default {
       };
       reader.readAsDataURL(file);
     },
+    // Sauvegarde les modifications de la mémoire
     saveMemory() {
       this.memoryStore.updateMemory(this.editableMemory.id, {
         title: this.editableMemory.title,
@@ -174,6 +187,7 @@ export default {
         tags: this.selectedTag,
       });
     },
+    // Demande de confirmation avant suppression
     deleteMemoryPrompt() {
       if (confirm("Voulez-vous vraiment supprimer cette mémoire ?")) {
         this.memoryStore.deleteMemory(this.editableMemory.id);
@@ -185,7 +199,7 @@ export default {
 </script>
 <style>
 .form {
-  /* pas de background ici, il est géré via :style="formBackground" */
+  /* Conteneur principal du formulaire */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -197,7 +211,7 @@ export default {
   box-sizing: border-box;
 }
 
-/* Contenu interne en grille simple (une colonne par défaut) */
+/* Conteneur des contenus du formulaire */
 .formContenus {
   display: grid;
   grid-template-columns: 1fr;
@@ -205,7 +219,7 @@ export default {
   width: 100%;
 }
 
-/* Ligne du haut : boutons */
+/* Conteneur des boutons en haut */
 .boutonDetail {
   display: flex;
   justify-content: space-between;
@@ -331,7 +345,7 @@ select#tag-select {
   color: #555;
 }
 
-/* ───────── TABLETTE ───────── */
+/* TABLETTE */
 @media (max-width: 1024px) {
   .form {
     padding: 18px 20px;
@@ -343,7 +357,7 @@ select#tag-select {
   }
 }
 
-/* ───────── MOBILE ───────── */
+/* MOBILE */
 @media (max-width: 650px) {
   .form {
     padding: 16px 14px;

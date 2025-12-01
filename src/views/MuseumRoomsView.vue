@@ -2,18 +2,18 @@
   <main class="museum-rooms">
     <div class="global">
       <div class="header">
-        <!-- En-tête avec titre personnalisé -->
+        <!-- Affiche composante header-->
         <AppHeader variantHeader="titleBlack" sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home"
           title="Choissiez votre destination" />
       </div>
       <div class="filtre">
-        <!-- Barre de filtres : recherche, salle, tri -->
+        <!-- Affiche composante Optiobar-->
         <OptionBar variant="dark" v-model:search="museumStore.filters.search" v-model:room="museumStore.filters.room"
           v-model:sort="museumStore.filters.sort" :room-options="roomOptions" :showDate="false" />
       </div>
-      <!-- Zone où les salles filtrées sont affichées -->
+      <!-- Affiche la grille des salles du musée -->
       <MuseumGrid />
-      <!-- Pied de page -->
+      <!-- Affiche composante footer-->
       <AppFooter />
     </div>
   </main>
@@ -40,7 +40,7 @@ export default {
 
   data() {
     return {
-      // Liste des salles disponibles dans le filtre
+      // Options des salles pour le filtre
       roomOptions: [
         { value: "room-1", label: "Vacances et évasions" },
         { value: "room-2", label: "Aventures" },
@@ -53,9 +53,11 @@ export default {
   },
 
   computed: {
-    ...mapStores(useMuseumStore), // => this.museumStore
+    // Mappe le magasin du musée pour accéder aux filtres
+    ...mapStores(useMuseumStore),
   },
   methods: {
+    // Pour revenir à la page d'accueil
     goBack() {
       this.$router.push({ name: "home" });
     },
@@ -108,7 +110,7 @@ export default {
   max-width: 100%;
 }
 
-/* ================================ Desktop (1200px - 1399px) ================================= */
+/* Desktop (1200px - 1399px) */
 @media (min-width: 1200px) and (max-width: 1399px) {
   .filtre {
     justify-content: flex-start;
@@ -122,14 +124,14 @@ export default {
   }
 }
 
-/* ================================ Desktop Medium (992px - 1199px) ================================= */
+/* Desktop Medium (992px - 1199px) */
 @media (min-width: 992px) and (max-width: 1199px) {
   .backButton {
     padding-left: 3em;
   }
 }
 
-/* ================================ Tablet (≤992px) ================================= */
+/* Tablet (≤992px) */
 @media (max-width: 992px) {
   .backButton {
     padding-left: 2.5em;
@@ -137,7 +139,7 @@ export default {
   }
 }
 
-/* ================================ Tablet Vertical / Large Mobile (≤768px) ================================= */
+/* Tablet Vertical / Large Mobile (≤768px) */
 @media (max-width: 768px) {
   .backButton {
     padding-left: 2em;
@@ -146,7 +148,7 @@ export default {
   }
 }
 
-/* ================================ Mobile (≤0px) ================================= */
+/* Mobile (≤0px) */
 @media (max-width: 590px) {
   .backButton {
     padding-left: 2em;

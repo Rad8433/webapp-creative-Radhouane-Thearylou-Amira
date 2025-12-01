@@ -1,24 +1,26 @@
 <template>
-  <!-- Carte individuelle contenant une mémoire -->
+  <!-- Carte mémoire individuelle -->
   <div class="memory-card" :style="{ backgroundColor: bgColor }">
-    <!-- En-tête : tag à gauche, date à droite -->
+    <!-- En-tête : tags et date -->
     <div class="card-header">
       <span class="tags">{{ tag }}</span> <span class="date">{{ date }}</span>
     </div>
     <!-- Titre de la mémoire -->
     <h2 class="title">{{ title }}</h2>
-    <!-- Image principale de la mémoire -->
+    <!-- Image principale -->
     <div class="card-image"><img :src="image" alt="Memory Image" /></div>
-    <!-- Petite description/phrase -->
+    <!-- Légende ou description -->
     <p class="caption">{{ caption }}</p>
-    <!-- Numéro de mémoire -->
+    <!-- Numéro de la mémoire -->
     <p class="memory-number">{{ memoryNumber }}</p>
   </div>
 </template>
 
 <script>
 export default {
+  // Nom du composant
   name: "MemoryCard",
+  // Propriétés reçues pour afficher les détails de la mémoire
   props: {
     tag: { type: String, default: "" },
     date: { type: String, default: "" },
@@ -32,7 +34,7 @@ export default {
 </script>
 
 <style scoped>
-/* Carte principale */
+/* Style de la carte mémoire */
 .memory-card {
   width: 30em;
   height: 40em;
@@ -46,7 +48,7 @@ export default {
   text-align: center;
   transition: transform 0.3s ease;
 }
-
+/* Effet au survol de la carte mémoire */
 .memory-card:hover {
   transform: translateY(-10px) scale(1.02);
   cursor: pointer;
@@ -75,7 +77,6 @@ export default {
 .card-image {
   width: 100%;
   height: 220px;
-  /* Image plus grande */
   margin-bottom: 12px;
   overflow: hidden;
   border-radius: 16px;
