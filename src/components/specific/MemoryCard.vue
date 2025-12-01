@@ -92,7 +92,7 @@ export default {
 .caption {
   font-size: 1.05rem;
   color: #333;
-  margin-bottom: 6em;
+
 }
 
 /* Numéro de mémoire */
@@ -100,6 +100,7 @@ export default {
   font-weight: bold;
   color: #000;
   font-size: 1.1rem;
+  margin-top: auto;
 }
 
 /* Styles responsive pour mobile */
