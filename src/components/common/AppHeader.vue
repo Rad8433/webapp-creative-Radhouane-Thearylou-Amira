@@ -124,23 +124,22 @@ section {
   justify-self: center;
 }
 
-.titleMuseum {
-  font-size: 2rem;
-  justify-self: center;
-}
-
+/* Titre aligné à gauche dans le props justifySelf*/
 .titleLeft {
   justify-self: start;
 }
 
+/* Bouton retoure aligné à gauche dans sa classe.*/
 .retour {
   justify-self: start;
 }
 
+/* Variantes de couleur du titre dans le props variant.*/
 .titleBlack {
   color: #000000;
 }
 
+/* Variantes de couleur du titre dans le props variant.*/
 .titleWhite {
   color: #ffffff;
 }
