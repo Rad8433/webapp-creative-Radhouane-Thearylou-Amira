@@ -20,7 +20,7 @@
       <!--Bouton engrenage à droite, visible en fonction du prop visibleCog.-->
       <div class="headerEngrenage" :class="visibleCog">
         <!--Appel du composant bouton pour l’engrenage du stockage local.-->
-        <BaseButton variant="cogPrimary" engrenage="cogVisible" />
+        <BaseButton variant="cogPrimary" engrenage="cogVisible" @click="confirmDelete" />
       </div>
     </section>
   </header>
@@ -70,6 +70,14 @@ export default {
       this.$router.push({ name: this.endroit });
       console.log("retour", this.endroit);
     },
+    confirmDelete() {
+    if (confirm("Voulez-vous vraiment supprimer toutes les données ?")) {
+      localStorage.clear();
+      alert("Toutes les données ont été supprimées !");
+      // Reload app if needed
+      location.reload();
+    }
+  }
   },
 };
 </script>
@@ -106,8 +114,8 @@ section {
 /* Layout avec 2 colonnes (retour / titre) */
 .sectionHome {
   display: flex;
- justify-content: space-between;
- align-items: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Layout avec 3 colonnes (retour / titre / engrenage) */
@@ -134,7 +142,7 @@ section {
 
   font-size: 3rem;
   justify-self: start;
- 
+
 }
 
 /* Bouton retoure aligné à gauche dans sa classe.*/
@@ -156,10 +164,10 @@ section {
 @media (max-width: 700px) {
   .titleBlack {
     font-size: 1.7rem;
-   
+
     white-space: nowrap;
-    
-    
+
+
   }
 
   .sectionMuseum {
@@ -171,11 +179,12 @@ section {
     grid-column: 3;
     margin-right: 10px;
   }
-.headerTitle{
-  padding-top:2em;
-  width: 100%;
 
-}
+  .headerTitle {
+    padding-top: 2em;
+    width: 100%;
+
+  }
 
 }
 
@@ -184,13 +193,13 @@ section {
   .titleBlack {
     font-size: 1.3rem;
     font-weight: 500;
- 
+
   }
 
-.sectionMuseum{
-  width: 100%;
+  .sectionMuseum {
+    width: 100%;
 
-}
+  }
 
 }
 </style>
