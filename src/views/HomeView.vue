@@ -7,8 +7,8 @@
 
       <div class="header">
         <!-- Affiche composante header-->
-        <AppHeader variantHeader="titleWhite" justifySelf="titleLeft" sectionGrid="sectionHome" visibleCog="cogDisplay"
-          visibleBouton="cogDisplayN">
+        <AppHeader variantHeader="titleWhite" justifySelf="titleLeft" sectionGrid="sectionHome" 
+         >
           <!-- Titre personnalisé via slot -->
           <template #title>
             Musée

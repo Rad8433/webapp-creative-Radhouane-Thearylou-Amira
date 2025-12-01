@@ -77,7 +77,7 @@ export default {
 .card-image {
   width: 100%;
   height: 220px;
-  margin-bottom: 12px;
+  margin-bottom: 1.4em;
   overflow: hidden;
   border-radius: 16px;
 }
@@ -92,7 +92,7 @@ export default {
 .caption {
   font-size: 1.05rem;
   color: #333;
-  margin-bottom: 6px;
+  margin-bottom: 6em;
 }
 
 /* Numéro de mémoire */
@@ -119,6 +119,7 @@ export default {
 
   .caption {
     font-size: 0.95rem;
+    margin-bottom: 11em;
   }
 
   .memory-number {
