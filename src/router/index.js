@@ -1,37 +1,18 @@
-import {
-  createRouter,
-  createWebHistory
-} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MuseumRoomsView from "../views/MuseumRoomsView.vue";
 import RoomView from "../views/RoomView.vue";
 import ModalView from "@/views/ModalView.vue";
 
-const routes = [{
-    path: "/",
-    name: "home",
-    component: HomeView
-  },
-  {
-    path: "/MuseumRooms",
-    name: "MuseumRooms",
-    component: MuseumRoomsView
-  },
-  {
-    path: "/Room/:id",
-    name: "Room",
-    component: RoomView
-  },
-  {
-    path: "/Modal/:id/:memoryId?",
-    name: "Modal",
-    component: ModalView
-  },
+const routes = [
+  { path: "/", name: "home", component: HomeView },
+  { path: "/MuseumRooms", name: "MuseumRooms", component: MuseumRoomsView },
+  { path: "/Room/:id", name: "Room", component: RoomView },
+  { path: "/Modal/:id/:memoryId?", name: "Modal", component: ModalView },
 ];
 
 const router = createRouter({
-  history: createWebHistory(
-    import.meta.env.BASE_URL),
+  history: createWebHistory(import.meta.env.BASE_URL),
   routes,
 });
 

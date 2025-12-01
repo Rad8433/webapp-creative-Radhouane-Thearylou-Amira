@@ -11,43 +11,35 @@
                 fill="#fff" />
             </svg>
           </BaseButton>
-
           <div class="coteBouton">
             <BaseButton variant="cinquieme" @click="toggleEdit">
               {{ isEditing ? "💾" : "🖍️" }}
             </BaseButton>
-
             <BaseButton variant="cinquieme" @click="deleteMemoryPrompt">
               🗑️
             </BaseButton>
           </div>
         </div>
-
         <h1>Détails de la mémoire</h1>
-
         <!-- Title -->
         <div class="form-group titre">
           <label>Titre :</label>
           <input v-if="isEditing" v-model="editableMemory.title" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.title }}</p>
         </div>
-
         <!-- Image upload -->
         <div class="image-upload">
           <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
             @click="isEditing && triggerFileInput()">
             <img :src="editableMemory.image" class="preview-image" />
           </div>
-
           <div v-else class="image readonly" :class="{ editable: isEditing }" @click="isEditing && triggerFileInput()">
             <span class="plus">+</span>
             <span class="text">Ajouter une image</span>
           </div>
-
           <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected"
-            style="display: none;" />
+            style="display: none" />
         </div>
-
         <!-- Date & Tags -->
         <div class="dateTags">
           <div class="form-group date">
@@ -55,10 +47,8 @@
             <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" />
             <p v-else class="readonly">{{ editableMemory.date }}</p>
           </div>
-
           <div class="form-group tags">
             <label>Tag :</label>
-
             <div v-if="isEditing" class="select-wrapper">
               <select v-model="selectedTag" id="tag-select">
                 <option value="">-- Sélectionnez un tag --</option>
@@ -68,20 +58,17 @@
               </select>
               <span class="select-arrow">▾</span>
             </div>
-
             <p v-else class="readonly">
               {{ editableMemory.tags?.join(", ") || "Aucun tag" }}
             </p>
           </div>
         </div>
-
         <!-- Caption -->
         <div class="form-group legende">
           <label>Légende :</label>
           <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
-
         <!-- Memory number -->
         <div class="form-group">
           <label>Numéro de mémoire :</label>
@@ -95,10 +82,8 @@
 <script>
 import BaseButton from "../common/BaseButton.vue";
 import { useMemoryStore } from "../../stores/useMemoryStore.js";
-
 export default {
   name: "MemoryDetail",
-
   components: { BaseButton },
 
   data() {
@@ -124,23 +109,28 @@ export default {
     formBackground() {
       const roomId = this.$route.params.id;
       const colors = {
-        "room-1": "rgb(53, 186, 173)",
-  "room-2": "rgb(171, 46, 0)",
-  "room-3": "rgb(130, 130, 130)",
-  "room-4": "rgb(29, 184, 0)",
-  "room-5": "rgb(204, 172, 0)",
-  "room-6": "rgb(56, 103, 143)",
+        "room-1": "#5fbcb2",
+        "room-2": "#d96a4d",
+        "room-3": "#b3b3b3",
+        "room-4": "#7fbf9c",
+        "room-5": "#c9b56a",
+        "room-6": "#5f8fab",
       };
       return colors[roomId] || "#ffffff";
     },
   },
 
+  // Quand la page charge on récupère la mémoire correspondante
   created() {
     const id = this.$route.params.memoryId;
     const memory = this.memoryStore.memories.find((m) => m.id === id);
 
+    // Si elle existe pas on retourne à la salle
     if (!memory) {
-      this.$router.replace({ name: "Room", params: { id: this.$route.params.id } });
+      this.$router.replace({
+        name: "Room",
+        params: { id: this.$route.params.id },
+      });
       return;
     }
 
@@ -150,34 +140,31 @@ export default {
 
   methods: {
     goBack() {
-      this.$router.push({ name: "Room", params: { id: this.$route.params.id } });
+      this.$router.push({
+        name: "Room",
+        params: { id: this.$route.params.id },
+      });
     },
-
     toggleEdit() {
       if (this.isEditing) this.saveMemory();
       this.isEditing = !this.isEditing;
     },
-
     triggerFileInput() {
       this.$refs.fileInput?.click();
     },
-
     onImageSelected(event) {
       const file = event.target.files[0];
       if (!file) return;
-
       if (file.size > 2 * 1024 * 1024) {
         alert("Image trop grande, elle doit faire moins de 2 Mo.");
         return;
       }
-
       const reader = new FileReader();
       reader.onload = () => {
         this.editableMemory.image = reader.result;
       };
       reader.readAsDataURL(file);
     },
-
     saveMemory() {
       this.memoryStore.updateMemory(this.editableMemory.id, {
         title: this.editableMemory.title,
@@ -187,7 +174,6 @@ export default {
         tags: this.selectedTag,
       });
     },
-
     deleteMemoryPrompt() {
       if (confirm("Voulez-vous vraiment supprimer cette mémoire ?")) {
         this.memoryStore.deleteMemory(this.editableMemory.id);
@@ -197,18 +183,9 @@ export default {
   },
 };
 </script>
-
-
 <style>
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
 .form {
-  background: rgb(43, 148, 143);
+  /* pas de background ici, il est géré via :style="formBackground" */
   display: flex;
   flex-direction: column;
   align-items: stretch;

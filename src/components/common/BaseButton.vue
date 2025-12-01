@@ -18,16 +18,13 @@
 <script>
 export default {
   name: "BaseButton",
-
   // Le bouton accepte une prop "variant" pour changer son style
   props: {
     variant: {
-      type: String,
-      default: "", // style par défaut
-    },
-    engrenage: {
-      type: String,
-      default: "", // style par défaut
+      type: String, default: "", // style par défaut 
+    }, engrenage: {
+      type: String, default: "",
+      // style par défaut 
     }
   }
 };
@@ -81,6 +78,7 @@ svg {
   padding: 0.9rem 2.2rem;
   border-radius: 8px;
   font-size: 1.6rem;
+  margin-top: 5%;
 
 }
 
@@ -122,19 +120,6 @@ svg {
 
 .quatrieme:hover {
   background: #ffe6bf;
-  color: #000;
-}
-
-
-.cinquieme svg path {
-  color: white;
-  width: 50px;
-  font-size: 1.5rem;
-  margin-left: -0.5em;
-  margin-bottom: 0.5em;
-}
-
-.cinquieme:hover svg path {
   color: #000;
 }
 

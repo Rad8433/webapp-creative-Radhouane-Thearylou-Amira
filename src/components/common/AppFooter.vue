@@ -1,20 +1,14 @@
 <!-- Le composant AppFooter sera affiché dans toutes les pages, en bas du site -->
-<template>
-  <!-- Footer affichant le crédit de l'équipe du projet -->
+<template> <!-- Footer affichant le crédit de l'équipe du projet -->
   <footer class="app-footer">
     <p>Fait par l'équipe voyageur® 2025</p>
   </footer>
 </template>
-
-<script>
-export default {
-  // Nom du composant pour l'identifier dans l'application
-  name: "AppFooter",
-};
-</script>
-
+<script>export default
+  { // Nom du composant pour l'identifier dans l'application 
+    name: "AppFooter",
+  }; </script>
 <style scoped>
-/* Style du footer : bordure, centrage, espace et couleur du texte */
 .app-footer {
   border-top: 1px solid #ccc;
   text-align: center;

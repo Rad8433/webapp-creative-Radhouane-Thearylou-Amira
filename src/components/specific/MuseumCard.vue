@@ -2,47 +2,20 @@
   <div class="room-card">
     <!-- Image de la salle en arrière-plan -->
     <img :src="room.url" :alt="room.name" />
-
     <!-- Nom de la salle -->
     <h2>{{ room.name }}</h2>
-
     <!-- Description de la salle -->
     <p class="room-description">{{ room.description }}</p>
-
     <!-- Nombre total de mémoires dans la salle -->
-    <p class="memory-count">{{ memoryCount }} mémoires</p>
+    <p class="memory-count">{{ room.memoriesCount }} mémoires</p>
   </div>
 </template>
-
 <script>
-import { useMemoryStore } from "@/stores/useMemoryStore";
-import { computed } from "vue";
-
 export default {
   name: "MuseumCard",
-
-  props: {
-    room: {
-      type: Object,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const memoryStore = useMemoryStore();
-
-    // Compute the number of memories in this room
-    const memoryCount = computed(() => {
-      return memoryStore.memoriesByRoom(props.room.id).length;
-    });
-
-    return {
-      memoryCount,
-    };
-  },
+  props: { room: { type: Object, required: true } },
 };
 </script>
-
 <style scoped>
 /* Carte de salle (conteneur principal) */
 .room-card {
@@ -63,7 +36,7 @@ export default {
   overflow: hidden;
   /* masque ce qui dépasse (image) */
   width: 100%;
-  font-family: 'roboto', sans-serif;
+  font-family: "roboto", sans-serif;
 }
 
 /* Effet au survol : légère élévation + ombre */
@@ -73,7 +46,7 @@ export default {
 }
 
 /* L’image couvre toute la carte en arrière-plan */
-img {
+.room-card img {
   position: absolute;
   top: 0;
   left: 0;

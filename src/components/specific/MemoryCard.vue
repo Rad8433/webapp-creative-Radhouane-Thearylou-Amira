@@ -1,25 +1,17 @@
 <template>
   <!-- Carte individuelle contenant une mémoire -->
   <div class="memory-card" :style="{ backgroundColor: bgColor }">
-
-    <!-- En-tête : tags à gauche, date à droite -->
+    <!-- En-tête : tag à gauche, date à droite -->
     <div class="card-header">
-      <span class="tags">{{ formattedTags }}</span>
-      <span class="date">{{ date }}</span>
+      <span class="tags">{{ tag }}</span> <span class="date">{{ date }}</span>
     </div>
-
     <!-- Titre de la mémoire -->
     <h2 class="title">{{ title }}</h2>
-
     <!-- Image principale de la mémoire -->
-    <div class="card-image">
-      <img :src="image" alt="Memory Image" />
-    </div>
-
+    <div class="card-image"><img :src="image" alt="Memory Image" /></div>
     <!-- Petite description/phrase -->
     <p class="caption">{{ caption }}</p>
-
-    <!-- Numéro de mémoire (ex: Mémoire 1) -->
+    <!-- Numéro de mémoire -->
     <p class="memory-number">{{ memoryNumber }}</p>
   </div>
 </template>
@@ -27,64 +19,25 @@
 <script>
 export default {
   name: "MemoryCard",
-
   props: {
-    // Tags associés à la mémoire
-    tags: {
-      type: [String, Array],
-      default: () => []
-    },
-    // Date de la mémoire
-    date: {
-      type: String,
-      default: "01/01/2025",
-    },
-    // Titre de la mémoire
-    title: {
-      type: String,
-      default: "Titre",
-    },
-    // Image principale de la mémoire
-    image: {
-      type: String,
-      required: true,
-    },
-    // Petite description ou légende
-    caption: {
-      type: String,
-      default: "Légende",
-    },
-    // Numéro ou référence de la mémoire
-    memoryNumber: {
-      type: String,
-      default: "Mémoire 1",
-    },
-    // Couleur de fond de la carte
-    bgColor: {
-      type: String,
-      default: "#e0e0e0",
-    },
+    tag: { type: String, default: "" },
+    date: { type: String, default: "" },
+    title: { type: String, default: "" },
+    image: { type: String, required: true },
+    caption: { type: String, default: "" },
+    memoryNumber: { type: String, default: "" },
+    bgColor: { type: String, default: "#e0e0e0" },
   },
-
-  computed: {
-    // Formatte les tags en chaîne si c'est un tableau
-    formattedTags() {
-      if (Array.isArray(this.tags)) {
-        return this.tags.join(", ");
-      }
-      return this.tags;
-    },
-  }
 };
 </script>
 
 <style scoped>
 /* Carte principale */
 .memory-card {
-  width: 30em; 
+  width: 30em;
   height: 40em;
   border-radius: 20px;
-  padding: 24px; 
+  padding: 24px;
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.11);
   display: flex;
   flex-direction: column;
@@ -121,7 +74,8 @@ export default {
 /* Image principale de la mémoire */
 .card-image {
   width: 100%;
-  height: 220px; /* Image plus grande */
+  height: 220px;
+  /* Image plus grande */
   margin-bottom: 12px;
   overflow: hidden;
   border-radius: 16px;

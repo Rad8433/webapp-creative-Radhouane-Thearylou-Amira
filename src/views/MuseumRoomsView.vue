@@ -4,19 +4,15 @@
       <div class="header">
         <!-- En-tête avec titre personnalisé -->
         <AppHeader variantHeader="titleBlack" sectionGrid="sectionMuseum" visibleCog="cogDisplay" endroit="home"
-          title="Choissiez votre destination">
-        </AppHeader>
+          title="Choissiez votre destination" />
       </div>
       <div class="filtre">
         <!-- Barre de filtres : recherche, salle, tri -->
-        <OptionBar variant="dark" v-model:search="filters.search" v-model:room="filters.room"
-          v-model:sort="filters.sort" :room-options="roomOptions" :showDate="false" />
+        <OptionBar variant="dark" v-model:search="museumStore.filters.search" v-model:room="museumStore.filters.room"
+          v-model:sort="museumStore.filters.sort" :room-options="roomOptions" :showDate="false" />
       </div>
       <!-- Zone où les salles filtrées sont affichées -->
-
-      <MuseumGrid :filters="filters" />
-
-
+      <MuseumGrid />
       <!-- Pied de page -->
       <AppFooter />
     </div>
@@ -29,6 +25,8 @@ import AppFooter from "@/components/common/AppFooter.vue";
 import MuseumGrid from "@/components/specific/MuseumGrid.vue";
 import OptionBar from "@/components/layout/OptionBar.vue";
 import BaseButton from "@/components/common/BaseButton.vue";
+import { mapStores } from "pinia";
+import { useMuseumStore } from "@/stores/useMuseumStore";
 
 export default {
   name: "MuseumRoomsView",
@@ -39,15 +37,9 @@ export default {
     OptionBar,
     BaseButton,
   },
+
   data() {
     return {
-      // Valeurs des filtres contrôlées par la barre OptionBar
-      filters: {
-        search: "",
-        room: "all",
-        sort: "asc",  // Tri par défaut (ascendant)
-      },
-
       // Liste des salles disponibles dans le filtre
       roomOptions: [
         { value: "room-1", label: "Vacances et évasions" },
@@ -57,19 +49,21 @@ export default {
         { value: "room-5", label: "Gastronomies" },
         { value: "room-6", label: "Destinations de rêves" },
       ],
-
     };
+  },
+
+  computed: {
+    ...mapStores(useMuseumStore), // => this.museumStore
   },
   methods: {
     goBack() {
-      this.$router.push({ name: 'home' });
+      this.$router.push({ name: "home" });
     },
   },
 };
 </script>
 
 <style scoped>
-
 /* Conteneur principal centré et avec marges internes */
 .global {
   display: flex;
@@ -107,7 +101,6 @@ export default {
   flex-wrap: wrap;
   gap: 1rem;
   width: 100%;
-
 }
 
 .filtre>* {
@@ -115,15 +108,9 @@ export default {
   max-width: 100%;
 }
 
-
-/* ================================
-   Desktop (1200px - 1399px)
-   ================================= */
+/* ================================ Desktop (1200px - 1399px) ================================= */
 @media (min-width: 1200px) and (max-width: 1399px) {
-
-
   .filtre {
-
     justify-content: flex-start;
     flex-wrap: wrap;
     gap: -1rem;
@@ -135,63 +122,35 @@ export default {
   }
 }
 
-/* ================================
-   Desktop Medium (992px - 1199px)
-   ================================= */
+/* ================================ Desktop Medium (992px - 1199px) ================================= */
 @media (min-width: 992px) and (max-width: 1199px) {
-
   .backButton {
     padding-left: 3em;
   }
-
-
 }
 
-/* ================================
-   Tablet (≤992px)
-   ================================= */
+/* ================================ Tablet (≤992px) ================================= */
 @media (max-width: 992px) {
-
-
   .backButton {
     padding-left: 2.5em;
     padding-top: 0.8em;
   }
-
-
-
 }
 
-/* ================================
-   Tablet Vertical / Large Mobile (≤768px)
-   ================================= */
+/* ================================ Tablet Vertical / Large Mobile (≤768px) ================================= */
 @media (max-width: 768px) {
-
   .backButton {
     padding-left: 2em;
     padding-top: 0.5em;
     align-self: flex-start;
   }
-
-
-
 }
 
-/* ================================
-   Mobile (≤0px)
-   ================================= */
+/* ================================ Mobile (≤0px) ================================= */
 @media (max-width: 590px) {
-
-
   .backButton {
     padding-left: 2em;
     padding-top: 0.5em;
-
   }
-
-
-
-
-
 }
 </style>

@@ -9,12 +9,7 @@
         </svg>
       </span>
 
-      <input
-        type="text"
-        :value="search"
-        @input="$emit('update:search', $event.target.value)"
-        placeholder="Recherche"
-      />
+      <input type="text" :value="search" @input="$emit('update:search', $event.target.value)" placeholder="Recherche" />
       <span class="optionbar__underline"></span>
     </div>
 
@@ -23,7 +18,9 @@
       <div class="optionbar__select-wrapper">
         <select :value="room" @change="$emit('update:room', $event.target.value)">
           <option value="all">Toutes les salles</option>
-          <option v-for="r in roomOptions" :key="r.value" :value="r.value">{{ r.label }}</option>
+          <option v-for="r in roomOptions" :key="r.value" :value="r.value">
+            {{ r.label }}
+          </option>
         </select>
         <span class="optionbar__chevron">▾</span>
       </div>
@@ -32,14 +29,10 @@
 
     <!-- Tag select (only show if there are tags) -->
     <div v-if="tagOptions.length > 0" class="optionbar__item">
-      <div class="optionbar__select-wrapper">
-        <select :value="tag" @change="$emit('update:tag', $event.target.value)">
+      <div class="optionbar__select-wrapper"> <select :value="tag" @change="$emit('update:tag', $event.target.value)">
           <option value="all">Tous les tags</option>
           <option v-for="t in tagOptions" :key="t.value" :value="t.value">{{ t.label }}</option>
-        </select>
-        <span class="optionbar__chevron">▾</span>
-      </div>
-      <span class="optionbar__underline"></span>
+        </select> <span class="optionbar__chevron">▾</span> </div> <span class="optionbar__underline"></span>
     </div>
 
     <!-- Date select -->
@@ -57,37 +50,30 @@
 
     <!-- Sort select -->
     <div v-if="showSort" class="optionbar__item optionbar__item--sort">
-      <div class="optionbar__select-wrapper">
-        <select :value="sort" @change="$emit('update:sort', $event.target.value)">
+      <div class="optionbar__select-wrapper"> <select :value="sort" @change="$emit('update:sort', $event.target.value)">
           <option value="asc">Mémoires ↑ (croissant)</option>
           <option value="desc">Mémoires ↓ (décroissant)</option>
-        </select>
-        <span class="optionbar__chevron">▾</span>
-      </div>
-      <span class="optionbar__underline"></span>
+        </select> <span class="optionbar__chevron">▾</span> </div> <span class="optionbar__underline"></span>
     </div>
   </div>
 </template>
 
-<script>
-export default {
-  name: "OptionBar",
-  props: {
-    search: { type: String, default: "" },
-    room: { type: String, default: "all" },
-    tag: { type: String, default: "all" },
-    sort: { type: String, default: "asc" },
-    date: { type: String, default: "all" },
-    roomOptions: { type: Array, default: () => [] },
-    tagOptions: { type: Array, default: () => [] },
-    showRoom: { type: Boolean, default: true },
-    showSort: { type: Boolean, default: true },
-    showDate: { type: Boolean, default: true },
-    variant: { type: String, default: "dark" }
-  },
-  emits: ["update:search", "update:room", "update:tag", "update:sort", "update:date"]
-};
-</script>
+<script>export default {
+  name: "OptionBar", props: {
+    search: { type: String, default: "" }, room: {
+      type: String,
+      default: "all"
+    }, tag: { type: String, default: "all" }, sort: { type: String, default: "asc" }, date: {
+      type: String,
+      default: "all"
+    }, roomOptions: { type: Array, default: () => [] }, tagOptions: { type: Array, default: () => [] },
+    showRoom: { type: Boolean, default: true }, showSort: { type: Boolean, default: true }, showDate: {
+      type: Boolean,
+      default: true
+    }, variant: { type: String, default: "dark" }
+  }, emits: ["update:search", "update:room", "update:tag",
+    "update:sort", "update:date"]
+}; </script>
 
 <style scoped>
 .optionbar {

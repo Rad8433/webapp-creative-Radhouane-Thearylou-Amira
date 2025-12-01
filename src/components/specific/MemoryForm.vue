@@ -1,9 +1,7 @@
 <template>
   <section>
     <div class="form" :style="{ backgroundColor: formBackground }">
-
       <form>
-
         <!-- Back button -->
         <BaseButton variant="cinquieme" type="button" @click="goBack">
           <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,16 +10,13 @@
               fill="#fff" />
           </svg>
         </BaseButton>
-
         <h1>Décrivez votre mémoire</h1>
-
         <!-- Title -->
         <div class="form-group titre">
           <label for="titre">Titre *</label>
           <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire" />
           <span v-if="errors.title" class="error">{{ errors.title }}</span>
         </div>
-
         <!-- Image upload -->
         <div class="image-upload">
           <label class="image-circle" @click="triggerFileInput">
@@ -29,10 +24,9 @@
             <span v-if="!image" class="text">Ajouter une image</span>
             <img v-if="image" :src="image" class="preview-image" />
           </label>
-          <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none;" />
+          <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none" />
           <span v-if="errors.image" class="error">{{ errors.image }}</span>
         </div>
-
         <!-- Date + tags -->
         <div class="form-grid">
           <div class="form-group date">
@@ -40,7 +34,6 @@
             <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
             <span v-if="errors.date" class="error">{{ errors.date }}</span>
           </div>
-
           <div class="form-group tags">
             <label for="tags">Tags *</label>
             <div class="select-wrapper">
@@ -55,51 +48,42 @@
             <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
           </div>
         </div>
-
         <!-- Caption -->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
           <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
-
         <!-- Submit -->
         <BaseButton variant="secondary" type="button" @click="handleSubmit">
           Ajouter
         </BaseButton>
-
       </form>
     </div>
   </section>
 </template>
-
 <script>
 import BaseButton from "../common/BaseButton.vue";
 import { mapStores } from "pinia";
 import { useMemoryStore } from "@/stores/useMemoryStore";
-
 export default {
   name: "MemoryForm",
-
   components: { BaseButton },
-
   computed: {
     ...mapStores(useMemoryStore),
-
     formBackground() {
       const roomId = this.$route.params.id;
       const colors = {
-        "room-1": "#35baad",
-        "room-2": "#AB2E00",
-        "room-3": "#828282",
-        "room-4": "#1DB800",
-        "room-5": "#CCAC00",
-        "room-6": "#38678F",
+        "room-1": "#5fbcb2",
+        "room-2": "#d96a4d",
+        "room-3": "#b3b3b3",
+        "room-4": "#7fbf9c",
+        "room-5": "#c9b56a",
+        "room-6": "#5f8fab",
       };
-      return colors[roomId] || "#ffffff"; // fallback white
+      return colors[roomId] || "#ffffff";
     },
   },
-
   data() {
     return {
       tagOptions: [
@@ -117,54 +101,45 @@ export default {
       image: null,
     };
   },
-
   methods: {
     validateForm() {
       this.errors = {};
-
-      if (!this.form.title.trim()) this.errors.title = "Le titre est obligatoire.";
+      if (!this.form.title.trim())
+        this.errors.title = "Le titre est obligatoire.";
       if (!this.form.date) this.errors.date = "La date est obligatoire.";
-      if (!this.form.tags.trim()) this.errors.tags = "Les tags sont obligatoires.";
-      if (!this.form.caption.trim()) this.errors.caption = "La légende est obligatoire.";
+      if (!this.form.tags.trim())
+        this.errors.tags = "Les tags sont obligatoires.";
+      if (!this.form.caption.trim())
+        this.errors.caption = "La légende est obligatoire.";
       if (!this.image) this.errors.image = "Veuillez sélectionner une image.";
-
       return Object.keys(this.errors).length === 0;
     },
-
     handleSubmit() {
       if (!this.validateForm()) return;
-
-      // Send raw data (store handles all formatting)
       this.memoryStore.createMemory({
         roomId: this.$route.params.id,
         ...this.form,
         image: this.image,
       });
-
       this.goBack();
     },
-
     goBack() {
       this.$router.push({
         name: "Room",
         params: { id: this.$route.params.id },
       });
     },
-
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
-
     onHandleImage(event) {
       const file = event.target.files[0];
       if (!file) return;
-
       if (file.size > 2 * 1024 * 1024) {
         this.errors.image = "Image trop grande, max 2 Mo.";
         this.image = null;
         return;
       }
-
       const reader = new FileReader();
       reader.onload = () => {
         this.image = reader.result;
@@ -174,14 +149,7 @@ export default {
   },
 };
 </script>
-
 <style>
-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .form {
   width: 100%;
   max-width: 650px;
@@ -195,17 +163,17 @@ section {
   transition: background-color 0.5s ease;
 }
 
-/* Rest of your styles remain unchanged */
-
 .form h1 {
   font-size: 1.8rem;
   text-align: center;
   margin: 0 0 1rem;
 }
 
+/* IMAGE UPLOAD */
 .image-upload {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin: 20px 0;
 }
 
@@ -236,5 +204,11 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Errors */
+.error {
+  color: rgb(102, 0, 0);
+  white-space: nowrap;
 }
 </style>
