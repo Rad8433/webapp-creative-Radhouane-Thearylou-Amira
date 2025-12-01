@@ -32,19 +32,21 @@ export default {
 </script>
 
 <style scoped>
+/* Style pour l’affichage conditionnel de l’engrenage du bouton dans le props engrenage.*/
 .cog {
   display: none;
 }
 
+/* Style pour l’affichage conditionnel de l’engrenage du bouton dans le props engrenage.*/
 .cogVisible {
   display: block;
   fill: white;
 }
 
+/* Empêche les interactions avec le SVG de l’engrenage pour que le bouton gère les clics. */
 svg {
   pointer-events: none;
 }
-
 
 /* Style général appliqué à tous les boutons */
 .base-button {
@@ -56,7 +58,7 @@ svg {
   background: none;
 }
 
-/* --- BOUTON PRIMARY (ex: "Commencer") --- */
+/* --- BOUTON PRIMARY ( Commencer ) --- */
 .primary {
   background: #000;
   color: #fff;
@@ -71,7 +73,7 @@ svg {
   color: #000;
 }
 
-/* --- BOUTON SECONDARY (ex: bouton envoyer dans un formulaire) --- */
+/* --- BOUTON SECONDARY ( Bouton envoyer dans un formulaire) --- */
 .secondary {
   background: #0F4C81;
   color: #fff;
@@ -88,7 +90,7 @@ svg {
   color: #000;
 }
 
-/* --- BOUTON TROISIÈME (ex: ajouter une mémoire) --- */
+/* --- BOUTON TROISIÈME ( Ajouter une mémoire) --- */
 .troisieme {
   background: #0bac76;
   color: #fff;
@@ -105,7 +107,7 @@ svg {
   color: #000;
 }
 
-
+/* --- BOUTON QUATRIEME ( Faire un retour à la page précédente) --- */
 .quatrieme {
   background: #e48e5c;
   color: #fff;
@@ -124,6 +126,7 @@ svg {
   color: #000;
 }
 
+/* --- BOUTON COG PRIMARY ( bouton engrenage dans le header) --- */
 .cogPrimary {
   background: #888856;
   color: #fff;
@@ -136,22 +139,6 @@ svg {
 }
 
 .cogPrimary:hover {
-  background: #504026;
-  color: #000;
-}
-
-.cogSecondary {
-  background: #888856;
-  color: #fff;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 60px;
-}
-
-.cogSecondary:hover {
   background: #504026;
   color: #000;
 }
