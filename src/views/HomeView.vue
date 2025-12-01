@@ -1,25 +1,25 @@
 <template>
-  <!-- Page d’accueil -->
+  <!-- Conteneur principal avec le fond -->
   <main class="home">
 
-    <!-- Conteneur principal avec le fond -->
+    <!-- Cadre qui contient le header et le reste du héros -->
     <div class="hero-frame">
 
       <div class="header">
-        <!-- Header affiché en haut avec ses props personnalisées -->
+        <!-- Affiche composante header-->
         <AppHeader variantHeader="titleWhite" justifySelf="titleLeft" sectionGrid="sectionHome" visibleCog="cogDisplay"
           visibleBouton="cogDisplayN">
-          <!-- Le titre envoyé au header -->
+          <!-- Titre personnalisé via slot -->
           <template #title>
             Musée
           </template>
         </AppHeader>
       </div>
 
-      <!-- Contenu principal : texte + cartes -->
+      <!-- Contenu principal du héros -->
       <div class="hero-content">
 
-        <!-- Partie texte à gauche -->
+        <!-- Texte à gauche -->
         <div class="hero-text">
           <h1 class="hero-title">
             Vos voyages <br>
@@ -32,7 +32,7 @@
           </BaseButton>
         </div>
 
-        <!-- 3 cartes de décoration à droite -->
+        <!-- Cartes décoratives à droite -->
         <div class="hero-cards">
           <div class="hero-card card1"></div>
           <div class="hero-card card2"></div>
@@ -50,9 +50,9 @@ import BaseButton from "@/components/common/BaseButton.vue";
 import AppHeader from "@/components/common/AppHeader.vue";
 
 export default {
-  name: "HomeView",
+  name: "HomeView", // Nom de la view
 
-  components: { BaseButton, AppHeader },
+  components: { BaseButton, AppHeader }, // Composants utilisés
 
   methods: {
     // Redirige vers la page des salles
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style scoped>
-/* Fond principal + centrage */
+/* Conteneur principal centré et avec marges internes */
 .home {
   background: #111;
   display: flex;
@@ -76,14 +76,14 @@ export default {
   background-position: center;
 }
 
-/* Zone qui contient le header + le reste du héros */
+/* Cadre qui contient le header et le reste du héros */
 .hero-frame {
   position: relative;
   height: 100%;
   width: 70vw;
 }
 
-/* Mise en page texte + cartes */
+/* Contenu principal du héros */
 .hero-content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -93,7 +93,7 @@ export default {
   justify-items: start;
 }
 
-/* Bloc du texte */
+/* Texte à gauche */
 .hero-text {
   max-width: 65%;
   width: 100%;
@@ -108,19 +108,19 @@ export default {
   line-height: 1.05;
 }
 
-/* Souligne une partie du titre */
+/* Souligne le mot "mémoires" */
 .hero-title span {
   text-decoration: underline;
 }
 
-/* Groupe des cartes décoratives */
+/* Cartes décoratives à droite */
 .hero-cards {
   display: flex;
   gap: 1.2rem;
   align-items: flex-end;
 }
 
-/* Style de base des cartes */
+/* Style des cartes */
 .hero-card {
   width: 200px;
   aspect-ratio: 1/2;
@@ -128,7 +128,7 @@ export default {
   background-position: 45% 50%;
 }
 
-/* Décale légèrement la 2e carte */
+/* Décalage des cartes pour effet superposé */
 .hero-card:nth-child(2) {
   transform: translateY(30px);
 }
