@@ -126,6 +126,7 @@ svg {
   color: #000;
 }
 
+
 /* --- BOUTON COG PRIMARY ( bouton engrenage dans le header) --- */
 .cogPrimary {
   background: #888856;
