@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="form test" :style="{ backgroundColor: formBackground }">
+    <div class="form" :style="{ backgroundColor: formBackground }">
       <form>
         <!-- Back button -->
         <BaseButton variant="cinquieme" type="button" @click="goBack">
@@ -80,7 +80,6 @@ export default {
         "room-4": "#7fbf9c",
         "room-5": "#c9b56a",
         "room-6": "#5f8fab",
-        "room-7": "#5f8fab",
       };
       return colors[roomId] || "#ffffff";
     },
