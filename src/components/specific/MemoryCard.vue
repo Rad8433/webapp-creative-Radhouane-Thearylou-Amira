@@ -58,6 +58,8 @@ export default {
   font-family: sans-serif;
   text-align: center;
   transition: transform 0.3s ease;
+    transform: translate3d(0, 0, 0) 
+  
 }
 /* Effet au survol de la carte mémoire */
 .memory-card:hover {
@@ -65,6 +67,7 @@ export default {
   cursor: pointer;
   box-shadow: 0 12px 50px rgba(255, 255, 255, 0.13);
 }
+
 
 /* En-tête de la carte (tags + date) */
 .card-header {

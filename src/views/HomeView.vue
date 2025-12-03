@@ -23,7 +23,7 @@
         <div class="hero-text">
           <h1 class="hero-title">
             Vos voyages <br>
-            <span>en mémoires</span>
+            en <span>mémoires</span>
           </h1>
 
           <!-- Bouton qui amène à la liste des salles -->
@@ -94,11 +94,13 @@ export default {
   justify-items: start;
 }
 
-/* Texte à gauche */
+/* Texte à droite */
 .hero-text {
-  max-width: 65%;
   width: 100%;
   color: #fff;
+  display: grid;
+  max-width: 100%;
+  justify-content: center;
 }
 
 /* Titre principal */
@@ -123,7 +125,7 @@ export default {
 
 /* Style des cartes */
 .hero-card {
-  width: 200px;
+  width: 13em;
   aspect-ratio: 1/2;
   background-size: cover;
   background-position: 45% 50%;
@@ -131,7 +133,7 @@ export default {
 
 /* Décalage des cartes pour effet superposé */
 .hero-card:nth-child(2) {
-  transform: translateY(30px);
+  transform: translateY(46px);
 }
 
 /* Images des cartes */
@@ -147,20 +149,58 @@ export default {
   background-image: url("@/assets/card3.png");
 }
 
-/* Responsive 1200px */
-@media (max-width: 1200px) {
+.hero-cards {
+  order: 1;
+}
 
-  .header,
-  .hero-content {
-    padding: 0 8em;
+.hero-text {
+  order: 2;
+}
+
+
+@media (min-width: 1201px) {
+
+  .hero-text {
+    justify-content: flex-end;
   }
 
   .hero-title {
-    font-size: 2.6rem;
+    margin-bottom:0.55em ;
+    font-size: 5.3rem;
   }
 
-  .hero-card {
-    width: 160px;
+
+}
+
+
+
+/* Responsive 1200px */
+@media (max-width: 1200px) {
+.header,
+  .hero-content {
+    padding: 0 5em;
+  }
+
+  /* Passe le layout en une colonne */
+  .hero-content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-text {
+margin-bottom: 3em;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    margin-bottom:0.7em ;
+    font-size: 4rem;
+  }
+
+  .hero-cards {
+    justify-content: center;
   }
 }
 
@@ -181,37 +221,22 @@ export default {
   }
 
   .hero-text {
-    max-width: 80%;
+    max-width: 100%;
   }
 
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 4rem;
   }
 
   .hero-cards {
+    width: 35em;
     justify-content: center;
   }
 }
 
+
 /* Responsive 768px */
 @media (max-width: 768px) {
-
-  .header,
-  .hero-content {
-    padding: 0 3em;
-  }
-
-  .hero-title {
-    font-size: 2.3rem;
-  }
-
-  .hero-card {
-    width: 140px;
-  }
-}
-
-/* Responsive 600px */
-@media (max-width: 600px) {
 
   /* Enlève les cartes */
   .hero-cards {
@@ -232,7 +257,7 @@ export default {
   }
 
   .hero-title {
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     line-height: 1.15;
   }
 
@@ -251,7 +276,7 @@ export default {
 /* Responsive 450px */
 @media (max-width: 450px) {
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
 
   .hero-content {

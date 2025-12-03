@@ -181,7 +181,7 @@ section {
   }
 
   .headerTitle {
-    padding-top: 2em;
+
     width: 100%;
 
   }
