@@ -2,42 +2,42 @@
     "rooms": [
       {
         "id": "room-1",
-        "url": "/img-destination/evasions.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/evasions.jpg",
         "name": "Vacances et évasions",
         "description": "Soleil, plages, escapades reposantes et petits moments de pause loin du quotidien.",
         "memoriesCount": 3
       },
       {
         "id": "room-2",
-        "url": "/img-destination/aventures.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/aventures.jpg",
         "name": "Aventures",
         "description": "Randonnées, défis, imprévus et adrénaline pour les voyageurs en quête d’action.",
         "memoriesCount": 3
       },
       {
         "id": "room-3",
-        "url": "/img-destination/explorations_urbaines.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/explorations_urbaines.jpg",
         "name": "Explorations urbaines",
         "description": "Ruelles cachées, architecture, graffitis et vie nocturne des grandes villes.",
         "memoriesCount": 3
       },
       {
         "id": "room-4",
-        "url": "/img-destination/moments_droles.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/moments_droles.jpg",
         "name": "Moments drôles",
         "description": "Gaffes, quiproquos et souvenirs gênants qui finissent en fous rires.",
         "memoriesCount": 3
       },
       {
         "id": "room-5",
-        "url": "/img-destination/gastronomies.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/gastronomies.jpg",
         "name": "Gastronomies",
         "description": "Plats typiques, marchés locaux et découvertes culinaires aux quatre coins du monde.",
         "memoriesCount": 3
       },
       {
         "id": "room-6",
-        "url": "/img-destination/reves.jpg",
+        "url": "/webapp-creative-Radhouane-Thearylou-Amira/img-destination/reves.jpg",
         "name": "Destinations de rêves",
         "description": "Lieux mythiques, paysages irréels et voyages qu’on garde sur sa bucket list.",
         "memoriesCount": 3

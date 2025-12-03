@@ -11,27 +11,27 @@ import MemoryDetail from "@/components/specific/MemoryDetail.vue";
 const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",
-    bg: "url('/bg-rooms/bg1.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg1.png') center/cover no-repeat",
   },
   "room-2": {
     title: "Aventures",
-    bg: "url('/bg-rooms/bg2.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg2.png') center/cover no-repeat",
   },
   "room-3": {
     title: "Explorations urbaines",
-    bg: "url('/bg-rooms/bg3.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg3.png') center/cover no-repeat",
   },
   "room-4": {
     title: "Moments drôles",
-    bg: "url('/bg-rooms/bg4.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg4.png') center/cover no-repeat",
   },
   "room-5": {
     title: "Gastronomies",
-    bg: "url('/bg-rooms/bg5.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg5.png') center/cover no-repeat",
   },
   "room-6": {
     title: "Destinations de rêves",
-    bg: "url('/bg-rooms/bg6.png') center/cover no-repeat",
+    bg: "url('@/assets/bg-rooms/bg6.png') center/cover no-repeat",
   },
 };
 export default {
