@@ -36,27 +36,27 @@ import { useMemoryStore } from "@/stores/useMemoryStore";
 const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",
-    bg: "url('/src/assets/bg-rooms/bg1.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg1.png') center/cover no-repeat",
   },
   "room-2": {
     title: "Aventures",
-    bg: "url('/src/assets/bg-rooms/bg2.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg2.png') center/cover no-repeat",
   },
   "room-3": {
     title: "Explorations urbaines",
-    bg: "url('/src/assets/bg-rooms/bg3.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg3.png') center/cover no-repeat",
   },
   "room-4": {
     title: "Moments drôles",
-    bg: "url('/src/assets/bg-rooms/bg4.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg4.png') center/cover no-repeat",
   },
   "room-5": {
     title: "Gastronomies",
-    bg: "url('/src/assets/bg-rooms/bg5.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg5.png') center/cover no-repeat",
   },
   "room-6": {
     title: "Destinations de rêves",
-    bg: "url('/src/assets/bg-rooms/bg6.png') center/cover no-repeat",
+    bg: "url('./assets/bg-rooms/bg6.png') center/cover no-repeat",
   },
 };
 
