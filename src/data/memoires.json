@@ -3,7 +3,7 @@
     {
       "roomId": "room-1",
       "titreSouvenir": "Coucher de soleil à Bali",
-      "imageSouvenir": "/swiper/room-1/bali.jpg",
+      "imageSouvenir": "/webapp-creative-Radhouane-Thearylou-Amira/swiper/room-1/bali.jpg",
       "descriptionSouvenir": "Un coucher de soleil à couper le souffle sur l'océan, avec un ciel peint de teintes orange et rose.",
       "lieuSouvenir": "Bali, Indonésie",
       "dateSouvenir": "2023-05-15",
@@ -12,7 +12,7 @@
     {
       "roomId": "room-1",
       "titreSouvenir": "Randonnée dans les Alpes",
-      "imageSouvenir": "/swiper/room-1/alpes.jpg",
+      "imageSouvenir": "/webapp-creative-Radhouane-Thearylou-Amira/swiper/room-1/alpes.jpg",
       "descriptionSouvenir": "Une randonnée difficile mais gratifiante jusqu'au sommet du Mont Blanc avec des vues imprenables.",
       "lieuSouvenir": "Alpes, France",
       "dateSouvenir": "2022-08-22",
@@ -21,7 +21,7 @@
     {
       "roomId": "room-1",
       "titreSouvenir": "Visite des temples de Kyoto",
-      "imageSouvenir": "/swiper/room-1/kyoto.jpg",
+      "imageSouvenir": "/webapp-creative-Radhouane-Thearylou-Amira/swiper/room-1/kyoto.jpg",
       "descriptionSouvenir": "Flâner dans les temples sereins de Kyoto, en absorbant l'histoire riche et les magnifiques jardins.",
       "lieuSouvenir": "Kyoto, Japon",
       "dateSouvenir": "2021-11-03",
