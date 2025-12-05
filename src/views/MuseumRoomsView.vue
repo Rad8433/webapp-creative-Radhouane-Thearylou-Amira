@@ -155,6 +155,8 @@ export default {
     padding-top: 0.5em;
   }
  
-
+  .global {
+    width: 90vw;
+  }
 }
 </style>

@@ -68,7 +68,6 @@ export default {
   methods: {
     goBackHome() { // Méthode pour gérer le retour à une page spécifique en utilisant la props endroit.
       this.$router.push({ name: this.endroit });
-      console.log("retour", this.endroit);
     },
     confirmDelete() {
     if (confirm("Voulez-vous vraiment supprimer toutes les données ?")) {
@@ -121,12 +120,11 @@ section {
 /* Layout avec 3 colonnes (retour / titre / engrenage) */
 .sectionMuseum {
   grid-template-columns: 1fr 8fr 1fr;
-
 }
 
 /* Layout pour room (si tu veux plus compact) */
 .sectionRoom {
-  grid-template-columns: 0.01fr 1fr 1fr;
+  grid-template-columns: 0.04fr 1fr 1fr;
 }
 
 /* Titre de base */
@@ -139,7 +137,6 @@ section {
 
 /* Titre aligné à gauche dans le props justifySelf*/
 .titleLeft {
-
   font-size: 3rem;
   justify-self: start;
 
@@ -162,17 +159,14 @@ section {
 
 /* Tablette */
 @media (max-width: 700px) {
+
   .titleBlack {
     font-size: 1.7rem;
-
     white-space: nowrap;
-
-
   }
 
   .sectionMuseum {
-    grid-template-columns: 1fr 1fr 1fr;
-
+   grid-template-columns: 1fr 1fr 1fr;
   }
 
   .headerEngrenage {
@@ -181,25 +175,16 @@ section {
   }
 
   .headerTitle {
-
     width: 100%;
-
   }
+
+  /* Mobile */
+@media (max-width: 450px) {
+  .headerTitle {
+    font-size: 1.5rem;
+  }
+}
 
 }
 
-/* Mobile */
-@media (max-width: 475px) {
-  .titleBlack {
-    font-size: 1.3rem;
-    font-weight: 500;
-
-  }
-
-  .sectionMuseum {
-    width: 100%;
-
-  }
-
-}
 </style>

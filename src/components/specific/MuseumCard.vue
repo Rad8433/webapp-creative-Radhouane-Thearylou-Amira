@@ -87,4 +87,15 @@ export default {
   color: #fff;
   font-size: 0.9rem;
 }
+
+@media (max-width: 910px){
+  .room-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .room-description {
+    font-size: 0.7rem;
+  }
+}
+
 </style>
