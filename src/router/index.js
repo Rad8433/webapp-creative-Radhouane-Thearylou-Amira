@@ -1,9 +1,8 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import MuseumRoomsView from "../views/MuseumRoomsView.vue";
 import RoomView from "../views/RoomView.vue";
 import ModalView from "@/views/ModalView.vue";
-
 
 // Définition des routes de l'application
 const routes = [
@@ -14,7 +13,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL), // Utilisation de l'historique HTML5
+  history: createWebHashHistory(import.meta.env.BASE_URL), // Utilisation de l'historique HTML5
   routes, // Définition des routes
 });
 

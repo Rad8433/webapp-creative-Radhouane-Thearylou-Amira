@@ -1,12 +1,12 @@
-
 import { defineStore } from "pinia"; // Importation de Pinia pour la gestion d'état
 import data from "@/data/memoires.json"; // Importation des données initiales
 
 // Fonction utilitaire pour nettoyer le tag et le convertir en string
-function normalizeTagInput(input) { // input peut être string ou array
+function normalizeTagInput(input) {
+  // input peut être string ou array
   if (!input) return ""; // gérer null ou undefined
   // prendre le premier élément si c'est un tableau
-  if (Array.isArray(input)) input = input[0]; 
+  if (Array.isArray(input)) input = input[0];
   return (input ?? "").toString().trim();
 }
 
@@ -33,13 +33,14 @@ export const useMemoryStore = defineStore("memory", {
     // on initialise les mémoires
     const memories = localMemories
       ? localMemories
-      : data.memoires.map((souvenir) => { // transformation des données initiales
+      : data.memoires.map((souvenir) => {
+          // transformation des données initiales
           const roomId = souvenir.roomId; // obtenir le roomId
           // incrémenter le compteur de mémoires pour cette roomId
-          memoriesByRoomCount[roomId] =
-            (memoriesByRoomCount[roomId] || 0) + 1;
+          memoriesByRoomCount[roomId] = (memoriesByRoomCount[roomId] || 0) + 1;
           const tag = normalizeTagInput(souvenir.tagsSouvenir); // normaliser le tag
-          return { // créer l'objet mémoire
+          return {
+            // créer l'objet mémoire
             id: Date.now().toString() + Math.random(),
             roomId,
             title: souvenir.titreSouvenir,
@@ -47,12 +48,12 @@ export const useMemoryStore = defineStore("memory", {
             caption: souvenir.descriptionSouvenir,
             date: souvenir.dateSouvenir,
             tag,
-            memoryNumber: `Memory ${memoriesByRoomCount[roomId]}`,
+            memoryNumber: `Mémoire ${memoriesByRoomCount[roomId]}`,
             createdAt: new Date().toISOString(),
           };
         });
 
-        // retour de l'état initial
+    // retour de l'état initial
     return {
       memories,
       filters: {
@@ -68,29 +69,32 @@ export const useMemoryStore = defineStore("memory", {
     memoriesByRoom: (state) => (roomId) =>
       state.memories.filter((m) => m.roomId === roomId),
     // obtenir les mémoires par roomId avec filtres appliqués
-    filteredMemoriesByRoom: (state) => (roomId) => { 
-      return state.memories 
-        .filter((m) => m.roomId === roomId) // filtrer par roomId
-        .filter((m) => { // appliquer les filtres de recherche et de tag
-          const q = (state.filters.search || "").toLowerCase(); // requête de recherche en minuscules
-          const title = m.title.toLowerCase();
-          const caption = m.caption?.toLowerCase() || "";
-          const matchesSearch =
-            !q || title.startsWith(q) || caption.startsWith(q); // correspondance de la recherche
-          const matchesTag = // correspondance du tag
-            !state.filters.tag ||
-            state.filters.tag === "all" ||
-            m.tag === state.filters.tag;
-          return matchesSearch && matchesTag; // retourner vrai si les deux correspondent
-        })
-        // tri des mémoires selon le filtre de date
-        .sort((a, b) => {
-          if (state.filters.date === "recent")
-            return new Date(b.date) - new Date(a.date);
-          if (state.filters.date === "old")
-            return new Date(a.date) - new Date(b.date);
-          return a.memoryNumber.localeCompare(b.memoryNumber);
-        });
+    filteredMemoriesByRoom: (state) => (roomId) => {
+      return (
+        state.memories
+          .filter((m) => m.roomId === roomId) // filtrer par roomId
+          .filter((m) => {
+            // appliquer les filtres de recherche et de tag
+            const q = (state.filters.search || "").toLowerCase(); // requête de recherche en minuscules
+            const title = m.title.toLowerCase();
+            const caption = m.caption?.toLowerCase() || "";
+            const matchesSearch =
+              !q || title.startsWith(q) || caption.startsWith(q); // correspondance de la recherche
+            const matchesTag = // correspondance du tag
+              !state.filters.tag ||
+              state.filters.tag === "all" ||
+              m.tag === state.filters.tag;
+            return matchesSearch && matchesTag; // retourner vrai si les deux correspondent
+          })
+          // tri des mémoires selon le filtre de date
+          .sort((a, b) => {
+            if (state.filters.date === "recent")
+              return new Date(b.date) - new Date(a.date);
+            if (state.filters.date === "old")
+              return new Date(a.date) - new Date(b.date);
+            return a.memoryNumber.localeCompare(b.memoryNumber);
+          })
+      );
     },
   },
 
@@ -112,15 +116,19 @@ export const useMemoryStore = defineStore("memory", {
     renumberRoom(roomId) {
       const roomMemories = this.memories
         .filter((m) => m.roomId === roomId)
-        .sort((a, b) => new Date(a.createdAt || a.date) - new Date(b.createdAt || b.date));
+        .sort(
+          (a, b) =>
+            new Date(a.createdAt || a.date) - new Date(b.createdAt || b.date)
+        );
       roomMemories.forEach((m, index) => {
-        m.memoryNumber = `Memory ${index + 1}`;
+        m.memoryNumber = `Mémoire ${index + 1}`;
       });
     },
     // créer une nouvelle mémoire
     createMemory(raw) {
       const tag = normalizeTagInput(raw.tag ?? raw.tags); // gérer les deux cas de tag
-      const memory = { // création de la nouvelle mémoire
+      const memory = {
+        // création de la nouvelle mémoire
         id: Date.now().toString(),
         roomId: raw.roomId,
         title: raw.title.trim(),
@@ -133,22 +141,23 @@ export const useMemoryStore = defineStore("memory", {
       };
       this.memories.push(memory); // ajouter la mémoire au store
       this.renumberRoom(raw.roomId); // renuméroter les mémoires dans la room
-      saveToLocalStorage(this.memories);// sauvegarde dans le LocalStorage la creation d'une memoire.
+      saveToLocalStorage(this.memories); // sauvegarde dans le LocalStorage la creation d'une memoire.
     },
     // Mettre à jour une mémoire existante
     updateMemory(id, updates) {
       // Trouver l'index de la mémoire à mettre à jour
       const index = this.memories.findIndex((m) => m.id === id);
-      if (index === -1) return;// mémoire non trouvée
+      if (index === -1) return; // mémoire non trouvée
 
-      const old = this.memories[index];// mémoire existante
-      const oldRoomId = old.roomId;// conserver l'ancien roomId pour la renumérotation
+      const old = this.memories[index]; // mémoire existante
+      const oldRoomId = old.roomId; // conserver l'ancien roomId pour la renumérotation
 
-      const newTagRaw = updates.tag !== undefined ? updates.tag : updates.tags ?? old.tag; // gérer les deux cas de tag
+      const newTagRaw =
+        updates.tag !== undefined ? updates.tag : updates.tags ?? old.tag; // gérer les deux cas de tag
 
       // Préparer les mises à jour en nettoyant les entrées
       const safeUpdates = {
-        title: updates.title?.trim() ?? old.title, 
+        title: updates.title?.trim() ?? old.title,
         caption: updates.caption?.trim() ?? old.caption,
         date: updates.date ?? old.date,
         image: updates.image ?? old.image,

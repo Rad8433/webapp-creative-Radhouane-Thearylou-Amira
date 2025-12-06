@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <!-- Composant Swiper pour afficher les mémoires en mode carrousel -->
-    <swiper :effect="'coverflow'" :grabCursor="true" :centeredSlides="true" :slidesPerView="'auto'" :spaceBetween="50"
+    <swiper v-if="filteredMemories.length" :effect="'coverflow'" :grabCursor="true" :centeredSlides="true"
+      :slidesPerView="'auto'" :spaceBetween="50"
       :coverflowEffect="{ rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: false }" :pagination="false"
       :modules="modules" class="mySwiper" :breakpoints="{
         0: { slidesPerView: 1, spaceBetween: 10, coverflowEffect: { rotate: 5, depth: 50 } },
@@ -14,6 +15,9 @@
         <MemoryCard v-bind="memory" @click="() => detail(memory)" /> <!-- Détail de la mémoire au clic -->
       </swiper-slide>
     </swiper>
+    <p v-else class="no-memories">
+      Aucune mémoire à afficher pour cette salle.
+    </p>
   </div>
 </template>
 
@@ -63,6 +67,14 @@ export default {
 </script>
 <style scoped>
 /* Styles spécifiques au composant MemorySwiper */
+
+.no-memories {
+  text-align: center;
+  font-size: 1rem;
+  opacity: 0.7;
+  padding: 2rem 0;
+}
+
 .mySwiper {
   width: 100%;
   padding: 60px 0;
@@ -72,6 +84,7 @@ export default {
   width: 100%;
   margin: auto;
 }
+
 /* Style des slides du Swiper */
 .swiper-slide {
   display: flex;
@@ -81,6 +94,7 @@ export default {
   transform: scale(0.9);
   transition: transform 0.3s ease;
 }
+
 /* Slide actif agrandi */
 .swiper-slide-active {
   transform: translate3d(0, 0, 0) !important;
