@@ -52,7 +52,7 @@ export default {
       return (
         this.currentRoomConfig.bg || "linear-gradient(135deg, #ffecd2, #fcb69f)"
       );
-    }, 
+    },
     // Détermine quel composant afficher : formulaire ou détail
     currentComponent() {
       return this.$route.params.memoryId ? MemoryDetail : MemoryForm;
