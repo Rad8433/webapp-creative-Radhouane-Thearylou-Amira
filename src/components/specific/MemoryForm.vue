@@ -14,7 +14,7 @@
         <!-- Title -->
         <div class="form-group titre">
           <label for="titre">Titre *</label>
-          <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire" />
+          <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire" maxlength="30" />
           <span v-if="errors.title" class="error">{{ errors.title }}</span>
         </div>
         <!-- Image upload -->
@@ -51,7 +51,7 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
-          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" />
+          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" maxlength="60" />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
         <!-- Submit -->

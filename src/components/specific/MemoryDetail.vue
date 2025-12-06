@@ -25,7 +25,8 @@
         <!-- Titre -->
         <div class="form-group titre">
           <label>Titre :</label>
-          <input v-if="isEditing" v-model="editableMemory.title" class="readonly" /> <!-- Input en mode édition -->
+          <input v-if="isEditing" v-model="editableMemory.title" class="readonly" maxlength="30" />
+          <!-- Input en mode édition -->
           <p v-else class="readonly">{{ editableMemory.title }}</p> <!-- Texte en mode lecture -->
         </div>
         <!-- Image -->
@@ -39,14 +40,15 @@
             <span class="plus">+</span>
             <span class="text">Ajouter une image</span>
           </div>
-          <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected" 
+          <input v-if="isEditing" type="file" ref="fileInput" accept="image/*" @change="onImageSelected"
             style="display: none" /> <!-- Input fichier image -->
         </div>
         <!-- Date & Tags -->
         <div class="dateTags">
           <div class="form-group date">
             <label>Date :</label>
-            <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" /> <!-- Input en mode édition -->
+            <input v-if="isEditing" type="date" v-model="editableMemory.date" class="readonly" />
+            <!-- Input en mode édition -->
             <p v-else class="readonly">{{ editableMemory.date }}</p>
           </div>
           <div class="form-group tags">
@@ -68,7 +70,7 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label>Légende :</label>
-          <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" />
+          <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" maxlength="60" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
         <!-- Memory number -->
