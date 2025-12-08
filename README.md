@@ -75,7 +75,7 @@ npm run dev
 
 # Builder pour la production
 npm run build
-
+```
 
 ## Documentation additionnelle:
 [Lien vers le cahier de charges](https://github.com/Rad8433/webapp-creative-Radhouane-Thearylou-Amira/blob/main/cahier_charges_memoires.md)
