@@ -78,10 +78,16 @@ npm run build
 ```
 
 ## Documentation additionnelle:
+
 [Lien vers le cahier de charges](https://github.com/Rad8433/webapp-creative-Radhouane-Thearylou-Amira/blob/main/cahier_charges_memoires.md)
+
 [Lien vers les maquettes Figma](https://www.figma.com/design/Rh88WsbMc4QIQthWICHuUe/Maquette-webapp?node-id=16-172&t=cZE3cz4W4AiX3Rzv-1)
+
 [Lien vers le Trello/board de projet](https://trello.com/b/eMP37IFg/taches-projet-web-integrateur)  
+
 [Lien vers le Figjam / Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)
+
+
 ##License
 Projet éducatif - Cégep de Montmorency © 2024-2025
 ---
