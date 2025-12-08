@@ -167,6 +167,7 @@ section {
 
   .sectionMuseum {
    grid-template-columns: 1fr 1fr 1fr;
+   grid-template-rows: 1fr 1fr;
   }
 
   .headerEngrenage {
@@ -176,12 +177,20 @@ section {
 
   .headerTitle {
     width: 100%;
+    grid-row: 3;
+    grid-column: 2;
   }
 
   /* Mobile */
-@media (max-width: 450px) {
+@media (min-width:400px) and (max-width: 450px) {
   .headerTitle {
     font-size: 1.5rem;
+  }
+}
+
+@media (max-width:399px) {
+  .headerTitle {
+    font-size: 1.35rem;
   }
 }
 

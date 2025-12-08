@@ -205,12 +205,13 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  color: white;
+  color: #000;
   padding: 20px 30px;
   border-radius: 15px;
   width: 100%;
   max-width: 640px;
   box-sizing: border-box;
+  margin:0 auto;
 }
 
 /* Conteneur des contenus du formulaire */
@@ -266,11 +267,12 @@ export default {
   align-items: center;
   border: none;
   outline: none;
-  color: white;
+  color:#1d1d1d;
   box-sizing: border-box;
 }
 
 input.readonly {
+  display: block;
   font: inherit;
 }
 
@@ -325,6 +327,7 @@ input.readonly {
 }
 
 select#tag-select {
+  display: block;
   border: none;
   outline: none;
   background-color: #f3f3f3;
@@ -364,7 +367,7 @@ select#tag-select {
   .form {
     padding: 16px 14px;
     border-radius: 12px;
-    max-width: 100%;
+    max-width: 98%;
   }
 
   .formContenus h1 {
@@ -386,6 +389,7 @@ select#tag-select {
 @media (max-width: 400px) {
   .form {
     padding: 12px 10px;
+    max-width: 98%;
   }
 
   .preview-image,

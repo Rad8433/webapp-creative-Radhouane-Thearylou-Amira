@@ -7,7 +7,7 @@
     <h2 class="title">{{ title }}</h2>
 
     <div class="card-image">
-      <img :src="image" alt="Image de la carte" />
+      <img :src="image" alt="Memory Image" />
     </div>
 
     <p class="caption">{{ caption }}</p>
@@ -58,7 +58,7 @@ export default {
   font-family: sans-serif;
   text-align: center;
   transition: transform 0.3s ease;
-    transform: translate3d(0, 0, 0) 
+  transform: translate3d(0, 0, 0) 
   
 }
 /* Effet au survol de la carte mémoire */
@@ -75,7 +75,7 @@ export default {
   display: flex;
   justify-content: space-between;
   font-size: 0.95rem;
-  color: #555;
+  color: #000;
   margin-bottom: 12px;
 }
 
@@ -105,7 +105,7 @@ export default {
 /* Description ou légende */
 .caption {
   font-size: 1.05rem;
-  color: #272727;
+  color: #1d1d1d;
   
 
 }
