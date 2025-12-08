@@ -484,15 +484,15 @@ RAS = Rien À Signaler
 ### Annexe B : Screenshots Lighthouse
 
 [Captures d'écran des rapports Lighthouse pour pages principales]
-![MuseumRooms desktop](/MuseumRooms_desktop.JPG)
-![MuseumRooms Mobile](MuseumRooms_Mobile.JPG)
-![MemoryRooms desktop](MemoryRoom_desktop.JPG)
-![MemoryRooms mobile](/MemoryRoom_Mobile.JPG)
+![MuseumRooms desktop](./media/MuseumRooms_desktop.JPG)
+![MuseumRooms Mobile](./media/MuseumRooms_Mobile.JPG)
+![MemoryRooms desktop](./media/MemoryRoom_desktop.JPG)
+![MemoryRooms mobile](./media/MemoryRoom_Mobile.JPG)
 
 ### Annexe C : Screenshots de bugs
 
 [Captures d'écran des bugs majeurs/critiques]
-![Header](Bogue_Header.JPG)
+![Header](./media/Bogue_Header.JPG)
 
 ### Annexe D : Lien vers Trello
 
