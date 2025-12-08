@@ -87,8 +87,10 @@ npm run build
 
 [Lien vers le Figjam / Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)
 
+## Remerciements et autres crédits
+Images:
 
-##License
+## License
 Projet éducatif - Cégep de Montmorency © 2024-2025
 ---
 
