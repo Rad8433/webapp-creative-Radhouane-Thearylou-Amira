@@ -1,5 +1,5 @@
 <template>
-  <div class="menu" :style="{ background: roomBackground }">
+  <div class="menu" :style="{ background: roomBackground }" :aria-label="currentRoomConfig.alt">
     <!-- Affiche le formulaire ou le détail de la mémoire selon la présence de memoryId -->
     <component :is="currentComponent" :memory-id="$route.params.memoryId" :room-id="$route.params.id" />
   </div>
@@ -12,26 +12,32 @@ const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg1.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des vacances et de l'évasions.",
   },
   "room-2": {
     title: "Aventures",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg2.png') center/cover no-repeat",
+    alt: "Image du background représentant la room de l'aventures.",
   },
   "room-3": {
     title: "Explorations urbaines",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg3.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des l'explorations urbaines.",
   },
   "room-4": {
     title: "Moments drôles",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg4.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des moments drôles.",
   },
   "room-5": {
     title: "Gastronomies",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg5.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des gastronomies.",
   },
   "room-6": {
     title: "Destinations de rêves",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg6.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des destinations de rêves.",
   },
 };
 export default {

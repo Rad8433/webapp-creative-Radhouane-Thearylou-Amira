@@ -7,7 +7,7 @@
     <h2 class="title">{{ title }}</h2>
 
     <div class="card-image">
-      <img :src="image" alt="Memory Image" />
+      <img :src="image" alt="Image de la carte" />
     </div>
 
     <p class="caption">{{ caption }}</p>

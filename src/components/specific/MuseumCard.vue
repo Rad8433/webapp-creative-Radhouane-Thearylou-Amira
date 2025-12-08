@@ -1,7 +1,7 @@
 <template>
   <div class="room-card">
     <!-- Image de la salle -->
-    <img :src="room.url" :alt="room.name" />
+    <img :src="room.url" :alt="room.alt" />
     <!-- Nom de la salle -->
     <h2>{{ room.name }}</h2>
     <!-- Description courte de la salle -->

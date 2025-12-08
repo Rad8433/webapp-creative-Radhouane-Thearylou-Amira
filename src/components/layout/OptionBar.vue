@@ -3,8 +3,8 @@
     <!-- Recherche de room par la barre de recherche. -->
     <div class="optionbar__item optionbar__item--search">
       <!-- Icon de la barre de reherche. -->
-      <span class="optionbar__icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+      <span class="optionbar__icon" >
+        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" aria-label="Icon d'une loupe pour la barre de recherche.">
           <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" fill="none" />
           <line x1="16" y1="16" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
         </svg>

@@ -1,5 +1,5 @@
 <template>
-  <main class="memory-room" :style="{ background: roomBackground }">
+  <main class="memory-room" :style="{ background: roomBackground }" :aria-label="currentRoomConfig.alt">
     <div class="room">
       <!-- Header -->
       <div class="retour">
@@ -37,26 +37,32 @@ const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg1.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des vacances et de l'évasions.",
   },
   "room-2": {
     title: "Aventures",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg2.png') center/cover no-repeat",
+    alt: "Image du background représentant la room de l'aventures.",
   },
   "room-3": {
     title: "Explorations urbaines",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg3.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des l'explorations urbaines.",
   },
   "room-4": {
     title: "Moments drôles",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg4.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des moments drôles.",
   },
   "room-5": {
     title: "Gastronomies",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg5.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des gastronomies.",
   },
   "room-6": {
     title: "Destinations de rêves",
     bg: "url('/webapp-creative-Radhouane-Thearylou-Amira/bg-rooms/bg6.png') center/cover no-repeat",
+    alt: "Image du background représentant la room des destinations de rêves.",
   },
 };
 
