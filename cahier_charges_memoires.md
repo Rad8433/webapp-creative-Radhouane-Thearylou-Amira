@@ -66,7 +66,6 @@ Listez toutes les salles de votre musée (minimum 4, idéal 6-8):
 
 Décrivez les types de mémoires que les utilisateurs peuvent créer:
 
-- *Mémoire texte:* Titre + description + date + tags
 - *Mémoire photo:* Titre + Image + légende + date + tags
 
 ### 2.3 Système de tags/catégories
@@ -76,18 +75,16 @@ Listez les tags prédéfinis et permettez les tags personnalisés:
 
 **Tags prédéfinis :**
 
-- Aventure  
-- Détente  
+- Plage  
+- Montagne 
 - Culture  
 - Famille  
 - Amis  
-- Rencontre  
-- Premier voyage  
-- Galère  
-- Coup de cœur  
-- Émerveillement  
+- Exploration
+- Nature  
+- Nuit  
 
-**Tags personnalisés :** Oui ☑ / Non ☐
+**Tags personnalisés :** Oui ☐ / Non ☑
 
 
 
