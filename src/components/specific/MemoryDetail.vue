@@ -30,7 +30,7 @@
           <p v-else class="readonly">{{ editableMemory.title }}</p> <!-- Texte en mode lecture -->
         </div>
         <!-- Image -->
-        <div class="image-upload">
+        <div class="image-upload" tabindex="0" @keyup.enter="triggerFileInput">
           <!-- Image existante ou placeholder -->
           <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
             @click="isEditing && triggerFileInput()">
@@ -199,7 +199,20 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
+
+#tag-select:focus-visible {
+  outline: 3px solid #0245ff;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.image-circle:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
+
 .form {
   /* Conteneur principal du formulaire */
   display: flex;

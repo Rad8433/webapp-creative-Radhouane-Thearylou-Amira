@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <!-- Composant Swiper pour afficher les mémoires en mode carrousel -->
-    <swiper v-if="filteredMemories.length" :effect="'coverflow'" :grabCursor="true" :centeredSlides="true"
+    <swiper v-if="filteredMemories.length" :keyboard="{ enabled: true }" :effect="'coverflow'" :grabCursor="true" :centeredSlides="true"
       :slidesPerView="'auto'" :spaceBetween="50"
       :coverflowEffect="{ rotate: 10, stretch: 0, depth: 100, modifier: 1, slideShadows: false }" :pagination="false"
       :modules="modules" class="mySwiper" :breakpoints="{
@@ -26,7 +26,7 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-import { EffectCoverflow, Pagination } from "swiper/modules";
+import { EffectCoverflow, Pagination, Keyboard  } from "swiper/modules";
 import MemoryCard from "./MemoryCard.vue";
 import { useMemoryStore } from "@/stores/useMemoryStore";
 
@@ -43,7 +43,7 @@ export default {
 
   data() {
     return { // Données du composant
-      modules: [EffectCoverflow, Pagination],
+      modules: [EffectCoverflow, Pagination, Keyboard],
       memoryStore: useMemoryStore(),
     };
   },
@@ -65,6 +65,8 @@ export default {
   },
 };
 </script>
+
+
 <style scoped>
 /* Styles spécifiques au composant MemorySwiper */
 

@@ -31,6 +31,11 @@ export default {
 };
 </script>
 <style>
+.MuseumCard:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
 /* Conteneur principal de la grille */
 .grid {
   background: rgba(0, 0, 255, 0);

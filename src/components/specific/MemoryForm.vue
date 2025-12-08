@@ -19,7 +19,7 @@
         </div>
         <!-- Image upload -->
         <div class="image-upload">
-          <label class="image-circle" @click="triggerFileInput">
+          <label class="image-circle"  tabindex="0" @click="triggerFileInput" @keyup.enter="triggerFileInput">
             <span v-if="!image" class="plus">+</span>
             <span v-if="!image" class="text">Ajouter une image</span>
             <img v-if="image" :src="image" class="preview-image" alt="Image selectionné pour la carte memoire."/>
@@ -149,7 +149,21 @@ export default {
   },
 };
 </script>
+
 <style>
+
+#tag-select:focus-visible {
+  outline: 3px solid #0245ff;
+  outline-offset: 4px;
+  border-radius: 8px;
+}
+
+.image-circle:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
+
 .form {
   width: 100%;
   max-width: 650px;
@@ -210,5 +224,6 @@ export default {
 .error {
   color: rgb(102, 0, 0);
   white-space: nowrap;
+  font-weight: bolder;
 }
 </style>

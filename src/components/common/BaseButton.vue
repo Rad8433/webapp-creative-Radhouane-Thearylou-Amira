@@ -32,6 +32,12 @@ export default {
 </script>
 
 <style scoped>
+
+.base-button:focus-visible {
+  outline: solid 3px #0245ff; 
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
 /* Style pour l’affichage conditionnel de l’engrenage du bouton dans le props engrenage.*/
 .cog {
   display: none;

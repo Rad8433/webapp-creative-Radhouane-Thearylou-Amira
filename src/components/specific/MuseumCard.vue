@@ -1,5 +1,5 @@
 <template>
-  <div class="room-card">
+  <div class="room-card" tabindex="0" role="button" @click="$emit('click')" @keyup.enter="$emit('click')">
     <!-- Image de la salle -->
     <img :src="room.url" :alt="room.alt" />
     <!-- Nom de la salle -->
@@ -23,6 +23,12 @@ export default {
 };
 </script>
 <style scoped>
+
+.room-card:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
 /* Style de la carte de la salle */ 
 .room-card {
   position: relative;

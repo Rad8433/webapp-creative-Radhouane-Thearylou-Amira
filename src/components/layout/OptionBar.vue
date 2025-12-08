@@ -113,6 +113,14 @@
 </script>
 
 <style scoped>
+
+.optionbar__item input:focus-visible,
+.optionbar__item select:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
+
 /* Style de la barre d’options */
   .optionbar {
     display: flex;

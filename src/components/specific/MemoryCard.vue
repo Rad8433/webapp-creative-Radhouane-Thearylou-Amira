@@ -1,5 +1,5 @@
 <template>
-  <div class="memory-card" :style="{ backgroundColor: cardBackground }">
+  <div class="memory-card" role="button" tabindex="0" @click="$emit('click')" @keyup.enter="$emit('click')" :style="{ backgroundColor: cardBackground }">
     <div class="card-header">
       <span class="tags">{{ tag }}</span> <span class="date">{{ date }}</span>
     </div>
@@ -44,7 +44,15 @@ export default {
   },
 };
 </script>
+
 <style scoped>
+
+.memory-card:focus-visible {
+  outline: solid 3px #0245ff;  
+  outline-offset: 4px;         
+  border-radius: 6px;
+}
+
 /* Style de la carte mémoire */
 .memory-card {
   width: 30em;
