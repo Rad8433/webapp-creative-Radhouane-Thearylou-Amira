@@ -2,7 +2,7 @@
 
 ## 📌 Informations du Projet
 
-*Nom du projet:* Les six visions du monde
+*Nom du projet:* Vos voyages en mémoires
 *Nom de l'équipe:* Les voyageurs
 *Membres:*
 
