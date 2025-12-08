@@ -338,6 +338,7 @@ RAS = Rien À Signaler
 | texte memory card   | #2c2828 sur #d96a4d | 4.24:1  | ⚠️ Peu conforme  | À corriger |
 | texte memory detail | #fffdfd sur #dc795f | 2.98:1  | ⚠️ Peu conforme  | À corriger |
 | label memory form   | #fffdfd sur #d96a4d | 3.38:1  | ⚠️ Peu conforme  | À corriger |
+**Les autres variations de memory detail, memory card et memory form ont été tésté, la couleur de la typo c'est à corrigé.**
 
 **Problèmes de contraste :** [1]  
 **Plan de correction :** [Changer de couleur et utiliser WebAIM]
