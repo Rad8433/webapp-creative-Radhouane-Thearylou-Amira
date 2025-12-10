@@ -72,7 +72,7 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label>Légende :</label>
-          <input v-if="isEditing" v-model="editableMemory.caption" class="editable-input" maxlength="60"
+          <input v-if="isEditing" v-model="editableMemory.caption" class="editable-input" maxlength="100"
             autocomplete="off" spellcheck="true" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
