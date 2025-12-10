@@ -95,6 +95,8 @@ Listez les tags prédéfinis et permettez les tags personnalisés:
 Insérez ici 3-5 images d'inspiration (ou liens):<br>
 <img src="./media/inspiration.jpg" style="width:40%"><br>
 <img src="./media/inspiration2.jpg" style="width:40%"><br>
+<img src="./media/ex3.png" style="width:40%"><br>
+<img src="./media/ex4.jpg" style="width:40%"><br>
 <img src="./media/palette de couleurs.png" style="width:40%"><br>
 
 ### 3.2 Palette de couleurs
