@@ -72,7 +72,8 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label>Légende :</label>
-          <input v-if="isEditing" v-model="editableMemory.caption" class="readonly" maxlength="60" />
+          <input v-if="isEditing" v-model="editableMemory.caption" class="editable-input" maxlength="60"
+            autocomplete="off" spellcheck="true" />
           <p v-else class="readonly">{{ editableMemory.caption }}</p>
         </div>
         <!-- Memory number -->
@@ -216,6 +217,11 @@ export default {
   border-radius: 6px;
 }
 
+.editable-input:focus {
+  border-color: #0245ff;
+  box-shadow: 0 0 3px #0245ff;
+}
+
 /* Conteneur principal du formulaire */
 .form {
   display: flex;
@@ -270,6 +276,22 @@ export default {
   display: block;
   margin-bottom: 4px;
   font-weight: 600;
+}
+
+/* Champs éditables pour legend */
+.editable-input {
+  display: block !important;
+  width: 100%;
+  min-height: 3.5vh;
+  padding: 5px 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  font: inherit;
+  color: #1d1d1d;
+  box-sizing: border-box;
+  background-color: #fff;
+  cursor: text;
 }
 
 /* Valeurs / inputs */
