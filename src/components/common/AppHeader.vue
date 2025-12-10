@@ -82,12 +82,15 @@ export default {
 </script>
 
 <style scoped>
-.cogDisplay {
+
+/* Style pour l’affichage conditionnel de l’engrenage du bouton dans le props engrenage.*/
+.cogDisplay { 
   display: block;
   width: 32px;
   height: 32px;
 }
 
+/* Style pour la position de l’engrenage du bouton dans le props engrenage.*/
 .headerEngrenage {
   justify-self: flex-end;
 }
@@ -181,7 +184,7 @@ section {
     grid-column: 2;
   }
 
-  /* Mobile */
+/* Mobile */
 @media (min-width:400px) and (max-width: 450px) {
   .headerTitle {
     font-size: 1.5rem;

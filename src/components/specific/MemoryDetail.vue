@@ -201,6 +201,8 @@ export default {
 </script>
 <style scoped>
 
+/*Gérer l’accessibilité au clavier de la navigation.*/ 
+/* Style pour la mise au point accessible */
 #tag-select:focus-visible {
   outline: 3px solid #0245ff;
   outline-offset: 4px;
@@ -213,8 +215,8 @@ export default {
   border-radius: 6px;
 }
 
+/* Conteneur principal du formulaire */
 .form {
-  /* Conteneur principal du formulaire */
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -284,6 +286,7 @@ export default {
   box-sizing: border-box;
 }
 
+/* Inputs en mode lecture seule */
 input.readonly {
   display: block;
   font: inherit;
@@ -297,12 +300,14 @@ input.readonly {
   width: 100%;
 }
 
+/* Zone cliquable de l’image */
 .image-click-area.editable:hover,
 .image.editable:hover {
   opacity: 0.85;
   cursor: pointer;
 }
 
+/* Image prévisualisée et placeholder */
 .preview-image,
 .image {
   width: 100%;
@@ -312,6 +317,7 @@ input.readonly {
   object-fit: cover;
 }
 
+/* Placeholder d’ajout d’image */
 .image {
   background: #f3f3f3;
   color: black;
@@ -321,6 +327,7 @@ input.readonly {
   flex-direction: column;
 }
 
+/* Texte du placeholder */
 .plus {
   font-size: 32px;
   margin-bottom: 4px;
@@ -334,11 +341,13 @@ input.readonly {
   width: 100%;
 }
 
+/* Encapsulation du select */
 .select-wrapper {
   position: relative;
   width: 100%;
 }
 
+/* Style du select */
 select#tag-select {
   display: block;
   border: none;
@@ -354,6 +363,7 @@ select#tag-select {
   box-sizing: border-box;
 }
 
+/* Flèche du select */
 .select-arrow {
   position: absolute;
   right: 10px;

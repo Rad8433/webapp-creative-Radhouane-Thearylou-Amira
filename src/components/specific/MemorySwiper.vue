@@ -69,7 +69,6 @@ export default {
 
 <style scoped>
 /* Styles spécifiques au composant MemorySwiper */
-
 .no-memories {
   text-align: center;
   font-size: 1rem;

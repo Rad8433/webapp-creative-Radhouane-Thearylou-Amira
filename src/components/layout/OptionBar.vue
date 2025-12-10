@@ -116,6 +116,7 @@
 <style scoped>
 
 /*Gérer l’accessibilité au clavier de la navigation.*/ 
+/* Style pour la mise au point accessible */
 .optionbar__item input:focus-visible,
 .optionbar__item select:focus-visible {
   outline: solid 3px #0245ff;  
@@ -163,15 +164,17 @@
     min-width: 180px;
     flex-grow: 1;
   }
+
+  /* Styles spécifiques pour les icons */
   .optionbar__icon {
     display: flex;
     align-items: center;
     margin-right: 0.75rem;
   }
 
-  
+  /* Styles communs pour les inputs et selects */
   .optionbar__item input,
-  .optionbar__item select {
+  .optionbar__item select { 
     border: none;
     outline: none;
     background: transparent;
@@ -182,15 +185,18 @@
     padding-bottom: 0.3rem;
   }
 
+  /* Styles pour le curseur */
   .optionbar__item input {
     cursor: text;
   }
 
+  /* Styles pour le curseur */
   .optionbar__item select {
     appearance: none;
     cursor: pointer;
   }
 
+  /* Styles pour l’encapsulation du select et du chevron */
   .optionbar__select-wrapper {
     display: flex;
     align-items: center;
@@ -202,6 +208,7 @@
     margin-left: 0.4rem;
   }
 
+  /* Styles pour la ligne de soulignement */
   .optionbar__underline {
     position: absolute;
     left: 0;

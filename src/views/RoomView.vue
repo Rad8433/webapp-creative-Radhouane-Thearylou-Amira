@@ -33,6 +33,7 @@ import OptionBar from "@/components/layout/OptionBar.vue";
 import AppHeader from "@/components/common/AppHeader.vue";
 import { useMemoryStore } from "@/stores/useMemoryStore";
 
+/* Configuration des salles avec leurs titres et images de fond */
 const roomsConfig = {
   "room-1": {
     title: "Vacances et évasions",

@@ -32,6 +32,9 @@ export default {
 </script>
 
 <style scoped>
+
+/*Gérer l’accessibilité au clavier de la navigation.*/ 
+/* Style pour la mise au point accessible */
 .MuseumCard:focus-visible {
   outline: solid 3px #0245ff;  
   outline-offset: 4px;         

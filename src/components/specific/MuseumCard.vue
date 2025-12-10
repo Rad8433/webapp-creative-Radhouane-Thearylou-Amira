@@ -24,6 +24,7 @@ export default {
 </script>
 <style scoped>
 
+/* Style pour la mise au point accessible */
 .room-card:focus-visible {
   outline: solid 3px #0245ff;  
   outline-offset: 4px;         

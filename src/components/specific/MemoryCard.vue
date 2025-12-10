@@ -1,36 +1,43 @@
 <template>
+  <!-- Carte mémoire affichant les détails d'une mémoire -->
   <div class="memory-card" role="button" tabindex="0" @click="$emit('click')" @keyup.enter="$emit('click')" :style="{ backgroundColor: cardBackground }">
     <div class="card-header">
+      <!-- Tags et date de la mémoire -->
       <span class="tags">{{ tag }}</span> <span class="date">{{ date }}</span>
     </div>
-
+    <!-- Titre de la mémoire -->
     <h2 class="title">{{ title }}</h2>
 
+    <!-- Image de la mémoire -->
     <div class="card-image">
+      <!-- Image principale de la mémoire -->
       <img :src="image" alt="Memory Image" loading="lazy"/>
     </div>
 
+    <!-- Légende de la mémoire -->
     <p class="caption">{{ caption }}</p>
+    <!-- Numéro de la mémoire -->
     <p class="memory-number">{{ memoryNumber }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MemoryCard",
+  name: "MemoryCard",// Nom du composant
 
   props: {
-    tag: { type: String, default: "" },//
-    date: { type: String, default: "" },
-    title: { type: String, default: "" },
-    image: { type: String, required: true },
-    caption: { type: String, default: "" },
-    memoryNumber: { type: String, default: "" },
+    tag: { type: String, default: "" },// Tag associé à la mémoire
+    date: { type: String, default: "" },// Date de la mémoire
+    title: { type: String, default: "" },// Titre de la mémoire
+    image: { type: String, required: true },// URL de l'image de la mémoire
+    caption: { type: String, default: "" },// Légende de la mémoire
+    memoryNumber: { type: String, default: "" },// Numéro de la mémoire
   },
 
   computed: {
+    // Détermine la couleur de fond de la carte en fonction de la salle
     cardBackground() {
-      const roomId = this.$route.params.id;
+      const roomId = this.$route.params.id;// Récupère l'ID de la salle depuis les paramètres de la route
       const colors = {
         "room-1": "#5fbcb2",
         "room-2": "#d96a4d",
@@ -39,14 +46,15 @@ export default {
         "room-5": "#c9b56a",
         "room-6": "#5f8fab",
       };
-      return colors[roomId] || "#ffffff";
+      return colors[roomId] || "#ffffff";// Valeur par défaut si l'ID de la salle n'est pas trouvé
     },
   },
 };
 </script>
 
 <style scoped>
-
+  
+/* Style pour la mise au point accessible */
 .memory-card:focus-visible {
   outline: solid 3px #0245ff;  
   outline-offset: 4px;         

@@ -2,7 +2,7 @@
   <section>
     <div class="form" :style="{ backgroundColor: formBackground }">
       <form>
-        <!-- Back button -->
+        <!-- Bouton de retour d'une page-->
         <BaseButton variant="cinquieme" type="button" @click="goBack">
           <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Fleche du retoure en arriere d'une page.">
             <path fill-rule="evenodd" clip-rule="evenodd"
@@ -11,13 +11,13 @@
           </svg>
         </BaseButton>
         <h1>Décrivez votre mémoire</h1>
-        <!-- Title -->
+        <!-- Titre de la carte -->
         <div class="form-group titre">
           <label for="titre">Titre *</label>
           <input type="text" id="titre" v-model="form.title" placeholder="Titre de la mémoire" maxlength="30" />
           <span v-if="errors.title" class="error">{{ errors.title }}</span>
         </div>
-        <!-- Image upload -->
+        <!-- Ajout de l'image pour la carte-->
         <div class="image-upload">
           <label class="image-circle"  tabindex="0" @click="triggerFileInput" @keyup.enter="triggerFileInput">
             <span v-if="!image" class="plus">+</span>
@@ -27,13 +27,14 @@
           <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none" />
           <span v-if="errors.image" class="error">{{ errors.image }}</span>
         </div>
-        <!-- Date + tags -->
+        <!-- Choix d'une date -->
         <div class="form-grid">
           <div class="form-group date">
             <label for="date">Date *</label>
             <input id="date" type="date" v-model="form.date" :max="new Date().toISOString().slice(0, 10)" />
             <span v-if="errors.date" class="error">{{ errors.date }}</span>
           </div>
+          <!-- Choix d'un tag -->
           <div class="form-group tags">
             <label for="tags">Tags *</label>
             <div class="select-wrapper">
@@ -48,13 +49,13 @@
             <span v-if="errors.tags" class="error">{{ errors.tags }}</span>
           </div>
         </div>
-        <!-- Caption -->
+        <!-- Légende de la carte avec le "caption"-->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
           <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende"  maxlength="60"  />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
-        <!-- Bouton de  -->
+        <!-- Bouton pour ajouter une carte au swiper -->
         <BaseButton variant="secondary" type="button" @click="handleSubmit">
           Ajouter
         </BaseButton>
@@ -66,11 +67,14 @@
 import BaseButton from "../common/BaseButton.vue";
 import { mapStores } from "pinia";
 import { useMemoryStore } from "@/stores/useMemoryStore";
+/* Composant MemoryForm pour ajouter une nouvelle mémoire */
 export default {
   name: "MemoryForm",
   components: { BaseButton },
+  /* Intégration du store de mémoires */
   computed: {
     ...mapStores(useMemoryStore),
+    /* Détermine la couleur de fond du formulaire en fonction de la salle */
     formBackground() {
       const roomId = this.$route.params.id;
       const colors = {
@@ -81,11 +85,12 @@ export default {
         "room-5": "#c9b56a",
         "room-6": "#5f8fab",
       };
-      return colors[roomId] || "#ffffff";
+      return colors[roomId] || "#ffffff";/* Valeur par défaut si l'ID de la salle n'est pas trouvé */
     },
   },
   data() {
     return {
+      /* Options de tags prédéfinies */
       tagOptions: [
         { value: "#plage", label: "#plage" },
         { value: "#montagne", label: "#montagne" },
@@ -102,6 +107,7 @@ export default {
     };
   },
   methods: {
+    /* Validation du formulaire avant soumission */
     validateForm() {
       this.errors = {};
       if (!this.form.title.trim())
@@ -114,6 +120,7 @@ export default {
       if (!this.image) this.errors.image = "Veuillez sélectionner une image.";
       return Object.keys(this.errors).length === 0;
     },
+    /* Soumission du formulaire pour créer une nouvelle mémoire */
     handleSubmit() {
       if (!this.validateForm()) return;
       this.memoryStore.createMemory({
@@ -121,17 +128,21 @@ export default {
         ...this.form,
         image: this.image,
       });
+      /* Retour à la page de la salle après ajout */
       this.goBack();
     },
+    /* Navigation vers la précédente page */
     goBack() {
       this.$router.push({
         name: "Room",
         params: { id: this.$route.params.id },
       });
     },
+    /* Gestion de du téléversement de l'image */
     triggerFileInput() {
       this.$refs.fileInput.click();
     },
+    /* Lecture et validation de l'image sélectionnée */
     onHandleImage(event) {
       const file = event.target.files[0];
       if (!file) return;
@@ -140,10 +151,12 @@ export default {
         this.image = null;
         return;
       }
+      /* Lecture de l'image en tant que Data URL */
       const reader = new FileReader();
       reader.onload = () => {
         this.image = reader.result;
       };
+      /* Lecture du fichier */
       reader.readAsDataURL(file);
     },
   },
@@ -152,18 +165,22 @@ export default {
 
 <style scoped>
 
+/*Gérer l’accessibilité au clavier de la navigation.*/ 
+/* Style pour la mise au point accessible */
 #tag-select:focus-visible {
   outline: 3px solid #0245ff;
   outline-offset: 4px;
   border-radius: 8px;
 }
 
+/* Style pour la mise au point accessible */
 .image-circle:focus-visible {
   outline: solid 3px #0245ff;  
   outline-offset: 4px;         
   border-radius: 6px;
 }
 
+/* Style du formulaire */
 .form {
   width: 100%;
   max-width: 650px;
@@ -177,6 +194,7 @@ export default {
   transition: background-color 0.5s ease;
 }
 
+/* Titre du formulaire */
 .form h1 {
   font-size: 1.8rem;
   text-align: center;
@@ -191,6 +209,7 @@ export default {
   margin: 20px 0;
 }
 
+/* Cercle cliquable pour l’ajout d’image */
 .image-circle {
   width: 100%;
   height: 15vh;
@@ -209,11 +228,13 @@ export default {
   font-size: 20px;
 }
 
+/* Texte du placeholder */
 .plus {
   font-size: 40px;
   color: #777;
 }
 
+/* Texte sous le placeholder */
 .preview-image {
   width: 100%;
   height: 100%;
