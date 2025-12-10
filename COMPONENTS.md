@@ -1,5 +1,5 @@
 # 📁 Liste des composants
-
+[Lien du figjam avec la structure des composantes](https://www.figma.com/board/5f6nKcREOkbnrHDTitKkID/WebAppComponents?node-id=0-1&t=neeOV0Z9zp852sp9-1)
 ## **HomeView**
 - **Responsabilité** : Page d’accueil présentant l’introduction de l’expérience et un bouton pour commencer.
 - **Navigation** : redirection vers `MuseumRoomsView`.
