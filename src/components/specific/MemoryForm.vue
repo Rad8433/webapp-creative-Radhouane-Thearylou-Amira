@@ -51,7 +51,7 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
-          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende"  maxlength="120"  />
+          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende"  maxlength="60"  />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
         <!-- Submit -->
