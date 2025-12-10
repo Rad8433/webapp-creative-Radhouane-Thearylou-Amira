@@ -6,9 +6,9 @@
 *Nom de l'équipe:* Les voyageurs
 *Membres:*
 
-- Radhouane - Chef de projet / Architecture
-- Amira - Responsable du Design + Animations
-- Thearylou - Données + Systèmes
+- Radhouane - Chef de projet / Pinia, routes, Pages 
+- Amira - Composantes, styles(css), trello
+- Thearylou - Responsable du Design
 
 *Date de début:* 8 octobre 2025<br>
 *Date de livraison finale:* 10 décembre 2025<br>
@@ -190,12 +190,9 @@ Listez vos composants Vue principaux:
 | Route | Composant | Description | Authentification requise? |
 |-------|-----------|-------------|---------------------------|
 | `/` | `HomeView.vue` | Page d'accueil/intro | Non |
-| `/musee` | `MuseumView.vue` | Vue d'ensemble du musée | Oui |
-| `/salle/:id` | `RoomView.vue` | Vue détaillée d'une salle | Oui |
-| `/memoire/:id` | `MemoryDetailView.vue` | Détail d'une mémoire | Oui |
-| `/recherche` | `SearchView.vue` | Recherche de mémoires | Oui |
-| `/profil` | `ProfileView.vue` | Profil utilisateur | Oui |
-| `/login` | `LoginView.vue` | Connexion | Non |
+| `/museeRooms` | `MuseumRoomsView.vue` | Vue d'ensemble du musée | Non |
+| `/room/:id` | `RoomView.vue` | Vue détaillée d'une salle | Non |
+| `modal/room/:id` | `Modal.vue` | affiche formulaire ou memoryDetail | Non |
 
 ### 4.4 Gestion de l'état (Pinia)
 
@@ -292,7 +289,7 @@ Listez vos composants Vue principaux:
   - Chargement automatique au démarrage
   - Export en fichier JSON
 
-- [x] *F8 - Import de données*
+- [ ] *F8 - Import de données*
   - Importer un fichier JSON de musée
   - Validation du format
 
