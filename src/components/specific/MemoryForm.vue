@@ -22,7 +22,7 @@
           <label class="image-circle"  tabindex="0" @click="triggerFileInput" @keyup.enter="triggerFileInput">
             <span v-if="!image" class="plus">+</span>
             <span v-if="!image" class="text">Ajouter une image</span>
-            <img v-if="image" :src="image" class="preview-image" alt="Image selectionné pour la carte memoire."/>
+            <img v-if="image" :src="image" class="preview-image" alt="Image selectionné pour la carte memoire." loading="lazy"/>
           </label>
           <input type="file" ref="fileInput" accept="image/*" @change="onHandleImage" style="display: none" />
           <span v-if="errors.image" class="error">{{ errors.image }}</span>
@@ -51,7 +51,7 @@
         <!-- Caption -->
         <div class="form-group legende">
           <label for="legende">Légende *</label>
-          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende" maxlength="60" />
+          <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende"  maxlength="120"  />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
         <!-- Submit -->
@@ -220,10 +220,18 @@ export default {
   object-fit: cover;
 }
 
+.form-group input,
+.form-group span {
+  width: 100%;   
+  box-sizing: border-box; 
+}
+
 /* Errors */
 .error {
   color: rgb(102, 0, 0);
-  white-space: nowrap;
+  white-space: normal; 
   font-weight: bolder;
+  word-wrap: break-word; 
+  max-width: 100%; 
 }
 </style>

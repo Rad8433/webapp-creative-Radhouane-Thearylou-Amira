@@ -18,6 +18,7 @@
     <!-- Filtrage par le choix du type de salle.-->
     <div v-if="showRoom" class="optionbar__item">
       <div class="optionbar__select-wrapper">
+        <!-- Option pour toutes les salles -->
         <select :value="room" @change="$emit('update:room', $event.target.value)">
           <option value="all">Toutes les salles</option>
           <option v-for="r in roomOptions" :key="r.value" :value="r.value">
@@ -114,6 +115,7 @@
 
 <style scoped>
 
+/*Gérer l’accessibilité au clavier de la navigation.*/ 
 .optionbar__item input:focus-visible,
 .optionbar__item select:focus-visible {
   outline: solid 3px #0245ff;  
@@ -167,6 +169,7 @@
     margin-right: 0.75rem;
   }
 
+  
   .optionbar__item input,
   .optionbar__item select {
     border: none;

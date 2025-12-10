@@ -1,7 +1,7 @@
 <template>
   <div class="room-card" tabindex="0" role="button" @click="$emit('click')" @keyup.enter="$emit('click')">
     <!-- Image de la salle -->
-    <img :src="room.url" :alt="room.alt" />
+    <img :src="room.url" :alt="room.alt" loading="lazy"/>
     <!-- Nom de la salle -->
     <h2>{{ room.name }}</h2>
     <!-- Description courte de la salle -->

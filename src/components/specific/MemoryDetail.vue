@@ -34,7 +34,7 @@
           <!-- Image existante ou placeholder -->
           <div v-if="editableMemory?.image" class="image-click-area" :class="{ editable: isEditing }"
             @click="isEditing && triggerFileInput()">
-            <img :src="editableMemory.image" class="preview-image" alt="Image de la carte en mode edition."/>
+            <img :src="editableMemory.image" class="preview-image" alt="Image de la carte en mode edition." loading="lazy"/>
           </div>
           <div v-else class="image readonly" :class="{ editable: isEditing }" @click="isEditing && triggerFileInput()">
             <span class="plus">+</span>

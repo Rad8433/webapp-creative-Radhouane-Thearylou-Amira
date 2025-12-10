@@ -20,7 +20,7 @@
 export default {
   name: "BaseButton",
   // Le bouton accepte une prop "variant" pour changer son style.
-  props: {
+  props: { 
     variant: {
       type: String, default: "", // Controle de la variante du style du bouton.
     }, 

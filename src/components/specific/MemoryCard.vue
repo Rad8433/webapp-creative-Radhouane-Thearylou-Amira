@@ -7,7 +7,7 @@
     <h2 class="title">{{ title }}</h2>
 
     <div class="card-image">
-      <img :src="image" alt="Memory Image" />
+      <img :src="image" alt="Memory Image" loading="lazy"/>
     </div>
 
     <p class="caption">{{ caption }}</p>
@@ -20,7 +20,7 @@ export default {
   name: "MemoryCard",
 
   props: {
-    tag: { type: String, default: "" },
+    tag: { type: String, default: "" },//
     date: { type: String, default: "" },
     title: { type: String, default: "" },
     image: { type: String, required: true },
@@ -114,8 +114,11 @@ export default {
 .caption {
   font-size: 1.05rem;
   color: #1d1d1d;
-  
-
+  word-wrap: break-word;
+  overflow-wrap: break-word; 
+  white-space: normal; 
+  max-width: 100%; 
+  text-align: center; 
 }
 
 /* Numéro de mémoire */
