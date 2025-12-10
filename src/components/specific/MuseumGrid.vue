@@ -30,7 +30,8 @@ export default {
   },
 };
 </script>
-<style>
+
+<style scoped>
 .MuseumCard:focus-visible {
   outline: solid 3px #0245ff;  
   outline-offset: 4px;         

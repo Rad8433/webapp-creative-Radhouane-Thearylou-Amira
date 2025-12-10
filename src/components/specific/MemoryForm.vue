@@ -54,7 +54,7 @@
           <input type="text" id="legende" v-model="form.caption" placeholder="Une courte légende"  maxlength="60"  />
           <span v-if="errors.caption" class="error">{{ errors.caption }}</span>
         </div>
-        <!-- Submit -->
+        <!-- Bouton de  -->
         <BaseButton variant="secondary" type="button" @click="handleSubmit">
           Ajouter
         </BaseButton>
@@ -150,7 +150,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 #tag-select:focus-visible {
   outline: 3px solid #0245ff;
