@@ -6,9 +6,9 @@ Projet scolaire réalisé dans le cadre du cours Web 5 (582-511MO) au Cégep de 
 "Ce musée interactif permet aux utilisateurs de créer, organiser et explorer des souvenirs personnels à travers différentes salles thématiques."
 
 ## Équipe
-- **Radhouane Kordan** — Chef de projet + Architecture Vue  
-- **Amira Tounekti** — Design + Animations  
-- **Thearylou Lach** — Données + Validation  
+- **Radhouane** - Chef de projet / Pinia, routes, pages
+- **Amira** - Composantes, styles(css), trello
+- **Thearylou** - Responsable du Design, validation  
 
 ## Description
 "Vos voyages en mémoires" est un musée interactif organisé en différentes salles thématiques, comme les aventures, les vacances, la gastronomie ou les explorations urbaines.  
