@@ -88,7 +88,8 @@ npm run build
 [Lien vers le Figjam / Brainstorm](https://www.figma.com/board/vnLXvU6hgCiSru4Nfu6PXu/Brainstorm-webapp?node-id=0-1&t=0mpvvEb1GYNQi9qV-1)
 
 ## Remerciements et autres crédits
-Images:
+
+**Images prisent sur Unsplash**: Aaron Burden, Casey Horney, Jake Allison, Vaida Tamosauskaite, Ryan Spencer, Felix Rostig, John Towner, Wojciech Then, Upgraded Points, Kevin Charit, Pietro De Grandi,
 
 ## License
 Projet éducatif - Cégep de Montmorency © 2024-2025
